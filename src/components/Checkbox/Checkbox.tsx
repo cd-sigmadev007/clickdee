@@ -1,0 +1,50 @@
+import React from 'react';
+
+export interface CheckboxProps extends Omit<React.InputHTMLAttributes<HTMLInputElement>, 'type'> {
+  label?: string;
+  checked?: boolean;
+  onChange?: (checked: boolean) => void;
+}
+
+export const Checkbox: React.FC<CheckboxProps> = ({
+  label,
+  checked = false,
+  onChange,
+  className = '',
+  disabled,
+  ...props
+}) => {
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    onChange?.(e.target.checked);
+  };
+
+  return (
+    <label className={`flex items-center gap-2.5 cursor-pointer ${disabled ? 'opacity-50 cursor-not-allowed' : ''} ${className}`}>
+      <div className="relative flex items-center justify-center">
+        <input
+          type="checkbox"
+          checked={checked}
+          onChange={handleChange}
+          disabled={disabled}
+          className="sr-only"
+          {...props}
+        />
+        {checked ? (
+          <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-5 h-5">
+            <path d="M25 3H7C5.93949 3.00116 4.92275 3.42296 4.17285 4.17285C3.42296 4.92275 3.00116 5.93949 3 7V25C3.00116 26.0605 3.42296 27.0773 4.17285 27.8271C4.92275 28.577 5.93949 28.9988 7 29H25C26.0605 28.9988 27.0773 28.577 27.8271 27.8271C28.577 27.0773 28.9988 26.0605 29 25V7C28.9988 5.93949 28.577 4.92275 27.8271 4.17285C27.0773 3.42296 26.0605 3.00116 25 3ZM22.7656 11.6431L14.3656 21.6431C14.2735 21.7529 14.1588 21.8415 14.0294 21.9031C13.9 21.9647 13.7589 21.9977 13.6156 22H13.5988C13.4586 21.9999 13.32 21.9704 13.192 21.9134C13.064 21.8563 12.9494 21.773 12.8556 21.6688L9.25562 17.6688C9.1642 17.5718 9.09308 17.4575 9.04644 17.3327C8.99981 17.2078 8.9786 17.0749 8.98407 16.9417C8.98953 16.8086 9.02156 16.6778 9.07827 16.5572C9.13498 16.4366 9.21523 16.3286 9.31429 16.2394C9.41336 16.1503 9.52925 16.0818 9.65515 16.0381C9.78105 15.9944 9.91442 15.9763 10.0474 15.9848C10.1804 15.9934 10.3104 16.0284 10.4296 16.0879C10.5489 16.1474 10.655 16.2301 10.7419 16.3312L13.5725 19.4762L21.2344 10.3569C21.4062 10.1582 21.6494 10.0351 21.9113 10.0142C22.1732 9.99335 22.4327 10.0764 22.6339 10.2454C22.8351 10.4143 22.9617 10.6557 22.9863 10.9172C23.0109 11.1788 22.9317 11.4395 22.7656 11.6431Z" fill="#0070FF"/>
+          </svg>
+        ) : (
+          <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-5 h-5">
+            <path d="M25 4H7C5.34315 4 4 5.34315 4 7V25C4 26.6569 5.34315 28 7 28H25C26.6569 28 28 26.6569 28 25V7C28 5.34315 26.6569 4 25 4Z" stroke="#D4D4D8" strokeWidth="2" strokeLinejoin="round"/>
+          </svg>
+        )}
+      </div>
+      {label && (
+        <span className="font-medium text-s text-neutral-900 select-none">
+          {label}
+        </span>
+      )}
+    </label>
+  );
+};
+
