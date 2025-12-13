@@ -46,17 +46,18 @@ export const Typography: React.FC<TypographyProps> = ({
   className = '',
   ...props
 }) => {
-  const Component = (as || variantToElement[variant]) as keyof JSX.IntrinsicElements;
+  const elementType = (as || variantToElement[variant]) as 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'p' | 'span' | 'div';
   const variantClass = variantToClass[variant];
   const weightClass = weightToClass[weight];
 
-  return (
-    <Component
-      className={`font-satoshi ${variantClass} ${weightClass} ${className}`}
-      {...props}
-    >
-      {children}
-    </Component>
+  // Create element with proper typing
+  return React.createElement(
+    elementType,
+    {
+      className: `font-satoshi ${variantClass} ${weightClass} ${className}`,
+      ...props,
+    } as React.HTMLAttributes<HTMLElement>,
+    children
   );
 };
 

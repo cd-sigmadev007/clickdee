@@ -25,20 +25,21 @@ export const HoveringPopup: React.FC<HoveringPopupProps> = ({
         ${className}
       `}
     >
-      <div className="flex items-start justify-between">
+      <div className="flex items-start justify-between w-full" data-node-id="1:14662">
         <div className="flex items-baseline gap-1">
-          <span className="font-bold text-h3 text-white">{amount}</span>
-          <span className="font-medium text-s text-white">{worth}</span>
+          <span className="font-bold text-h3 text-white leading-[1.3]">$</span>
+          <span className="font-bold text-h3 text-white leading-[1.3]">{amount.replace('$', '')}</span>
+          <span className="font-medium text-s text-white leading-[1.5]">{worth}</span>
         </div>
         {icon && (
-          <div className="flex-shrink-0 w-8 h-8">
+          <div className="relative flex-shrink-0 w-8 h-8" data-node-id="1:14664">
             {icon}
           </div>
         )}
       </div>
-      <div className="flex flex-col gap-0.5">
-        <p className="font-medium text-s text-white">{title}</p>
-        <p className="font-medium text-s text-white">{subtitle}</p>
+      <div className="flex flex-col font-medium gap-0.5 items-start text-s text-white leading-[1.5]" data-node-id="1:14668">
+        <p className="relative" data-node-id="1:14669">{title}</p>
+        <p className="relative" data-node-id="1:14670">{subtitle}</p>
       </div>
     </div>
   );
