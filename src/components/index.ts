@@ -1,4 +1,5 @@
 // Export all components
+// Note: Header and Footer are now in src/layout/ following ringba architecture pattern
 export * from './Typography';
 export * from './Button';
 export * from './Input';

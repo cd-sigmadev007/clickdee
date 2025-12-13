@@ -15,6 +15,7 @@ import {
   Avatar,
   HoveringPopup,
 } from './components';
+import { MainLayout } from './layout';
 
 function App() {
   const [checkboxChecked, setCheckboxChecked] = React.useState(false);
@@ -22,7 +23,7 @@ function App() {
   const [activeTab, setActiveTab] = React.useState('home');
 
   return (
-    <div className="min-h-screen bg-neutral-100">
+    <MainLayout>
       <div className="container mx-auto px-4 py-16 max-w-7xl">
         {/* Header */}
         <div className="mb-16 text-center">
@@ -447,7 +448,7 @@ function App() {
           </div>
         </section>
       </div>
-    </div>
+    </MainLayout>
   );
 }
 

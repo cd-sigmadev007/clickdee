@@ -1,6 +1,6 @@
 import React from 'react';
 // @ts-ignore - SVG import with space in filename
-import Frame40022 from '@/assets/icons/Frame 40022.svg';
+import HeroiconsChevronRight from '@/assets/icons/heroicons_chevron-right.svg';
 
 export interface BreadcrumbItem {
   label: string;
@@ -17,18 +17,15 @@ export interface BreadcrumbsProps {
 const SeparatorIcon: React.FC<{ type: 'slash' | 'chevron' | 'arrow' }> = ({ type }) => {
   if (type === 'chevron') {
     return (
-      <img 
-        src={Frame40022} 
-        alt="" 
-        className="w-6 h-6"
-        style={{ filter: 'brightness(0) saturate(100%) invert(60%) sepia(0%) saturate(0%) hue-rotate(0deg) brightness(100%) contrast(90%)' }}
-      />
+      <svg xmlns="http://www.w3.org/2000/svg" width="6" height="11" viewBox="0 0 6 11" fill="none">
+        <path d="M0.75 9.75L5.25 5.25L0.75 0.75" stroke="#9A9A9A" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+      </svg>
     );
   }
   if (type === 'arrow') {
     return (
       <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <path d="M5 12H19M19 12L12 5M19 12L12 19" stroke="#9A9A9A" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+        <path d="M5 12H19M19 12L12 5M19 12L12 19" stroke="#9A9A9A" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
       </svg>
     );
   }
@@ -60,9 +57,8 @@ export const Breadcrumbs: React.FC<BreadcrumbsProps> = ({
             </a>
           ) : (
             <span
-              className={`font-lato font-normal text-p leading-[1.4] ${
-                item.isActive ? 'text-[#262626]' : 'text-[#9A9A9A]'
-              }`}
+              className={`font-lato font-normal text-p leading-[1.4] ${item.isActive ? 'text-[#262626]' : 'text-[#9A9A9A]'
+                }`}
             >
               {item.label}
             </span>
