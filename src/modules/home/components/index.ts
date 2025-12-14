@@ -3,6 +3,7 @@ export { HeroSection } from './HeroSection';
 export { FeaturesSection } from './FeaturesSection';
 export { ServicesSection } from './ServicesSection';
 export { NationwideMapSection } from './NationwideMapSection';
+export { ResultsSection } from './ResultsSection';
 export { HeroHeadline } from './HeroHeadline';
 export { HeroMap } from './HeroMap';
 export { FeatureCard } from './FeatureCard';

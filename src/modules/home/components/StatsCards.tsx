@@ -7,13 +7,13 @@ interface StatsCardsProps {
 
 export const StatsCards: React.FC<StatsCardsProps> = ({ stats }) => {
   return (
-    <div className="flex flex-col gap-4 h-full items-center justify-center w-[300px]" data-node-id="1:14671">
+    <div className="flex flex-col sm:flex-row lg:flex-col gap-4 h-full items-center justify-center w-full sm:w-auto lg:w-[300px]" data-node-id="1:14671">
       {stats.map((stat) => (
         <div
           key={stat.id}
-          className="bg-neutral-800 flex flex-col items-end px-8 py-6 relative rounded-[20px] text-center w-full"
+          className="bg-neutral-800 flex flex-col items-end px-8 py-6 relative rounded-[20px] text-center w-full sm:h-full sm:flex-1"
         >
-          <p className="font-bold text-display text-white w-full mb-2" data-node-id={stat.id === 'roi' ? '1:14673' : stat.id === 'leads' ? '1:14676' : '1:14679'}>
+          <p className="font-bold text-h2 lg:text-display text-white w-full mb-2" data-node-id={stat.id === 'roi' ? '1:14673' : stat.id === 'leads' ? '1:14676' : '1:14679'}>
             {stat.value}
           </p>
           <p className="font-medium text-p text-neutral-500 w-full" data-node-id={stat.id === 'roi' ? '1:14674' : stat.id === 'leads' ? '1:14677' : '1:14680'}>

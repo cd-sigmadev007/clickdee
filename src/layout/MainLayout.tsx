@@ -18,9 +18,9 @@ export const MainLayout: React.FC<MainLayoutProps> = ({
   className = '' 
 }) => {
   return (
-    <div className={`min-h-screen flex flex-col bg-neutral-100 ${className}`}>
+    <div className={`min-h-screen w-full flex flex-col bg-neutral-100 overflow-x-hidden ${className}`}>
       <Header />
-      <main className="flex-1">
+      <main className="w-full flex-1">
         {children}
       </main>
       <Footer />

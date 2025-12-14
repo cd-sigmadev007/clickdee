@@ -10,6 +10,8 @@ export interface TypographyProps extends React.HTMLAttributes<HTMLElement> {
 
 const variantToElement: Record<FontSize, string> = {
   display: 'h1',
+  headline: 'h1',
+  title: 'h1',
   h1: 'h1',
   h2: 'h2',
   h3: 'h3',
@@ -21,6 +23,8 @@ const variantToElement: Record<FontSize, string> = {
 };
 
 const variantToClass: Record<FontSize, string> = {
+  headline: 'text-h2 md:text-h1 lg:text-display',
+  title: 'text-h2 md:text-h2 lg:text-h1',
   display: 'text-display',
   h1: 'text-h1',
   h2: 'text-h2',
@@ -54,7 +58,7 @@ export const Typography: React.FC<TypographyProps> = ({
   return React.createElement(
     elementType,
     {
-      className: `font-satoshi ${variantClass} ${weightClass} ${className}`,
+      className: `font-satoshi not-italic ${variantClass} ${weightClass} ${className}`,
       ...props,
     } as React.HTMLAttributes<HTMLElement>,
     children

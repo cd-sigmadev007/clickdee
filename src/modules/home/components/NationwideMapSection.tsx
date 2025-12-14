@@ -7,7 +7,7 @@ import { StatsCards } from './StatsCards';
 import { StatCard } from '../types';
 import { useMapInteractions } from '../hooks/useMapInteractions';
 import { usStates } from '../utils/stateData';
-import chevronUpIcon from '@/assets/icons/heroicons_chevron-up.svg';
+import chevronLeftIcon from '@/assets/icons/heroicons_chevron-left.svg';
 import { geoAlbersUsa } from 'd3-geo';
 
 const stats: StatCard[] = [
@@ -66,15 +66,15 @@ export const NationwideMapSection: React.FC = () => {
     <div className="bg-neutral-900 flex flex-col gap-6 sm:gap-8 items-center justify-center px-4 py-8 sm:px-6 sm:py-12 lg:px-[80px] lg:py-[88px] relative w-full" data-node-id="1:14262">
       {/* Title */}
       <div className="flex flex-col sm:flex-row gap-2.5 items-center justify-center w-full" data-node-id="1:14263">
-        <Typography variant="h1" weight="bold" className="text-white whitespace-nowrap" data-node-id="1:14264">
+        <Typography variant="title" weight="bold" className="text-white text-center" data-node-id="1:14264">
           Tap into leads across
         </Typography>
         <div className="bg-neutral-800 flex items-start justify-center px-2.5 py-1.5 rounded-[10px]" data-node-id="1:14265">
-          <Typography variant="h1" weight="bold" className="text-primary-500 whitespace-nowrap" data-node-id="1:14266">
+          <Typography variant="title" weight="bold" className="text-primary-500" data-node-id="1:14266">
             Nationwide
           </Typography>
         </div>
-        <Typography variant="h1" weight="bold" className="text-white whitespace-nowrap" data-node-id="1:14267">
+        <Typography variant="title" weight="bold" className="text-white" data-node-id="1:14267">
           today!
         </Typography>
       </div>
@@ -82,7 +82,7 @@ export const NationwideMapSection: React.FC = () => {
       {/* CTA Button */}
       <Button variant="secondary" className="bg-white text-neutral-900 flex items-center gap-[5px]">
         Get Leads Now
-        <img src={chevronUpIcon} alt="" className="w-4 h-4 rotate-180" data-node-id="1:14270" />
+        <img src={chevronLeftIcon} alt="" className="w-4 h-4 rotate-180" data-node-id="1:14270" />
       </Button>
       
       {/* Map and Stats */}
@@ -94,7 +94,7 @@ export const NationwideMapSection: React.FC = () => {
           />
           {hoveredStateData && hoveredStateData.leads && popupPosition && (
             <div
-              className="absolute pointer-events-none z-10"
+              className="absolute pointer-events-none"
               style={{
                 left: `${popupPosition.x}px`,
                 top: `${popupPosition.y}px`,

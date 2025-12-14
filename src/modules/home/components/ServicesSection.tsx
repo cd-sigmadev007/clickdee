@@ -15,6 +15,13 @@ import electricianIcon from '@/assets/icons/electrician-leads.svg';
 import pestControlIcon from '@/assets/icons/pest-control-leads.svg';
 import hvacIcon from '@/assets/icons/hvac-leads.svg';
 import plumbingIcon from '@/assets/icons/plumbing-leads.svg';
+// Insurance icons - using placeholder icons for now
+import medicareIcon from '@/assets/icons/fire-damage-leads.svg'; // Placeholder
+import acaIcon from '@/assets/icons/bathroom-remodel-leads.svg'; // Placeholder
+import homeInsuranceIcon from '@/assets/icons/water-damage-leads.svg'; // Placeholder
+import u65HealthIcon from '@/assets/icons/gutter-leads.svg'; // Placeholder
+import finalExpenseIcon from '@/assets/icons/appliance-repair.svg'; // Placeholder
+import autoInsuranceIcon from '@/assets/icons/mold-removal-leads.svg'; // Placeholder
 
 const homeServices: Service[] = [
   {
@@ -47,6 +54,7 @@ const homeServices: Service[] = [
     description: 'Respond to the call of homeowners in our community, seeking ...',
     icon: gutterIcon,
     category: 'home-services',
+    large: true,
   },
   {
     id: 'appliance-repair',
@@ -82,6 +90,7 @@ const homeServices: Service[] = [
     description: 'Our skilled electricians offer tailored solutions, addressin...',
     icon: electricianIcon,
     category: 'home-services',
+    large: true,
   },
   {
     id: 'pest-control',
@@ -89,6 +98,7 @@ const homeServices: Service[] = [
     description: 'Tap into our vast network to connect with local residents se...',
     icon: pestControlIcon,
     category: 'home-services',
+    large: true,
   },
   {
     id: 'hvac',
@@ -96,6 +106,7 @@ const homeServices: Service[] = [
     description: 'Meet the needs of issues your area, seek our expertise to en...',
     icon: hvacIcon,
     category: 'home-services',
+    large: true,
   },
   {
     id: 'plumbing',
@@ -106,24 +117,75 @@ const homeServices: Service[] = [
   },
 ];
 
+const insuranceServices: Service[] = [
+  {
+    id: 'medicare',
+    name: 'Medicare',
+    description: 'Discover urgent requests from homeowners in our vicinity, se...',
+    icon: medicareIcon,
+    category: 'insurance',
+  },
+  {
+    id: 'aca',
+    name: 'ACA',
+    description: 'Providing yearning for professionals to rejuvenate their bat...',
+    icon: acaIcon,
+    category: 'insurance',
+  },
+  {
+    id: 'home-insurance',
+    name: 'Home Insurance',
+    description: 'Our network connects you with local homeowners seeking prompt assistance for water damage services you offer.',
+    icon: homeInsuranceIcon,
+    category: 'insurance',
+    featured: true,
+    gradient: true,
+    large: false,
+  },
+  {
+    id: 'u65-health',
+    name: 'U65 Health Insurance',
+    description: 'Respond to the call of homeowners in our community, seeking ...',
+    icon: u65HealthIcon,
+    category: 'insurance',
+    large: true,
+  },
+  {
+    id: 'final-expense',
+    name: 'Final Expense',
+    description: 'We help customers seeking repair solutions for their malfunc...',
+    icon: finalExpenseIcon,
+    category: 'insurance',
+  },
+  {
+    id: 'auto-insurance',
+    name: 'Auto Insurance',
+    description: 'With precision and care, we eliminate mold infestations, off...',
+    icon: autoInsuranceIcon,
+    category: 'insurance',
+  },
+];
+
 export const ServicesSection: React.FC = () => {
   const [activeCategory, setActiveCategory] = useState<ServiceCategory>('home-services');
   
-  const filteredServices = homeServices.filter(service => service.category === activeCategory);
+  const allServices = [...homeServices, ...insuranceServices];
+  const filteredServices = allServices.filter(service => service.category === activeCategory);
   
   return (
-    <div className="bg-neutral-100 flex flex-col gap-6 sm:gap-8 items-center justify-center px-4 py-8 sm:px-6 sm:py-12 lg:px-[80px] lg:py-[88px] relative w-full rounded-[20px] sm:rounded-[40px]" data-node-id="1:14123">
+    <div className="w-full bg-neutral-900 rounded-t-[20px]">
+    <div className="bg-neutral-100 flex flex-col z-[1] gap-8 items-center justify-center px-4 py-10 sm:px-6 sm:py-10 lg:px-[80px] lg:py-[88px] relative w-full rounded-[20px] sm:rounded-[40px] overflow-hidden" data-node-id="1:14123">
       {/* Title */}
-      <div className="flex flex-col sm:flex-row gap-2.5 items-center justify-center w-full" data-node-id="1:14125">
-        <Typography variant="h1" weight="bold" className="text-neutral-900 whitespace-nowrap" data-node-id="1:14126">
+      <div className="flex flex-wrap lg:flex-nowrap gap-[5px] items-center justify-center w-full max-w-full" data-node-id="1:14125">
+        <Typography variant="title" weight="bold" className="text-neutral-900" data-node-id="1:14126">
           We deliver the
         </Typography>
-        <div className="bg-primary-200 flex items-start justify-center px-2.5 py-1.5 rounded-[10px]" data-node-id="1:14127">
-          <Typography variant="h1" weight="bold" className="text-primary-500 whitespace-nowrap" data-node-id="1:14128">
+        <div className="bg-primary-200 flex items-start justify-center px-2.5 py-1.5 rounded-[10px] shrink-0" data-node-id="1:14127">
+          <Typography variant="title" weight="bold" className="text-primary-500" data-node-id="1:14128">
             leads,
           </Typography>
         </div>
-        <Typography variant="h1" weight="bold" className="text-neutral-900 whitespace-nowrap" data-node-id="1:14129">
+        <Typography variant="title" weight="bold" className="text-neutral-900 text-center" data-node-id="1:14129">
           You get the solutions!
         </Typography>
       </div>
@@ -136,6 +198,7 @@ export const ServicesSection: React.FC = () => {
       
       {/* Services Grid */}
       <ServicesGrid services={filteredServices} />
+    </div>
     </div>
   );
 };

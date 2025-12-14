@@ -41,7 +41,7 @@ export const Tabs: React.FC<TabsProps> = ({
             onClick={() => !item.disabled && handleChange(item.value)}
             disabled={item.disabled}
             className={`
-              flex items-center justify-center px-3 py-2.5 rounded-[40px] transition-all duration-200
+              flex items-center justify-center px-3 py-2.5 rounded-[40px] transition-all duration-200 w-[130px]
               ${isActive ? 'bg-white' : ''}
               ${item.disabled ? 'opacity-50 cursor-not-allowed' : 'cursor-pointer'}
             `}
