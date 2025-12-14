@@ -86,7 +86,7 @@ export const ResultsSection: React.FC = () => {
             data-node-id="1:14748"
           />
           
-          <div className="flex flex-col sm:flex-row gap-6 md:gap-6 lg:gap-10 items-center justify-center relative z-10 w-full" data-node-id="1:14791">
+          <div className="flex flex-row max-md:flex-col gap-6 md:gap-6 lg:gap-10 items-center justify-center relative z-10 w-full" data-node-id="1:14791">
             {/* Gradient Card */}
             <div 
               className="fire-restoration-gradient border border-white flex flex-col gap-2.5 md:gap-3 items-center justify-center p-4 md:p-4 lg:p-6 relative rounded-[16px] md:rounded-[16px] lg:rounded-[20px] shadow-[0px_10px_15px_0px_rgba(0,0,0,0.05)] md:shadow-[0px_10px_15px_0px_rgba(0,0,0,0.05)] lg:shadow-[0px_10px_25px_0px_rgba(0,0,0,0.05)] shrink-0"

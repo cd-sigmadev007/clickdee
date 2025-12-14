@@ -4,6 +4,7 @@ import { FeaturesSection } from '../components/FeaturesSection';
 import { ServicesSection } from '../components/ServicesSection';
 import { NationwideMapSection } from '../components/NationwideMapSection';
 import { ResultsSection } from '../components/ResultsSection';
+import { TestimonialsSection } from '../components/TestimonialsSection';
 
 const HomePage: React.FC = () => {
   return (
@@ -13,6 +14,7 @@ const HomePage: React.FC = () => {
       <ServicesSection />
       <NationwideMapSection />
       <ResultsSection />
+      <TestimonialsSection />
     </div>
   );
 };

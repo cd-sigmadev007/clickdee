@@ -48,5 +48,13 @@ export interface StatCard {
   label: string;
 }
 
+export interface Testimonial {
+  id: string;
+  text: string;
+  authorName: string;
+  authorTitle: string;
+  avatar: string;
+}
+
 export type ServiceCategory = 'home-services' | 'insurance';
 

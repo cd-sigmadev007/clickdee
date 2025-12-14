@@ -4,6 +4,7 @@ export { FeaturesSection } from './FeaturesSection';
 export { ServicesSection } from './ServicesSection';
 export { NationwideMapSection } from './NationwideMapSection';
 export { ResultsSection } from './ResultsSection';
+export { TestimonialsSection } from './TestimonialsSection';
 export { HeroHeadline } from './HeroHeadline';
 export { HeroMap } from './HeroMap';
 export { FeatureCard } from './FeatureCard';
