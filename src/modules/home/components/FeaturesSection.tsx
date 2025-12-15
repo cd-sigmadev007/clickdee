@@ -40,11 +40,11 @@ export const FeaturesSection: React.FC = () => {
     <div className="bg-primary-500 flex flex-col gap-6 sm:gap-8 items-center justify-center px-4 py-8 sm:px-6 sm:py-12 lg:px-[80px] lg:py-[88px] relative w-full" data-node-id="1:14086">
       {/* Title */}
       <div className="flex flex-col sm:flex-row gap-2.5 items-center justify-center w-full" data-node-id="1:14087">
-        <Typography variant="title" weight="bold" className="text-white whitespace-nowrap" data-node-id="1:14088">
+        <Typography variant="h1" weight="bold" className="text-white whitespace-nowrap" data-node-id="1:14088">
           Real Customers
         </Typography>
         <div className="bg-primary-100 border border-primary-100 flex items-start justify-center px-2.5 py-1.5 rounded-[10px]" data-node-id="1:14089">
-          <Typography variant="title" weight="bold" className="text-primary-500 whitespace-nowrap" data-node-id="1:14090">
+          <Typography variant="h1" weight="bold" className="text-primary-500 whitespace-nowrap" data-node-id="1:14090">
             Real Revenue
           </Typography>
         </div>

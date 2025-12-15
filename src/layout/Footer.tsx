@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { Logo } from '@/components/Logo';
 import { Typography } from '@/components/Typography';
 import mdiLinkedin from '@/assets/icons/mdi_linkedin.svg';
@@ -13,11 +14,13 @@ export const Footer: React.FC<FooterProps> = ({ className = '' }) => {
     <footer className={`bg-neutral-10 border-t border-neutral-200 ${className}`}>
       <div className="mx-auto px-4 sm:px-6 lg:px-20 py-12 lg:py-16">
         {/* Logo - Outside flex container */}
-        <Logo className="mb-8 lg:mb-12" />
+        <Link to="/">
+          <Logo className="mb-8 lg:mb-12" />
+        </Link>
 
         {/* Main Footer Content */}
         <div className="flex flex-col lg:flex-row gap-8 lg:gap-12">
-          <div className="flex flex-row gap-8 lg:gap-12">
+          <div className="flex flex-row max-md:flex-col gap-8 lg:gap-12">
             {/* Branding Section */}
             <div className="flex flex-col gap-[24px] flex-1 min-w-0">
               <Typography
@@ -106,7 +109,7 @@ export const Footer: React.FC<FooterProps> = ({ className = '' }) => {
           <div className="flex flex-col lg:flex-row gap-6 flex-1  min-w-0">
             {/* Navigation Links Column 1 */}
             <nav className="flex lg:flex-col flex-wrap gap-3" aria-label="Footer navigation">
-              <a href="/" className="group transition-colors">
+              <Link to="/" className="group transition-colors">
                 <Typography
                   variant="s"
                   weight="medium"
@@ -114,7 +117,25 @@ export const Footer: React.FC<FooterProps> = ({ className = '' }) => {
                 >
                   Home
                 </Typography>
-              </a>
+              </Link>
+              <Link to="/about" className="group transition-colors">
+                <Typography
+                  variant="s"
+                  weight="medium"
+                  className="text-neutral-500 group-hover:text-primary-500"
+                >
+                  About Us
+                </Typography>
+              </Link>
+              <Link to="/partners" className="group transition-colors">
+                <Typography
+                  variant="s"
+                  weight="medium"
+                  className="text-neutral-500 group-hover:text-primary-500"
+                >
+                  Partner Support
+                </Typography>
+              </Link>
               <a href="/how-it-works" className="group transition-colors">
                 <Typography
                   variant="s"

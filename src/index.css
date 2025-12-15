@@ -57,3 +57,35 @@ body {
   }
 }
 
+/* Scrolling banner carousel animation */
+@keyframes scroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-scroll {
+  animation: scroll 30s linear infinite;
+  display: flex;
+  will-change: transform;
+}
+
+/* Founders carousel infinite scroll animation */
+@keyframes founders-scroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(calc(-300px * 5 - 16px * 4)); /* Move by one set of 5 cards (300px each) + 4 gaps (16px each) */
+  }
+}
+
+.animate-founders-scroll {
+  animation: founders-scroll 25s linear infinite;
+  display: flex;
+  will-change: transform;
+}
+

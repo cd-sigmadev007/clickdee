@@ -1,7 +1,7 @@
 import React from 'react';
 import { Typography } from '@/components';
 import { Testimonial } from '../types';
-import starIcon from '@/assets/icons/ic_round-star.svg';
+import starIcon from '@/assets/icons/ic_round-star-white.svg';
 import dividerIcon from '@/assets/icons/testimonial-divider.svg';
 import avatarAmyHahn from '@/assets/images/avatar-amy-hahn.png';
 import avatarSherylBerge from '@/assets/images/avatar-sheryl-berge.png';

@@ -12,6 +12,7 @@ const variantToElement: Record<FontSize, string> = {
   display: 'h1',
   headline: 'h1',
   title: 'h1',
+  subtitle: 'h2',
   h1: 'h1',
   h2: 'h2',
   h3: 'h3',
@@ -25,6 +26,7 @@ const variantToElement: Record<FontSize, string> = {
 const variantToClass: Record<FontSize, string> = {
   headline: 'text-h2 md:text-h1 lg:text-display',
   title: 'text-h2 md:text-h2 lg:text-h1',
+  subtitle: 'text-h3 md:text-h3 lg:text-h2',
   display: 'text-display',
   h1: 'text-h1',
   h2: 'text-h2',

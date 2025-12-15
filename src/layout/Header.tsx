@@ -1,6 +1,8 @@
 import React, { useState, useRef, useEffect } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
 import { Logo } from '@/components/Logo';
 import { Button } from '@/components/Button';
+import { generateSlug } from '@/modules/services/types/serviceData';
 import heroiconsChevronUp from '@/assets/icons/heroicons_chevron-up.svg';
 import heroiconsChevronDown from '@/assets/icons/heroicons_chevron-down.svg';
 
@@ -72,6 +74,7 @@ export const Header: React.FC<HeaderProps> = ({ className = '' }) => {
   const [isServicesOpen, setIsServicesOpen] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const servicesRef = useRef<HTMLDivElement>(null);
+  const navigate = useNavigate();
   const mobileMenuRef = useRef<HTMLDivElement>(null);
 
   // Close dropdown when clicking outside
@@ -129,9 +132,13 @@ export const Header: React.FC<HeaderProps> = ({ className = '' }) => {
             {isServicesOpen && (
               <div className="fixed top-[52px] left-1/2 -translate-x-1/2 bg-white border border-neutral-200 rounded-[10px] shadow-[0px_10px_16px_0px_rgba(0,0,0,0.05)] p-[14px] w-[802px] z-50">
                 <div className="grid grid-cols-3 gap-0">
-                  {services.map((service, index) => (
-                    <button
+                  {services.map((service, index) => {
+                    const serviceSlug = generateSlug(service.name);
+                    return (
+                      <Link
                       key={index}
+                        to={`/services/${serviceSlug}`}
+                        onClick={() => setIsServicesOpen(false)}
                       className={`flex items-center gap-[10px] px-[14px] py-2 rounded-[10px] transition-colors ${
                         service.active
                           ? 'bg-primary-100 text-primary-500'
@@ -144,32 +151,33 @@ export const Header: React.FC<HeaderProps> = ({ className = '' }) => {
                         <div className="w-8 h-8 bg-neutral-200 rounded flex-shrink-0"></div>
                       )}
                       <span className="font-medium text-s whitespace-nowrap">{service.name}</span>
-                    </button>
-                  ))}
+                      </Link>
+                    );
+                  })}
                 </div>
               </div>
             )}
           </div>
 
           {/* Other Navigation Links - font-medium text-s text-neutral-900 */}
-          <a
-            href="#about"
+          <Link
+            to="/about"
             className="font-medium text-s text-neutral-900 hover:text-primary-500 transition-colors whitespace-nowrap"
           >
             About Us
-          </a>
+          </Link>
           <a
             href="#articles"
             className="font-medium text-s text-neutral-900 hover:text-primary-500 transition-colors whitespace-nowrap"
           >
             Articles
           </a>
-          <a
-            href="#support"
+          <Link
+            to="/partners"
             className="font-medium text-s text-neutral-900 hover:text-primary-500 transition-colors whitespace-nowrap"
           >
             Partner Support
-          </a>
+          </Link>
         </nav>
 
         {/* Contact Button - Primary variant, px-6 py-[14px] */}
@@ -207,7 +215,9 @@ export const Header: React.FC<HeaderProps> = ({ className = '' }) => {
             </svg>
           </button>
           {/* Logo: 91px width, 18px height for mobile */}
+          <Link to="/">
           <Logo width={91} height={18} />
+          </Link>
         </div>
 
         {/* Contact Button - px-6 py-[10px] for mobile */}
@@ -247,9 +257,16 @@ export const Header: React.FC<HeaderProps> = ({ className = '' }) => {
                   {/* Mobile Services Dropdown - Matching Figma node-id=1-9579 */}
                   {isServicesOpen && (
                     <div className="mt-[10px] flex flex-col gap-0">
-                      {services.map((service, index) => (
-                        <button
+                      {services.map((service, index) => {
+                        const serviceSlug = generateSlug(service.name);
+                        return (
+                          <Link
                           key={index}
+                            to={`/services/${serviceSlug}`}
+                            onClick={() => {
+                              setIsServicesOpen(false);
+                              setIsMobileMenuOpen(false);
+                            }}
                           className={`flex items-center gap-[10px] px-[14px] py-2 rounded-[10px] transition-colors ${
                             service.active
                               ? 'bg-primary-100 text-primary-500'
@@ -262,20 +279,21 @@ export const Header: React.FC<HeaderProps> = ({ className = '' }) => {
                             <div className="w-8 h-8 bg-neutral-200 rounded flex-shrink-0"></div>
                           )}
                           <span className="font-medium text-s">{service.name}</span>
-                        </button>
-                      ))}
+                          </Link>
+                        );
+                      })}
                     </div>
                   )}
                 </div>
 
                 {/* Other Navigation Links - font-medium text-h4 */}
-                <a
-                  href="#about"
+                <Link
+                  to="/about"
                   className="px-[14px] py-2 rounded-[10px] font-medium text-h4 text-neutral-900"
                   onClick={() => setIsMobileMenuOpen(false)}
                 >
                   About Us
-                </a>
+                </Link>
                 <a
                   href="#articles"
                   className="px-[14px] py-2 rounded-[10px] font-medium text-h4 text-neutral-900"
@@ -283,13 +301,13 @@ export const Header: React.FC<HeaderProps> = ({ className = '' }) => {
                 >
                   Articles
                 </a>
-                <a
-                  href="#support"
+                <Link
+                  to="/partners"
                   className="px-[14px] py-2 rounded-[10px] font-medium text-h4 text-neutral-900"
                   onClick={() => setIsMobileMenuOpen(false)}
                 >
                   Partner Support
-                </a>
+                </Link>
               </div>
             </div>
           </>

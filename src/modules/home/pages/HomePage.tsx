@@ -5,6 +5,7 @@ import { ServicesSection } from '../components/ServicesSection';
 import { NationwideMapSection } from '../components/NationwideMapSection';
 import { ResultsSection } from '../components/ResultsSection';
 import { TestimonialsSection } from '../components/TestimonialsSection';
+import { CTASection } from '../components/CTASection';
 
 const HomePage: React.FC = () => {
   return (
@@ -15,6 +16,7 @@ const HomePage: React.FC = () => {
       <NationwideMapSection />
       <ResultsSection />
       <TestimonialsSection />
+      <CTASection />
     </div>
   );
 };

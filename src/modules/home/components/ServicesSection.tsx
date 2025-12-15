@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { Typography } from '@/components';
 import { ServiceCategoriesTabs } from './ServiceCategoriesTabs';
 import { ServicesGrid } from './ServicesGrid';
 import { Service, ServiceCategory } from '../types';
+import { generateSlug } from '@/modules/services/types/serviceData';
 import fireDamageIcon from '@/assets/icons/fire-damage-leads.svg';
 import bathroomRemodelIcon from '@/assets/icons/bathroom-remodel-leads.svg';
 import waterDamageIcon from '@/assets/icons/water-damage-leads.svg';
@@ -168,13 +170,19 @@ const insuranceServices: Service[] = [
 
 export const ServicesSection: React.FC = () => {
   const [activeCategory, setActiveCategory] = useState<ServiceCategory>('home-services');
+  const navigate = useNavigate();
   
   const allServices = [...homeServices, ...insuranceServices];
   const filteredServices = allServices.filter(service => service.category === activeCategory);
   
+  const handleServiceClick = (service: Service) => {
+    const slug = generateSlug(service.name);
+    navigate(`/services/${slug}`);
+  };
+  
   return (
-    <div className="w-full bg-neutral-900 rounded-t-[20px]">
-    <div className="bg-neutral-100 flex flex-col z-[1] gap-8 items-center justify-center px-4 py-10 sm:px-6 sm:py-10 lg:px-[80px] lg:py-[88px] relative w-full rounded-[20px] sm:rounded-[40px] overflow-hidden" data-node-id="1:14123">
+    <div className="w-full bg-neutral-900 rounded-t-[40px]">
+    <div className="bg-neutral-100 flex flex-col z-[1] gap-8 items-center justify-center px-4 py-10 sm:px-6 sm:py-10 lg:px-[80px] lg:py-[88px] relative w-full rounded-[40px] overflow-hidden" data-node-id="1:14123">
       {/* Title */}
       <div className="flex flex-wrap lg:flex-nowrap gap-[5px] items-center justify-center w-full max-w-full" data-node-id="1:14125">
         <Typography variant="title" weight="bold" className="text-neutral-900" data-node-id="1:14126">
@@ -197,7 +205,7 @@ export const ServicesSection: React.FC = () => {
       />
       
       {/* Services Grid */}
-      <ServicesGrid services={filteredServices} />
+      <ServicesGrid services={filteredServices} onServiceClick={handleServiceClick} />
     </div>
     </div>
   );

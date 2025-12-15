@@ -1,11 +1,19 @@
+import { BrowserRouter, useRoutes } from 'react-router-dom';
 import { MainLayout } from './layout';
-import { HomePage } from './modules/home';
+import { routes } from './routes';
+
+function AppRoutes() {
+  const element = useRoutes(routes);
+  return element;
+}
 
 function App() {
   return (
+    <BrowserRouter>
     <MainLayout>
-      <HomePage />
+        <AppRoutes />
     </MainLayout>
+    </BrowserRouter>
   );
 }
 
