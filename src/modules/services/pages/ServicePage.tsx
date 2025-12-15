@@ -1,8 +1,9 @@
 import React from 'react';
 import { useParams, Navigate } from 'react-router-dom';
 import { Typography } from '@/components';
-import { ServiceHeroSection } from '../components';
+import { ServiceHeroSection, CommitmentSection, FAQSection } from '../components';
 import { getServiceBySlug } from '../types/serviceData';
+import { fireRestorationFAQ } from '../data/faqData';
 
 const ServicePage: React.FC = () => {
   const { slug } = useParams<{ slug: string }>();
@@ -30,10 +31,22 @@ const ServicePage: React.FC = () => {
     );
   }
 
+  // Get FAQ data based on service slug
+  const getFAQData = () => {
+    switch (service.slug) {
+      case 'fire-damage-leads':
+        return fireRestorationFAQ;
+      // Add more cases for other services as needed
+      default:
+        return fireRestorationFAQ; // Default fallback
+    }
+  };
+
   return (
     <div className="w-full">
       <ServiceHeroSection service={service} />
-      {/* Future sections will be added here */}
+      <CommitmentSection />
+      <FAQSection items={getFAQData()} defaultOpen={['quality']} />
     </div>
   );
 };
