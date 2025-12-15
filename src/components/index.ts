@@ -15,4 +15,5 @@ export * from './Avatar';
 export * from './HoveringPopup';
 export * from './HeroBackground';
 export * from './ContentGrid';
+export * from './TestimonialsSection';
 

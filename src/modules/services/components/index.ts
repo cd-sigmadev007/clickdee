@@ -1,5 +1,9 @@
 export { ServiceHeroSection } from './ServiceHeroSection';
 export { CommitmentSection } from './CommitmentSection';
 export { FAQSection } from './FAQSection';
+export { ProcessSection } from './ProcessSection';
+export { LeadProfilesSection } from './LeadProfilesSection';
 export type { ServiceHeroSectionProps } from './ServiceHeroSection';
 export type { FAQSectionProps, FAQItem } from './FAQSection';
+export type { ProcessSectionProps, ProcessStep } from './ProcessSection';
+export type { LeadProfilesSectionProps } from './LeadProfilesSection';

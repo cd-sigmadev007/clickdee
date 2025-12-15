@@ -4,7 +4,7 @@ import { FeaturesSection } from '../components/FeaturesSection';
 import { ServicesSection } from '../components/ServicesSection';
 import { NationwideMapSection } from '../components/NationwideMapSection';
 import { ResultsSection } from '../components/ResultsSection';
-import { TestimonialsSection } from '../components/TestimonialsSection';
+import { TestimonialsSection } from '@/components';
 import { CTASection } from '../components/CTASection';
 
 const HomePage: React.FC = () => {

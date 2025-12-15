@@ -1,7 +1,7 @@
 import React from 'react';
 import { useParams, Navigate } from 'react-router-dom';
-import { Typography } from '@/components';
-import { ServiceHeroSection, CommitmentSection, FAQSection } from '../components';
+import { Typography, TestimonialsSection } from '@/components';
+import { ServiceHeroSection, CommitmentSection, FAQSection, ProcessSection, LeadProfilesSection } from '../components';
 import { getServiceBySlug } from '../types/serviceData';
 import { fireRestorationFAQ } from '../data/faqData';
 
@@ -47,6 +47,9 @@ const ServicePage: React.FC = () => {
       <ServiceHeroSection service={service} />
       <CommitmentSection />
       <FAQSection items={getFAQData()} defaultOpen={['quality']} />
+      <ProcessSection />
+      <LeadProfilesSection />
+      <TestimonialsSection />
     </div>
   );
 };
