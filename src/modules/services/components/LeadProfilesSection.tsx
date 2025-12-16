@@ -48,7 +48,7 @@ export const LeadProfilesSection: React.FC<LeadProfilesSectionProps> = ({ classN
       />
 
       {/* Header Section */}
-      <div className="flex flex-col gap-[10px] items-center justify-center w-full relative z-10 px-4 pt-10 sm:px-6 sm:pt-10 lg:px-[80px] lg:pt-[56px]">
+      <div className="flex flex-col gap-[10px] items-center justify-center w-full relative z-10 px-4 py-10 sm:px-6 sm:py-10 lg:px-[80px] lg:py-[56px]">
         <div className="flex flex-col sm:flex-row gap-[10px] items-center justify-center">
           <Typography
             variant="title"
@@ -76,13 +76,13 @@ export const LeadProfilesSection: React.FC<LeadProfilesSectionProps> = ({ classN
         </Typography>
       </div>
 
-      <div className="md:px-4 md:pb-10 sm:px-0 sm:pb-10 lg:px-[80px] lg:pb-[56px]">
+      <div className="md:px-4 md:py-10 sm:px-0 sm:py-10 lg:px-[80px] lg:py-[56px]">
         {/* Main Content Card */}
         <div className="bg-white rounded-none md:rounded-[24px] shadow-[0px_10px_25px_0px_rgba(0,0,0,0.05)] w-full overflow-hidden relative z-10">
           {/* Upper Section: Map and Lead Details */}
           <div className="flex flex-col lg:flex-row gap-0">
             {/* Left Column: Map Visualization */}
-            <div className="w-full lg:w-1/2 relative bg-neutral-100">
+            <div className="w-full lg:w-[60%] relative bg-neutral-100">
               {/* Map Image */}
               <div className="w-full h-full relative overflow-hidden">
                 <img
@@ -103,7 +103,7 @@ export const LeadProfilesSection: React.FC<LeadProfilesSectionProps> = ({ classN
             </div>
 
             {/* Right Column: Lead Details */}
-            <div className="w-full px-4 pb-10 sm:px-6 sm:pb-10 lg:px-[80px] lg:pb-[56px]">
+            <div className="w-full lg:w-[40%] px-4 py-10 sm:px-6 sm:py-10 lg:px-[80px] lg:py-[56px]">
               {/* Lead Details List */}
               <div className="flex flex-col gap-0">
                 {leadDetails.map((detail, index) => (
@@ -127,7 +127,7 @@ export const LeadProfilesSection: React.FC<LeadProfilesSectionProps> = ({ classN
               </div>
 
               {/* Client Testimonial */}
-              <div className="flex sm:flex-row flex-col gap-6 pt-6 lg:py-6 border-t border-neutral-200">
+              <div className="flex sm:flex-row flex-col gap-6 py-6 border-t border-neutral-200">
                 <div className="flex items-center gap-3">
                   <img
                     src={avatarAlbertFlores}
@@ -192,24 +192,6 @@ export const LeadProfilesSection: React.FC<LeadProfilesSectionProps> = ({ classN
             </div>
           </div>
         </div>
-      </div>
-
-      {/* Footer Disclaimer */}
-      <div className="flex flex-col gap-1 items-center justify-center w-full relative z-10">
-        <Typography
-          variant="s"
-          weight="medium"
-          className="text-white text-center leading-[1.3]"
-        >
-          *More competitive areas of the country command higher Lead prices.
-        </Typography>
-        <Typography
-          variant="s"
-          weight="medium"
-          className="text-white text-center leading-[1.3]"
-        >
-          The statistics may vary according to the season and movements in consumption.
-        </Typography>
       </div>
     </div>
   );

@@ -74,7 +74,7 @@ export const FAQSection: React.FC<FAQSectionProps> = ({
                 onClick={() => toggleItem(item.value)}
                 className="w-full flex items-start justify-end gap-6 lg:gap-[24px] p-6 lg:p-[24px]"
               >
-                <div className="flex-1 text-center lg:text-left">
+                <div className="flex-1 text-left">
                   <Typography
                     variant="h4"
                     weight="medium"

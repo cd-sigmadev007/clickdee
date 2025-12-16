@@ -55,7 +55,7 @@ export const ProcessSection: React.FC<ProcessSectionProps> = ({
           <Typography
             variant="title"
             weight="bold"
-            className="text-primary-500 whitespace-nowrap"
+            className="text-primary-500"
           >
             {title}
           </Typography>
@@ -63,7 +63,7 @@ export const ProcessSection: React.FC<ProcessSectionProps> = ({
         <Typography
           variant="title"
           weight="bold"
-          className="text-white whitespace-nowrap text-center sm:text-left"
+          className="text-white text-center sm:text-left"
         >
           {subtitle}
         </Typography>

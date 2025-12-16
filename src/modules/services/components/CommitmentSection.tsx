@@ -136,9 +136,9 @@ export const CommitmentSection: React.FC = () => {
                 ))}
             </div>
 
-            <Banner icon={<img src={fireServiceBanner} alt="" className="w-[96px] h-[96px] w-full h-full object-contain" />} 
+            <Banner icon={<div className="w-[120px] h-[120px] flex-shrink-0 overflow-hidden"><img src={fireServiceBanner} alt="" className="w-full h-full object-contain" /></div>} 
             title="Curious how many Leads we have in your Area?" 
-            className='w-full'
+            className='w-full lg:h-[170px]'
             description="We help you discover the number of leads in your area with ease!" />
         </div>
     );

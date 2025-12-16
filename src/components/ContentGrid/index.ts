@@ -1,2 +1,2 @@
 export { ContentGrid } from './ContentGrid';
-export type { ContentGridProps, TextSection, ImageSection, StatsSection } from './types';
+export type { ContentGridProps, TextSection, ImageSection, StatsSection, BenefitCard } from './types';

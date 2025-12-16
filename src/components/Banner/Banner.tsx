@@ -23,14 +23,14 @@ export const Banner: React.FC<BannerProps> = ({
   return (
     <div
       className={`
-        bg-white border border-neutral-200 rounded-card p-8 min-h-[168px] flex flex-col sm:flex-row gap-8 items-center justify-between
+        bg-white border border-neutral-200 rounded-card p-8 min-h-[168px] flex flex-col sm:flex-row gap-8 items-center justify-between relative
         ${variant === 'gradient' ? 'bg-gradient-to-r from-primary-500 to-primary-600' : ''}
         ${className}
       `}
     >
       <div className="flex items-center gap-8 flex-col sm:flex-row flex-1 w-full sm:w-auto">
         {icon && (
-          <div className="flex-shrink-0">
+          <div className="flex-shrink-0 self-stretch flex items-center justify-center">
             {icon}
           </div>
         )}
@@ -38,7 +38,7 @@ export const Banner: React.FC<BannerProps> = ({
           <h2 className="font-bold text-h2 max-lg:text-h3 text-neutral-900">
             {title}
           </h2>
-          <p className="font-medium text-p text-neutral-500">
+          <p className="font-medium text-p max-lg:text-s text-neutral-500">
             {description}
           </p>
         </div>
