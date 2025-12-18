@@ -20,4 +20,5 @@ export * from './TestimonialsSection';
 export * from './Select';
 export * from './Textarea';
 export * from './Carousel';
+export * from './IconCardGrid';
 

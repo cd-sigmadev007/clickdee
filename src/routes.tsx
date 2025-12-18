@@ -6,6 +6,7 @@ import { ServicePage } from './modules/services';
 import { ArticlesPage } from './modules/articles';
 import SingleArticlePage from './modules/articles/pages/SingleArticlePage';
 import { ContactUsPage } from './modules/contact';
+import { FAQPage } from './modules/faq';
 import { PrivacyPolicyPage, TermsAndConditionsPage, DoNotSellPage } from './modules/legal';
 
 export const routes: RouteObject[] = [
@@ -36,6 +37,10 @@ export const routes: RouteObject[] = [
   {
     path: '/contact',
     element: <ContactUsPage />,
+  },
+  {
+    path: '/faq',
+    element: <FAQPage />,
   },
   {
     path: '/privacy-policy',

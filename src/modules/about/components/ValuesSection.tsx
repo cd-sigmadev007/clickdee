@@ -1,18 +1,10 @@
 import React from 'react';
-import { Typography } from '@/components';
-import { Card } from '@/components/Card';
+import { Typography, IconCardGrid, IconCardItem } from '@/components';
 import icRoundStar from '@/assets/icons/ic_round-star.svg';
 import fluentPeopleTeam from '@/assets/icons/fluent_people-team-48-regular.svg';
 import hugeiconsMessageUser from '@/assets/icons/hugeicons_message-user-02.svg';
 
-interface Value {
-  id: string;
-  title: string;
-  description: string;
-  icon: string;
-}
-
-const values: Value[] = [
+const values: IconCardItem[] = [
   {
     id: 'transparency',
     title: 'Transparency',
@@ -42,21 +34,7 @@ export const ValuesSection: React.FC = () => {
       </Typography>
       
       {/* Value Cards Grid */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 w-full max-w-[1280px]">
-        {values.map((value) => (
-          <Card key={value.id} variant="elevated" className="flex flex-col gap-4 items-center justify-start h-full p-8">
-            <div className="relative w-12 h-12 flex items-center justify-center">
-              <img src={value.icon} alt={value.title} className="w-full h-full object-contain" />
-            </div>
-            <Typography variant="h4" weight="bold" className="text-neutral-900 text-center">
-              {value.title}
-            </Typography>
-            <Typography variant="p" weight="medium" className="text-neutral-500 text-center">
-              {value.description}
-            </Typography>
-          </Card>
-        ))}
-      </div>
+      <IconCardGrid items={values} gridCols="1-2-3" titleWeight="bold" />
     </div>
   );
 };

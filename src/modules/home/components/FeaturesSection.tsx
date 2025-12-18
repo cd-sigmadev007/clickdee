@@ -1,14 +1,12 @@
 import React from 'react';
-import { Typography } from '@/components';
-import { FeatureCard } from './FeatureCard';
-import { Feature } from '../types';
+import { Typography, IconCardGrid, IconCardItem } from '@/components';
 import hugeiconsTarget02 from '@/assets/icons/hugeicons_target-02.svg';
 import streamlinePayment10 from '@/assets/icons/streamline_payment-10.svg';
 import solarChatRoundCallOutline from '@/assets/icons/solar_chat-round-call-outline.svg';
 import solarGraphUpOutline from '@/assets/icons/solar_graph-up-outline.svg';
 import chevronLeftIcon from '@/assets/icons/heroicons_chevron-left.svg';
 
-const features: Feature[] = [
+const features: IconCardItem[] = [
   {
     id: 'define-leads',
     title: 'Define what leads you want',
@@ -63,11 +61,7 @@ export const FeaturesSection: React.FC = () => {
       </button>
       
       {/* Feature Cards Grid */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 w-full max-w-[1280px]" data-node-id="1:14096">
-        {features.map((feature) => (
-          <FeatureCard key={feature.id} feature={feature} />
-        ))}
-      </div>
+      <IconCardGrid items={features} gridCols="1-2-4" data-node-id="1:14096" />
       
       {/* Footer Text */}
       <Typography variant="s" weight="medium" className="text-white text-center max-w-full" data-node-id="1:14122">

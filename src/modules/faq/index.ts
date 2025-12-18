@@ -1,0 +1,2 @@
+export { FAQPage } from './pages';
+
