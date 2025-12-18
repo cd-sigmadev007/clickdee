@@ -1,4 +1,5 @@
 import React, { useState, useRef, useEffect } from 'react';
+import { createPortal } from 'react-dom';
 import { InputState } from '@/design-system';
 import chevronUpIcon from '@/assets/icons/heroicons_chevron-up.svg';
 
@@ -33,7 +34,9 @@ export const Select: React.FC<SelectProps> = ({
   const [isOpen, setIsOpen] = useState(false);
   const [internalValue, setInternalValue] = useState<string | string[]>(multiSelect ? [] : '');
   const selectRef = useRef<HTMLDivElement>(null);
+  const dropdownRef = useRef<HTMLDivElement>(null);
   const [isTyping, setIsTyping] = useState(false);
+  const [dropdownPosition, setDropdownPosition] = useState<{ top: number; left: number; width: number } | null>(null);
 
   const currentValue = value !== undefined ? value : internalValue;
   const isMulti = multiSelect;
@@ -49,17 +52,37 @@ export const Select: React.FC<SelectProps> = ({
   // Close dropdown when clicking outside
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
-      if (selectRef.current && !selectRef.current.contains(event.target as Node)) {
+      const target = event.target as Node;
+      if (
+        selectRef.current && 
+        !selectRef.current.contains(target) &&
+        dropdownRef.current &&
+        !dropdownRef.current.contains(target)
+      ) {
         setIsOpen(false);
         setIsTyping(false);
+        setDropdownPosition(null);
       }
     };
 
-    document.addEventListener('mousedown', handleClickOutside);
-    return () => document.removeEventListener('mousedown', handleClickOutside);
-  }, []);
+    if (isOpen) {
+      document.addEventListener('mousedown', handleClickOutside);
+      return () => document.removeEventListener('mousedown', handleClickOutside);
+    }
+  }, [isOpen]);
 
   const handleToggle = () => {
+    if (!isOpen && selectRef.current) {
+      const button = selectRef.current.querySelector('button');
+      if (button) {
+        const rect = button.getBoundingClientRect();
+        setDropdownPosition({
+          top: rect.bottom + window.scrollY + 4, // 4px margin (mt-1 = 4px)
+          left: rect.left + window.scrollX,
+          width: rect.width,
+        });
+      }
+    }
     setIsOpen(!isOpen);
     setIsTyping(true);
   };
@@ -208,8 +231,16 @@ export const Select: React.FC<SelectProps> = ({
         )}
 
         {/* Dropdown menu */}
-        {isOpen && (
-          <div className="absolute z-50 bg-white border border-neutral-200 rounded-[10px] shadow-[0px_10px_16px_0px_rgba(0,0,0,0.05)] mt-1 w-full max-h-[252px] overflow-y-auto">
+        {isOpen && dropdownPosition && createPortal(
+          <div 
+            ref={dropdownRef}
+            className="absolute z-[99999] bg-white border border-neutral-200 rounded-[10px] shadow-[0px_10px_16px_0px_rgba(0,0,0,0.05)] max-h-[252px] overflow-y-auto"
+            style={{ 
+              top: `${dropdownPosition.top}px`,
+              left: `${dropdownPosition.left}px`,
+              width: `${dropdownPosition.width}px`,
+            }}
+          >
             <div className="p-[5px]">
               {options.map((option) => {
                 const isSelected = isMulti 
@@ -245,7 +276,8 @@ export const Select: React.FC<SelectProps> = ({
                 );
               })}
             </div>
-          </div>
+          </div>,
+          document.body
         )}
 
         {/* Multi-select: Selected count and Clear All */}

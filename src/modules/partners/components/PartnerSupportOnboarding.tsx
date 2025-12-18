@@ -94,11 +94,7 @@ export const PartnerSupportOnboardingSection: React.FC<
                 >
                   {feature.description}
                 </Typography>
-              </div>
-            </div>
-
-            {/* Arrow (flex-based, bottom-right) */}
-            <div className="flex justify-end mt-6">
+                <div className="flex justify-end">
               <svg
                 width="20"
                 height="20"
@@ -115,6 +111,9 @@ export const PartnerSupportOnboardingSection: React.FC<
                 />
               </svg>
             </div>
+              </div>
+            </div>
+
           </div>
         </div>
       ))}

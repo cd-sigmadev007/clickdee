@@ -32,6 +32,7 @@ export const HowItWorksSection: React.FC = () => {
     <ContentGrid
       left={leftSection}
       right={rightSection}
+      className="min-h-[470px]"
     />
   );
 };

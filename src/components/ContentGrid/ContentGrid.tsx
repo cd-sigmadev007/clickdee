@@ -139,9 +139,9 @@ const renderIconHeadingSection = (section: IconHeadingSection, className?: strin
     <div className={`${bgColor} flex flex-col gap-6 items-start justify-center px-6 py-12 relative w-full h-full overflow-hidden ${className || ''}`}>
       {section.gridPattern && (
         <img 
-          src={gridLayers} 
+          src={gridResultBlack} 
           alt="" 
-          className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[863px] h-[470px] opacity-20 pointer-events-none scale-y-[-1]" 
+          className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[863px] h-[470px] invert pointer-events-none scale-y-[-1]" 
         />
       )}
       <div className="relative z-10 flex flex-col gap-6 w-full">

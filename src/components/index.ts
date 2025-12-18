@@ -19,4 +19,5 @@ export * from './ContentGrid';
 export * from './TestimonialsSection';
 export * from './Select';
 export * from './Textarea';
+export * from './Carousel';
 

@@ -1,6 +1,7 @@
 import React from 'react';
-import { ContactHeroSection, HowItWorksSection } from '../components';
+import { ContactHeroSection, HowItWorksSection, HowItWorksCarouselSection, GooglePartnerSection } from '../components';
 import { ScrollingBanner } from '@/components/ScrollingBanner';
+import { CTASection } from '@/modules/home/components/CTASection';
 
 const ContactUsPage: React.FC = () => {
   return (
@@ -8,6 +9,9 @@ const ContactUsPage: React.FC = () => {
       <ContactHeroSection />
       <ScrollingBanner />
       <HowItWorksSection />
+      <HowItWorksCarouselSection />
+      <GooglePartnerSection />
+      <CTASection />
     </div>
   );
 };

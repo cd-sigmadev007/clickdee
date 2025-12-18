@@ -218,7 +218,7 @@ export const MultiStepForm: React.FC<MultiStepFormProps> = ({
       </div>
 
       {/* Form Content */}
-      <div className="border-neutral-200 border-b flex flex-col gap-[14px] px-4 py-4 md:p-6  items-start relative overflow-x-hidden">
+          <div className="border-neutral-200 border-b flex flex-col gap-[14px] px-4 py-4 md:p-6  items-start relative overflow-x-hidden overflow-y-visible">
           {currentStepData.fields.map((field, index) => {
             // Check if this field is part of a group (like state/city/zip)
             const isGrouped = field.groupWith && field.groupWith.includes(field.name);
