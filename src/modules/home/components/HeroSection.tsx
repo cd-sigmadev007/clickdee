@@ -1,6 +1,7 @@
 import React from 'react';
 import { Button } from '@/components/Button';
 import { HeroBackground } from '@/components/HeroBackground';
+import { ScrollingBanner } from '@/components/ScrollingBanner';
 import { HeroHeadline } from './HeroHeadline';
 import { HeroMap } from './HeroMap';
 import checkIcon from '@/assets/icons/gravity-ui_check.svg';
@@ -52,16 +53,7 @@ export const HeroSection: React.FC = () => {
       <HeroMap />
       
       {/* Scrolling Banner */}
-      <div className="bg-neutral-900 overflow-hidden px-0 py-2 relative w-full" data-node-id="1:14081">
-        <div className="flex font-medium gap-6 items-center justify-start text-s whitespace-nowrap text-white animate-scroll">
-          <span className="inline-block">No setup fees. No contract required. Cancel at any time – no cancellation charges.</span>
-          <span className="inline-block">No setup fees. No contract required. Cancel at any time – no cancellation charges.</span>
-          <span className="inline-block">No setup fees. No contract required. Cancel at any time – no cancellation charges.</span>
-          <span className="inline-block">No setup fees. No contract required. Cancel at any time – no cancellation charges.</span>
-          <span className="inline-block">No setup fees. No contract required. Cancel at any time – no cancellation charges.</span>
-          <span className="inline-block">No setup fees. No contract required. Cancel at any time – no cancellation charges.</span>
-        </div>
-      </div>
+      <ScrollingBanner />
     </div>
   );
 };

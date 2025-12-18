@@ -20,7 +20,7 @@ export const HeroBackground: React.FC<HeroBackgroundProps> = ({
         <img 
           src={gridLayers} 
           alt="" 
-          className="absolute top-0 bottom-0 w-[90%] h-full opacity-30 lg:opacity-100 pointer-events-none z-0" 
+          className="absolute top-0 bottom-0 w-[90%] h-full opacity-100 pointer-events-none z-0" 
         />
       </div>
     </div>

@@ -22,7 +22,7 @@ export const Card: React.FC<CardProps> = ({
   return (
     <div
       className={`
-        rounded-card p-8
+        rounded-card p-8 flex flex-col gap-4 justify-between
         ${variantClasses[variant]}
         ${onClick ? 'cursor-pointer hover:shadow-lg transition-shadow' : ''}
         ${className}

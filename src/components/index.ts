@@ -2,6 +2,7 @@
 export * from './Typography';
 export * from './Button';
 export * from './Input';
+export * from './ScrollingBanner';
 export * from './Logo';
 export * from './Breadcrumbs';
 export * from './Checkbox';
@@ -16,4 +17,6 @@ export * from './HoveringPopup';
 export * from './HeroBackground';
 export * from './ContentGrid';
 export * from './TestimonialsSection';
+export * from './Select';
+export * from './Textarea';
 

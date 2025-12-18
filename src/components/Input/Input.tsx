@@ -38,7 +38,7 @@ export const Input: React.FC<InputProps> = ({
     setIsTyping(false);
   };
 
-  const baseClasses = 'w-full px-[14px] py-[10px] rounded-input font-medium text-s transition-all duration-200 outline-none focus:border-primary-500';
+  const baseClasses = 'w-full px-[14px] py-[10px] rounded-input font-medium text-s transition-all duration-200 outline-none focus:border-primary-500 min-h-[44px]';
   
   const stateClasses = {
     default: 'bg-neutral-50 border border-neutral-200 text-neutral-500',
@@ -55,9 +55,9 @@ export const Input: React.FC<InputProps> = ({
   `.trim().replace(/\s+/g, ' ');
 
   return (
-    <div className="flex flex-col gap-1">
+    <div className="flex gap-[14px] flex-col">
       {label && (
-        <label className="font-medium text-s text-neutral-900">
+        <label className="font-medium text-s text-neutral-900 mb-0">
           {label}
         </label>
       )}

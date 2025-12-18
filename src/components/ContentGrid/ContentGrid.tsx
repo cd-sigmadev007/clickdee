@@ -2,7 +2,8 @@ import React from 'react';
 import { Typography } from '@/components/Typography';
 import gridResultBlack from '@/assets/images/grid-result-black.png';
 import gridImage from '@/assets/images/image.png';
-import { TextSection, ImageSection, StatsSection, ContentGridProps, BenefitCard } from './types';
+import gridLayers from '@/assets/images/Grid layers - v1.png';
+import { TextSection, ImageSection, StatsSection, ContentGridProps, BenefitCard, ChecklistSection, IconHeadingSection } from './types';
 import clsx from 'clsx';
 
 const isTextSection = (item: any): item is TextSection => {
@@ -15,6 +16,14 @@ const isStatsSection = (item: any): item is StatsSection => {
 
 const isImageSection = (item: any): item is ImageSection => {
   return item && typeof item === 'object' && 'src' in item && 'alt' in item;
+};
+
+const isChecklistSection = (item: any): item is ChecklistSection => {
+  return item && typeof item === 'object' && 'items' in item && Array.isArray(item.items);
+};
+
+const isIconHeadingSection = (item: any): item is IconHeadingSection => {
+  return item && typeof item === 'object' && 'heading' in item && 'icon' in item;
 };
 
 const renderTextSection = (section: TextSection, className?: string) => {
@@ -93,6 +102,58 @@ const renderImageSection = (section: ImageSection, className?: string) => {
         className={clsx(`w-full h-full object-cover block`, section.className)}
       />
  
+    </div>
+  );
+};
+
+const renderChecklistSection = (section: ChecklistSection, className?: string) => {
+  const bgColor = section.bgColor || 'bg-neutral-100';
+  const textColor = section.textColor || 'text-neutral-500';
+  
+  return (
+    <div className={`${bgColor} flex flex-col gap-6 items-start justify-start px-6 py-12 relative w-full h-full ${className || ''}`}>
+      {section.items.map((item, index) => (
+        <div key={index} className="flex gap-[14px] items-start w-full">
+          <div className="flex-shrink-0 w-[22px] h-[22px] flex items-center justify-center">
+            <svg width="22" height="22" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="11" cy="11" r="10" fill="#18181B"/>
+              <path d="M7 11L10 14L15 8" stroke="white" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+            </svg>
+          </div>
+          <Typography variant="s" weight="medium" className={`${textColor} leading-[1.3] flex-1`}>
+            {item.text.split('\n').map((line, i) => (
+              <p key={i} className={i === 0 ? 'mb-0' : ''}>{line || '\u00A0'}</p>
+            ))}
+          </Typography>
+        </div>
+      ))}
+    </div>
+  );
+};
+
+const renderIconHeadingSection = (section: IconHeadingSection, className?: string) => {
+  const bgColor = section.bgColor || 'bg-neutral-900';
+  const textColor = section.textColor || 'text-white';
+  
+  return (
+    <div className={`${bgColor} flex flex-col gap-6 items-start justify-center px-6 py-12 relative w-full h-full overflow-hidden ${className || ''}`}>
+      {section.gridPattern && (
+        <img 
+          src={gridLayers} 
+          alt="" 
+          className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[863px] h-[470px] opacity-20 pointer-events-none scale-y-[-1]" 
+        />
+      )}
+      <div className="relative z-10 flex flex-col gap-6 w-full">
+        {section.icon && (
+          <div className="w-8 h-8 flex items-center justify-center flex-shrink-0">
+            <img src={section.icon} alt="" className="w-full h-full object-contain" />
+          </div>
+        )}
+        <Typography variant="h2" weight="bold" className={textColor}>
+          {section.heading}
+        </Typography>
+      </div>
     </div>
   );
 };
@@ -208,7 +269,7 @@ const renderBenefitCard = (card: BenefitCard) => {
 };
 
 const renderCardContent = (
-  item: TextSection | StatsSection | ImageSection | React.ReactNode | undefined
+  item: TextSection | StatsSection | ImageSection | ChecklistSection | IconHeadingSection | React.ReactNode | undefined
 ) => {
   if (!item) return null;
   
@@ -218,6 +279,10 @@ const renderCardContent = (
     return renderStatsSection(item);
   } else if (isImageSection(item)) {
     return renderImageSection(item);
+  } else if (isChecklistSection(item)) {
+    return renderChecklistSection(item);
+  } else if (isIconHeadingSection(item)) {
+    return renderIconHeadingSection(item);
   } else {
     return <div className="w-full h-full">{item}</div>;
   }
@@ -230,6 +295,8 @@ export const ContentGrid: React.FC<ContentGridProps> = ({
   middleRight,
   bottomLeft,
   bottomRight,
+  left,
+  right,
   cards,
   className = '',
 }) => {
@@ -240,6 +307,24 @@ export const ContentGrid: React.FC<ContentGridProps> = ({
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4 lg:gap-[16px] w-full max-w-7xl">
           {cards.map((card) => renderBenefitCard(card))}
         </div>
+      </div>
+    );
+  }
+
+  // 2-card layout (left/right)
+  if (left !== undefined || right !== undefined) {
+    return (
+      <div className={`flex flex-col md:flex-row items-stretch relative w-full ${className}`}>
+        {left && (
+          <div className="w-full md:w-1/2 flex">
+            {renderCardContent(left)}
+          </div>
+        )}
+        {right && (
+          <div className="w-full md:w-1/2 flex">
+            {renderCardContent(right)}
+          </div>
+        )}
       </div>
     );
   }

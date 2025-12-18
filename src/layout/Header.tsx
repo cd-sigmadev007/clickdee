@@ -1,5 +1,5 @@
 import React, { useState, useRef, useEffect } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { Logo } from '@/components/Logo';
 import { Button } from '@/components/Button';
 import { generateSlug } from '@/modules/services/types/serviceData';
@@ -74,7 +74,6 @@ export const Header: React.FC<HeaderProps> = ({ className = '' }) => {
   const [isServicesOpen, setIsServicesOpen] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const servicesRef = useRef<HTMLDivElement>(null);
-  const navigate = useNavigate();
   const mobileMenuRef = useRef<HTMLDivElement>(null);
 
   // Close dropdown when clicking outside
@@ -166,12 +165,12 @@ export const Header: React.FC<HeaderProps> = ({ className = '' }) => {
           >
             About Us
           </Link>
-          <a
-            href="#articles"
+          <Link
+            to="/articles"
             className="font-medium text-s text-neutral-900 hover:text-primary-500 transition-colors whitespace-nowrap"
           >
             Articles
-          </a>
+          </Link>
           <Link
             to="/partners"
             className="font-medium text-s text-neutral-900 hover:text-primary-500 transition-colors whitespace-nowrap"
@@ -294,13 +293,13 @@ export const Header: React.FC<HeaderProps> = ({ className = '' }) => {
                 >
                   About Us
                 </Link>
-                <a
-                  href="#articles"
+                <Link
+                  to="/articles"
                   className="px-[14px] py-2 rounded-[10px] font-medium text-h4 text-neutral-900"
                   onClick={() => setIsMobileMenuOpen(false)}
                 >
                   Articles
-                </a>
+                </Link>
                 <Link
                   to="/partners"
                   className="px-[14px] py-2 rounded-[10px] font-medium text-h4 text-neutral-900"

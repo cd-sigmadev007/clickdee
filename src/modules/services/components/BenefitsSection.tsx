@@ -86,12 +86,12 @@ export const BenefitsSection: React.FC<BenefitsSectionProps> = ({ className = ''
       />
       
       <div className="flex flex-col items-center justify-center relative z-10">
-        <div className="flex justify-center mb-6">
-          <img src={dollarIcon} alt="" className="w-[88px] h-[80px] object-contain" />
-        </div>
         <Typography variant="h2" weight="bold" className="text-neutral-900 text-center">
           See How Your Spending Turns Into Revenue
         </Typography>
+        <div className="flex justify-center">
+          <img src={dollarIcon} alt="" className="w-[88px] h-[80px] object-contain" />
+        </div>
       </div>
     </div>
   );

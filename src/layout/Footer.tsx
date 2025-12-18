@@ -194,7 +194,7 @@ export const Footer: React.FC<FooterProps> = ({ className = '' }) => {
                   Company Values
                 </Typography>
               </a>
-              <a href="/privacy-policy" className="group transition-colors">
+              <Link to="/privacy-policy" className="group transition-colors">
                 <Typography
                   variant="s"
                   weight="medium"
@@ -202,8 +202,8 @@ export const Footer: React.FC<FooterProps> = ({ className = '' }) => {
                 >
                   Privacy Policy
                 </Typography>
-              </a>
-              <a href="/terms-and-conditions" className="group transition-colors">
+              </Link>
+              <Link to="/terms-and-conditions" className="group transition-colors">
                 <Typography
                   variant="s"
                   weight="medium"
@@ -211,8 +211,8 @@ export const Footer: React.FC<FooterProps> = ({ className = '' }) => {
                 >
                   Terms and Conditions
                 </Typography>
-              </a>
-              <a href="/do-not-sell" className="group transition-colors">
+              </Link>
+              <Link to="/do-not-sell" className="group transition-colors">
                 <Typography
                   variant="s"
                   weight="medium"
@@ -220,7 +220,7 @@ export const Footer: React.FC<FooterProps> = ({ className = '' }) => {
                 >
                   Do Not Sell My Information
                 </Typography>
-              </a>
+              </Link>
             </nav>
           </div>
         </div>

@@ -37,16 +37,37 @@ export interface BenefitCard {
   textColor: string;
 }
 
+export interface ChecklistItem {
+  text: string;
+}
+
+export interface ChecklistSection {
+  items: ChecklistItem[];
+  bgColor?: string;
+  textColor?: string;
+}
+
+export interface IconHeadingSection {
+  icon?: string;
+  heading: string;
+  bgColor?: string;
+  textColor?: string;
+  gridPattern?: boolean;
+}
+
 export interface ContentGridProps {
   // Legacy 4-card support
-  topLeft?: TextSection | StatsSection | React.ReactNode;
-  topRight?: StatsSection | TextSection | React.ReactNode;
-  bottomLeft?: ImageSection | TextSection | React.ReactNode;
-  bottomRight?: TextSection | React.ReactNode;
+  topLeft?: TextSection | StatsSection | ImageSection | IconHeadingSection | ChecklistSection | React.ReactNode;
+  topRight?: StatsSection | TextSection | ImageSection | IconHeadingSection | ChecklistSection | React.ReactNode;
+  bottomLeft?: ImageSection | TextSection | IconHeadingSection | ChecklistSection | React.ReactNode;
+  bottomRight?: TextSection | IconHeadingSection | ChecklistSection | React.ReactNode;
   // Extended 6-card support
-  middleLeft?: TextSection | React.ReactNode;
-  middleRight?: TextSection | React.ReactNode;
+  middleLeft?: TextSection | IconHeadingSection | ChecklistSection | React.ReactNode;
+  middleRight?: TextSection | IconHeadingSection | ChecklistSection | React.ReactNode;
   // New array-based support for multiple cards
   cards?: BenefitCard[];
+  // 2-card layout support
+  left?: TextSection | StatsSection | ImageSection | IconHeadingSection | ChecklistSection | React.ReactNode;
+  right?: TextSection | StatsSection | ImageSection | IconHeadingSection | ChecklistSection | React.ReactNode;
   className?: string;
 }

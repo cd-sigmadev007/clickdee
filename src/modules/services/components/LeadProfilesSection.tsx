@@ -14,20 +14,35 @@ export interface LeadProfilesSectionProps {
 interface LeadDetail {
   label: string;
   value: string;
+  centerAlign?: boolean;
 }
 
-const leadDetails: LeadDetail[] = [
-  { label: 'Project', value: 'Fire damage' },
-  { label: 'Location Type', value: 'Residence' },
-  { label: 'Homeowner', value: 'Yes' },
-  { label: 'Rooms Affected', value: '2' },
-  { label: 'Emergency', value: 'Yes' },
-  { label: 'Timing', value: 'Immediate' },
-  { label: 'Claim Insured', value: 'Yes' },
-  { label: 'Address', value: '123 Main Street Omaha, NE (68007)' },
-  { label: 'Contact', value: '(855) 387-7272 help@inquirly.com' },
-  { label: 'Average Winning Cost Per Lead', value: '$350*' },
+const firstGroupDetails: LeadDetail[] = [
+  { label: 'Project', value: 'Fire damage', centerAlign: true },
+  { label: 'Location Type', value: 'Residence', centerAlign: true },
+  { label: 'Homeowner', value: 'Yes', centerAlign: true },
+  { label: 'Rooms Affected', value: '2', centerAlign: true },
+  { label: 'Emergency', value: 'Yes', centerAlign: true },
+  { label: 'Timing', value: 'Immediate', centerAlign: true },
+  { label: 'Claim Insured', value: 'Yes', centerAlign: true },
 ];
+
+const secondGroupDetails: LeadDetail[] = [
+  { label: 'Address', value: '123 Main Street Omaha, NE (68007)', centerAlign: false },
+  { label: 'Contact', value: '(855) 387-7272 help@inquirly.com', centerAlign: true },
+  { label: 'Average Winning Cost Per Lead', value: '$350*', centerAlign: true },
+];
+
+// Divider component matching Figma design
+const Divider = () => (
+  <div className="h-0 relative w-full shrink-0">
+    <div className="absolute inset-[-1px_0_0_0]">
+      <svg preserveAspectRatio="none" width="100%" height="1" viewBox="0 0 352 1" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <line y1="0.5" x2="352" y2="0.5" stroke="#E4E4E7" strokeWidth="1"/>
+      </svg>
+    </div>
+  </div>
+);
 
 export const LeadProfilesSection: React.FC<LeadProfilesSectionProps> = ({ className = '' }) => {
   const ChevronIcon = () => (
@@ -76,85 +91,113 @@ export const LeadProfilesSection: React.FC<LeadProfilesSectionProps> = ({ classN
         </Typography>
       </div>
 
-      <div className="md:px-4 md:py-10 sm:px-0 sm:py-10 lg:px-[80px] lg:py-[56px]">
+      <div className="md:px-4 md:py-10 max-md:px-0 py-10 lg:px-[80px] lg:py-[56px]">
         {/* Main Content Card */}
-        <div className="bg-white rounded-none md:rounded-[24px] shadow-[0px_10px_25px_0px_rgba(0,0,0,0.05)] w-full overflow-hidden relative z-10">
+        <div className="bg-white shadow-[0px_10px_25px_0px_rgba(0,0,0,0.1)] max-md:rounded-none rounded-[20px] w-full overflow-hidden relative z-10">
           {/* Upper Section: Map and Lead Details */}
-          <div className="flex flex-col lg:flex-row gap-0">
+          <div className="bg-white border-b border-neutral-300 flex flex-col lg:flex-row gap-0 rounded-tl-[20px] rounded-tr-[20px]">
             {/* Left Column: Map Visualization */}
-            <div className="w-full lg:w-[60%] relative bg-neutral-100">
-              {/* Map Image */}
-              <div className="w-full h-full relative overflow-hidden">
+            <div className="w-full lg:w-[60%] lg:flex-shrink-0 relative overflow-hidden">
+              <div className="w-full relative">
                 <img
                   src={baseMapImage}
                   alt="Map showing lead location"
                   className="w-full h-full object-cover object-center"
                 />
-
                 {/* Map Marker Icon - Centered on map */}
                 <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 pointer-events-none z-20">
                   <img
                     src={mapMarkerIcon}
                     alt="Lead location marker"
-                    className="w-[180px] h-[180px] object-contain"
+                    className="object-contain"
                   />
                 </div>
               </div>
             </div>
 
             {/* Right Column: Lead Details */}
-            <div className="w-full lg:w-[40%] px-4 py-10 sm:px-6 sm:py-10 lg:px-[80px] lg:py-[56px]">
-              {/* Lead Details List */}
-              <div className="flex flex-col gap-0">
-                {leadDetails.map((detail, index) => (
-                  <div key={index} className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-2 sm:gap-4 py-4 border-b border-neutral-200 last:border-b-0">
-                    <Typography
-                      variant="s"
-                      weight="medium"
-                      className="text-neutral-500 sm:w-[45%]"
-                    >
-                      {detail.label}
-                    </Typography>
-                    <Typography
-                      variant="s"
-                      weight="bold"
-                      className="text-neutral-800 sm:w-[55%] sm:text-right break-words"
-                    >
-                      {detail.value}
-                    </Typography>
-                  </div>
+            <div className="basis-0 flex flex-col grow min-w-0 p-4 sm:p-6 lg:p-[32px] justify-between">
+              {/* First Group of Details */}
+              <div className="flex flex-col gap-[12px] w-full shrink-0">
+                {firstGroupDetails.map((detail, index) => (
+                  <React.Fragment key={index}>
+                    <div className="flex items-center justify-between leading-[1.3] not-italic rounded-[20px] shrink-0 w-full">
+                      <Typography
+                        variant="xs"
+                        weight="medium"
+                        className="text-neutral-500 shrink-0 text-nowrap"
+                      >
+                        {detail.label}
+                      </Typography>
+                      <Typography
+                        variant="s"
+                        weight="bold"
+                        className={`text-neutral-800 shrink-0 ${detail.centerAlign ? 'text-center' : ''} text-nowrap`}
+                      >
+                        {detail.value}
+                      </Typography>
+                    </div>
+                    {index < firstGroupDetails.length - 1 && <Divider />}
+                  </React.Fragment>
+                ))}
+              </div>
+
+              {/* Second Group of Details */}
+              <div className="flex flex-col gap-[12px] w-full shrink-0">
+                {secondGroupDetails.map((detail, index) => (
+                  <React.Fragment key={index}>
+                    <div className={`flex items-center justify-between leading-[1.3] not-italic rounded-[20px] shrink-0 w-full ${index === 0 ? 'overflow-clip' : 'text-nowrap'}`}>
+                      <Typography
+                        variant="xs"
+                        weight="medium"
+                        className="text-neutral-500 shrink-0 text-nowrap"
+                      >
+                        {detail.label}
+                      </Typography>
+                      <Typography
+                        variant="s"
+                        weight="bold"
+                        className={`text-neutral-800 shrink-0 ${detail.centerAlign ? 'text-center text-nowrap' : ''}`}
+                      >
+                        {detail.value}
+                      </Typography>
+                    </div>
+                    {index < secondGroupDetails.length - 1 && <Divider />}
+                  </React.Fragment>
                 ))}
               </div>
 
               {/* Client Testimonial */}
-              <div className="flex sm:flex-row flex-col gap-6 py-6 border-t border-neutral-200">
-                <div className="flex items-center gap-3">
-                  <img
-                    src={avatarAlbertFlores}
-                    alt="Albert Flores"
-                    className="w-10 h-10 rounded-full object-cover flex-shrink-0"
-                  />
-                  <div className="flex flex-col">
+              <div className="flex flex-col sm:flex-row gap-4 sm:gap-[40px] items-start sm:items-center px-0 py-[14px] rounded-[20px] shrink-0 w-full">
+                <div className="flex gap-[10px] items-center shrink-0">
+                  <div className="shrink-0 w-12 h-12">
+                    <img
+                      src={avatarAlbertFlores}
+                      alt="Albert Flores"
+                      className="w-12 h-12 object-cover rounded-full"
+                    />
+                  </div>
+                  <div className="flex flex-col gap-[4px] items-start justify-center leading-[1.3] not-italic shrink-0 text-s text-center text-nowrap">
                     <Typography
-                      variant="p"
+                      variant="s"
                       weight="bold"
-                      className="text-neutral-800"
+                      className="text-neutral-800 shrink-0"
                     >
                       Albert Flores
                     </Typography>
                     <Typography
                       variant="s"
                       weight="medium"
-                      className="text-neutral-500"
+                      className="text-neutral-500 shrink-0"
                     >
                       Client
                     </Typography>
                   </div>
                 </div>
                 <Typography
-                  variant="s"
+                  variant="xs"
                   weight="medium"
-                  className="text-neutral-500 leading-[1.3]"
+                  className="basis-0 grow min-w-0 shrink-0 text-neutral-500 leading-[1.3]"
                 >
                   &quot;Kitchen cabinets caught on fire. Need clean up services and smoke odor removal.&quot;
                 </Typography>
@@ -163,33 +206,29 @@ export const LeadProfilesSection: React.FC<LeadProfilesSectionProps> = ({ classN
           </div>
 
           {/* Lower Section: Lead Pricing and CTA */}
-          <div className="flex flex-col lg:flex-row lg:items-start lg:justify-between gap-6 p-6 lg:p-8 border-t border-neutral-200">
-            <div className="flex flex-col gap-3 flex-1">
-              <Typography
-                variant="h3"
-                weight="bold"
-                className="text-neutral-800"
-              >
-                Lead Pricing and Criteria
-              </Typography>
-              <Typography
-                variant="p"
-                weight="medium"
-                className="text-neutral-500 leading-[1.3]"
-              >
-                We offer fire damage leads individually, without any minimum requirements or monthly commitments. Our pricing depends on the lead type: form leads range from $75 to $200 per lead, while calls range from $100 to $900 per call.
-              </Typography>
-            </div>
-            <div className="flex-shrink-0 lg:self-center">
-              <Button
-                variant="primary"
-                icon={<ChevronIcon />}
-                iconPosition="right"
-                className="px-6 py-[14px] gap-[5px] w-full sm:w-auto"
-              >
-                Contact Us
-              </Button>
-            </div>
+          <div className="bg-white flex flex-col lg:flex-row gap-4 lg:gap-[32px] items-start lg:items-center overflow-hidden px-4 sm:px-6 lg:px-[32px] py-4 sm:py-6 lg:py-[24px] rounded-bl-[20px] rounded-br-[20px] shrink-0 w-full">
+            <Typography
+              variant="p"
+              weight="bold"
+              className="text-neutral-900 leading-[1.3] shrink-0 text-nowrap"
+            >
+              Lead Pricing and Criteria
+            </Typography>
+            <Typography
+              variant="xs"
+              weight="medium"
+              className="basis-0 grow min-w-0 shrink-0 text-neutral-500 leading-[1.3]"
+            >
+              We offer fire damage leads individually, without any minimum requirements or monthly commitments. Our pricing depends on the lead type: form leads range from $75 to $200 per lead, while calls range from $100 to $900 per call.
+            </Typography>
+            <Button
+              variant="primary"
+              icon={<ChevronIcon />}
+              iconPosition="right"
+              className="px-[24px] py-[14px] gap-[5px] shrink-0 w-full lg:w-auto"
+            >
+              Contact Us
+            </Button>
           </div>
         </div>
       </div>

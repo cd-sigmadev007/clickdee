@@ -90,7 +90,7 @@ export const CommitmentSection: React.FC = () => {
                     <Card
                         key={index}
                         variant="bordered"
-                        className="h-[270px] flex flex-col justify-between p-8"
+                        className=" flex flex-col justify-between p-8"
                     >
                         {/* Header with Title and Icon */}
                         <div className="flex items-start justify-between w-full">
