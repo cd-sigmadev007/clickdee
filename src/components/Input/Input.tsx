@@ -7,6 +7,7 @@ export interface InputProps extends Omit<React.InputHTMLAttributes<HTMLInputElem
   error?: string;
   icon?: React.ReactNode;
   onChange?: (value: string) => void;
+  height?: number; // Height in pixels, defaults to 44px
 }
 
 export const Input: React.FC<InputProps> = ({
@@ -17,6 +18,7 @@ export const Input: React.FC<InputProps> = ({
   value,
   onChange,
   className = '',
+  height = 44,
   ...props
 }) => {
   const [isTyping, setIsTyping] = useState(false);
@@ -38,7 +40,8 @@ export const Input: React.FC<InputProps> = ({
     setIsTyping(false);
   };
 
-  const baseClasses = 'w-full px-[14px] py-[10px] rounded-input font-medium text-s transition-all duration-200 outline-none focus:border-primary-500 min-h-[44px]';
+  const baseClasses = 'w-full px-[14px] py-[10px] rounded-input font-medium text-s transition-all duration-200 outline-none focus:border-primary-500';
+  const heightStyle = { minHeight: `${height}px` };
   
   const stateClasses = {
     default: 'bg-neutral-50 border border-neutral-200 text-neutral-500',
@@ -73,7 +76,7 @@ export const Input: React.FC<InputProps> = ({
           value={currentValue}
           onChange={handleChange}
           onBlur={handleBlur}
-          style={{ paddingLeft: icon ? '36px' : '14px' }}
+          style={{ paddingLeft: icon ? '36px' : '14px', ...heightStyle }}
           {...props}
         />
         {currentState === 'typing' && (

@@ -16,6 +16,7 @@ export interface MultiStepFormProps {
   onFormDataChange?: (formData: Record<string, any>) => void;
   className?: string;
   darkFooter?: boolean;
+  fieldHeight?: number; // Height for input and select fields, defaults to 44px
 }
 
 export const MultiStepForm: React.FC<MultiStepFormProps> = ({
@@ -25,6 +26,7 @@ export const MultiStepForm: React.FC<MultiStepFormProps> = ({
   onFormDataChange,
   className = '',
   darkFooter = false,
+  fieldHeight = 44,
 }) => {
   const {
     currentStep,
@@ -89,6 +91,7 @@ export const MultiStepForm: React.FC<MultiStepFormProps> = ({
             onChange={fieldChangeHandler}
             state={state}
             error={error}
+            height={fieldHeight}
           />
         );
 
@@ -116,6 +119,7 @@ export const MultiStepForm: React.FC<MultiStepFormProps> = ({
             onChange={fieldChangeHandler}
             state={state}
             error={error}
+            height={fieldHeight}
           />
         );
 
@@ -131,6 +135,7 @@ export const MultiStepForm: React.FC<MultiStepFormProps> = ({
             multiSelect={true}
             state={state}
             error={error}
+            height={fieldHeight}
           />
         );
 

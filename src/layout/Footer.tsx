@@ -163,7 +163,7 @@ export const Footer: React.FC<FooterProps> = ({ className = '' }) => {
                   Contact Us
                 </Typography>
               </a>
-              <a href="/lead-buying-guidelines" className="group transition-colors">
+              <Link to="/lead-buying-guidelines" className="group transition-colors">
                 <Typography
                   variant="s"
                   weight="medium"
@@ -171,7 +171,7 @@ export const Footer: React.FC<FooterProps> = ({ className = '' }) => {
                 >
                   Lead Buying Guidelines
                 </Typography>
-              </a>
+              </Link>
             </nav>
 
             {/* Navigation Links Column 2 */}

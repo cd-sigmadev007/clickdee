@@ -174,7 +174,7 @@ export const AffiliateForm: React.FC<AffiliateFormProps> = ({
           options: monthlyLeadVolumeOptions,
         },
         {
-          type: 'select',
+          type: 'multiselect',
           name: 'routingSoftware',
           label: 'Routing Software',
           placeholder: 'Select a value',
@@ -286,7 +286,7 @@ export const AffiliateForm: React.FC<AffiliateFormProps> = ({
       onSubmit={onSubmit}
       onFormDataChange={handleFormDataChange}
       className={className}
-      darkFooter={true}
+      fieldHeight={52}
     />
   );
 };

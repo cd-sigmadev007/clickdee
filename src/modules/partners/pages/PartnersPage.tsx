@@ -1,6 +1,6 @@
 import React from 'react';
 import { PartnersHeroSection } from '../components/PartnersHeroSection';
-import { BillableCallsSection } from '../components/BillableCallsSection';
+import { BillableCallsSection } from '@/components/BillableCallsSection';
 import { PartnerSupportOnboardingSection } from '../components';
 
 

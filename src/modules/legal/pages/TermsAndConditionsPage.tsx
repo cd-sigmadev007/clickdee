@@ -11,14 +11,14 @@ const TermsAndConditionsPage: React.FC = () => {
         lastUpdated="Last updated on 27 July 2023"
       />
       
-      <div className="max-w-7xl mx-auto px-4 sm:px-[40px] md:px-[24px] lg:px-[120px] py-12 sm:py-[16px] md:py-[40px] lg:py-[32px]">
-        <div className="flex flex-col lg:flex-row gap-8 md:gap-10 lg:gap-12">
+      <div>
+        <div className="flex flex-col lg:flex-row gap-8 md:gap-10 lg:gap-12 bg-primary-100 rounded-tl-[40px] rounded-tr-[40px] px-4 sm:px-[40px] md:px-[24px] lg:px-[120px] py-12 sm:py-[16px] md:py-[40px] lg:py-[32px]">
           {/* Main Content */}
-          <div className="flex-1 bg-white rounded-[20px] p-6 sm:p-8 md:p-10 lg:p-12">
+          <div className="flex-1">
             <div className="flex flex-col gap-8">
               {/* Description of Website */}
               <section>
-                <Typography variant="subtitle" weight="bold" className="text-neutral-900 mb-4">
+                <Typography variant="h3" weight="bold" className="text-neutral-900 mb-4">
                   Description of Website
                 </Typography>
                 <Typography variant="s" weight="regular" className="text-neutral-600 mb-4">
@@ -28,7 +28,7 @@ const TermsAndConditionsPage: React.FC = () => {
 
               {/* Contractor Listings */}
               <section>
-                <Typography variant="subtitle" weight="bold" className="text-neutral-900 mb-4">
+                <Typography variant="h3" weight="bold" className="text-neutral-900 mb-4">
                   Contractor Listings
                 </Typography>
                 <Typography variant="s" weight="regular" className="text-neutral-600 mb-4">
@@ -38,25 +38,25 @@ const TermsAndConditionsPage: React.FC = () => {
 
               {/* Limited License; Permitted Uses */}
               <section>
-                <Typography variant="subtitle" weight="bold" className="text-neutral-900 mb-4">
+                <Typography variant="h3" weight="bold" className="text-neutral-900 mb-4">
                   Limited License; Permitted Uses
                 </Typography>
                 <Typography variant="s" weight="regular" className="text-neutral-600 mb-4">
                   You are granted a limited, non-exclusive, non-transferable license to access and use our website for personal or business purposes. Permitted uses include:
                 </Typography>
-                <ul className="list-disc list-inside space-y-2 mb-4 ml-4">
+                <ul className="list-disc list-outside space-y-2 mb-4 ml-5">
                   <li>
-                    <Typography variant="s" weight="regular" className="text-neutral-600">
+                    <Typography variant="s" weight="medium" className="text-neutral-500">
                       Viewing and accessing lead information
                     </Typography>
                   </li>
                   <li>
-                    <Typography variant="s" weight="regular" className="text-neutral-600">
+                    <Typography variant="s" weight="medium" className="text-neutral-500">
                       Contacting leads through our platform
                     </Typography>
                   </li>
                   <li>
-                    <Typography variant="s" weight="regular" className="text-neutral-600">
+                    <Typography variant="s" weight="medium" className="text-neutral-500">
                       Using our tools and services as intended
                     </Typography>
                   </li>
@@ -65,30 +65,30 @@ const TermsAndConditionsPage: React.FC = () => {
 
               {/* Restrictions and Prohibitions on Use */}
               <section>
-                <Typography variant="subtitle" weight="bold" className="text-neutral-900 mb-4">
+                <Typography variant="h3" weight="bold" className="text-neutral-900 mb-4">
                   Restrictions and Prohibitions on Use
                 </Typography>
                 <Typography variant="s" weight="regular" className="text-neutral-600 mb-4">
                   You agree not to:
                 </Typography>
-                <ul className="list-disc list-inside space-y-2 mb-4 ml-4">
+                <ul className="list-disc list-outside space-y-2 mb-4 ml-5">
                   <li>
-                    <Typography variant="s" weight="regular" className="text-neutral-600">
+                    <Typography variant="s" weight="medium" className="text-neutral-500">
                       Copy, modify, or distribute any content from our website without permission
                     </Typography>
                   </li>
                   <li>
-                    <Typography variant="s" weight="regular" className="text-neutral-600">
+                    <Typography variant="s" weight="medium" className="text-neutral-500">
                       Use automated systems to scrape or harvest data
                     </Typography>
                   </li>
                   <li>
-                    <Typography variant="s" weight="regular" className="text-neutral-600">
+                    <Typography variant="s" weight="medium" className="text-neutral-500">
                       Attempt to gain unauthorized access to our systems
                     </Typography>
                   </li>
                   <li>
-                    <Typography variant="s" weight="regular" className="text-neutral-600">
+                    <Typography variant="s" weight="medium" className="text-neutral-500">
                       Use our services for any illegal or unauthorized purpose
                     </Typography>
                   </li>
@@ -97,7 +97,7 @@ const TermsAndConditionsPage: React.FC = () => {
 
               {/* Policy on Unsolicited Commercial Email */}
               <section>
-                <Typography variant="subtitle" weight="bold" className="text-neutral-900 mb-4">
+                <Typography variant="h3" weight="bold" className="text-neutral-900 mb-4">
                   Policy on Unsolicited Commercial Email
                 </Typography>
                 <Typography variant="s" weight="regular" className="text-neutral-600 mb-4">
@@ -107,7 +107,7 @@ const TermsAndConditionsPage: React.FC = () => {
 
               {/* No Solicitation */}
               <section>
-                <Typography variant="subtitle" weight="bold" className="text-neutral-900 mb-4">
+                <Typography variant="h3" weight="bold" className="text-neutral-900 mb-4">
                   No Solicitation
                 </Typography>
                 <Typography variant="s" weight="regular" className="text-neutral-600 mb-4">
@@ -117,7 +117,7 @@ const TermsAndConditionsPage: React.FC = () => {
 
               {/* Registration or Submission of Personally Identifiable Information */}
               <section>
-                <Typography variant="subtitle" weight="bold" className="text-neutral-900 mb-4">
+                <Typography variant="h3" weight="bold" className="text-neutral-900 mb-4">
                   Registration or Submission of Personally Identifiable Information
                 </Typography>
                 <Typography variant="s" weight="regular" className="text-neutral-600 mb-4">
@@ -127,7 +127,7 @@ const TermsAndConditionsPage: React.FC = () => {
 
               {/* License of Your Content to Provider */}
               <section>
-                <Typography variant="subtitle" weight="bold" className="text-neutral-900 mb-4">
+                <Typography variant="h3" weight="bold" className="text-neutral-900 mb-4">
                   License of Your Content to Provider
                 </Typography>
                 <Typography variant="s" weight="regular" className="text-neutral-600 mb-4">
@@ -137,7 +137,7 @@ const TermsAndConditionsPage: React.FC = () => {
 
               {/* Linking to the Website */}
               <section>
-                <Typography variant="subtitle" weight="bold" className="text-neutral-900 mb-4">
+                <Typography variant="h3" weight="bold" className="text-neutral-900 mb-4">
                   Linking to the Website
                 </Typography>
                 <Typography variant="s" weight="regular" className="text-neutral-600 mb-4">
@@ -147,7 +147,7 @@ const TermsAndConditionsPage: React.FC = () => {
 
               {/* Third-Party Content */}
               <section>
-                <Typography variant="subtitle" weight="bold" className="text-neutral-900 mb-4">
+                <Typography variant="h3" weight="bold" className="text-neutral-900 mb-4">
                   Third-Party Content
                 </Typography>
                 <Typography variant="s" weight="regular" className="text-neutral-600 mb-4">
@@ -157,7 +157,7 @@ const TermsAndConditionsPage: React.FC = () => {
 
               {/* Advertisers */}
               <section>
-                <Typography variant="subtitle" weight="bold" className="text-neutral-900 mb-4">
+                <Typography variant="h3" weight="bold" className="text-neutral-900 mb-4">
                   Advertisers
                 </Typography>
                 <Typography variant="s" weight="regular" className="text-neutral-600 mb-4">
@@ -167,7 +167,7 @@ const TermsAndConditionsPage: React.FC = () => {
 
               {/* Refund Policy */}
               <section>
-                <Typography variant="subtitle" weight="bold" className="text-neutral-900 mb-4">
+                <Typography variant="h3" weight="bold" className="text-neutral-900 mb-4">
                   Refund Policy
                 </Typography>
                 <Typography variant="s" weight="regular" className="text-neutral-600 mb-4">
@@ -177,7 +177,7 @@ const TermsAndConditionsPage: React.FC = () => {
 
               {/* Digital Millennium Copyright Act */}
               <section>
-                <Typography variant="subtitle" weight="bold" className="text-neutral-900 mb-4">
+                <Typography variant="h3" weight="bold" className="text-neutral-900 mb-4">
                   Digital Millennium Copyright Act – Notification of Alleged Copyright Infringement
                 </Typography>
                 <Typography variant="s" weight="regular" className="text-neutral-600 mb-4">
@@ -187,7 +187,7 @@ const TermsAndConditionsPage: React.FC = () => {
 
               {/* Representations and Warranties */}
               <section>
-                <Typography variant="subtitle" weight="bold" className="text-neutral-900 mb-4">
+                <Typography variant="h3" weight="bold" className="text-neutral-900 mb-4">
                   Representations and Warranties
                 </Typography>
                 <Typography variant="s" weight="regular" className="text-neutral-600 mb-4">
@@ -197,7 +197,7 @@ const TermsAndConditionsPage: React.FC = () => {
 
               {/* Errors, Corrections and Additions */}
               <section>
-                <Typography variant="subtitle" weight="bold" className="text-neutral-900 mb-4">
+                <Typography variant="h3" weight="bold" className="text-neutral-900 mb-4">
                   Errors, Corrections and Additions
                 </Typography>
                 <Typography variant="s" weight="regular" className="text-neutral-600 mb-4">
@@ -207,7 +207,7 @@ const TermsAndConditionsPage: React.FC = () => {
 
               {/* Disclaimer */}
               <section>
-                <Typography variant="subtitle" weight="bold" className="text-neutral-900 mb-4">
+                <Typography variant="h3" weight="bold" className="text-neutral-900 mb-4">
                   Disclaimer
                 </Typography>
                 <Typography variant="s" weight="regular" className="text-neutral-600 mb-4">
@@ -217,7 +217,7 @@ const TermsAndConditionsPage: React.FC = () => {
 
               {/* Limitation of Liability and Damages */}
               <section>
-                <Typography variant="subtitle" weight="bold" className="text-neutral-900 mb-4">
+                <Typography variant="h3" weight="bold" className="text-neutral-900 mb-4">
                   Limitation of Liability and Damages
                 </Typography>
                 <Typography variant="s" weight="regular" className="text-neutral-600 mb-4">
@@ -227,7 +227,7 @@ const TermsAndConditionsPage: React.FC = () => {
 
               {/* Waiver and Release */}
               <section>
-                <Typography variant="subtitle" weight="bold" className="text-neutral-900 mb-4">
+                <Typography variant="h3" weight="bold" className="text-neutral-900 mb-4">
                   Waiver and Release
                 </Typography>
                 <Typography variant="s" weight="regular" className="text-neutral-600 mb-4">
@@ -237,7 +237,7 @@ const TermsAndConditionsPage: React.FC = () => {
 
               {/* Indemnification */}
               <section>
-                <Typography variant="subtitle" weight="bold" className="text-neutral-900 mb-4">
+                <Typography variant="h3" weight="bold" className="text-neutral-900 mb-4">
                   Indemnification
                 </Typography>
                 <Typography variant="s" weight="regular" className="text-neutral-600 mb-4">
@@ -247,7 +247,7 @@ const TermsAndConditionsPage: React.FC = () => {
 
               {/* Termination */}
               <section>
-                <Typography variant="subtitle" weight="bold" className="text-neutral-900 mb-4">
+                <Typography variant="h3" weight="bold" className="text-neutral-900 mb-4">
                   Termination
                 </Typography>
                 <Typography variant="s" weight="regular" className="text-neutral-600 mb-4">
@@ -257,7 +257,7 @@ const TermsAndConditionsPage: React.FC = () => {
 
               {/* Remedies for Violations */}
               <section>
-                <Typography variant="subtitle" weight="bold" className="text-neutral-900 mb-4">
+                <Typography variant="h3" weight="bold" className="text-neutral-900 mb-4">
                   Remedies for Violations
                 </Typography>
                 <Typography variant="s" weight="regular" className="text-neutral-600 mb-4">
@@ -267,7 +267,7 @@ const TermsAndConditionsPage: React.FC = () => {
 
               {/* Unlawful Activity */}
               <section>
-                <Typography variant="subtitle" weight="bold" className="text-neutral-900 mb-4">
+                <Typography variant="h3" weight="bold" className="text-neutral-900 mb-4">
                   Unlawful Activity
                 </Typography>
                 <Typography variant="s" weight="regular" className="text-neutral-600 mb-4">
@@ -277,7 +277,7 @@ const TermsAndConditionsPage: React.FC = () => {
 
               {/* Dispute Resolution */}
               <section>
-                <Typography variant="subtitle" weight="bold" className="text-neutral-900 mb-4">
+                <Typography variant="h3" weight="bold" className="text-neutral-900 mb-4">
                   Dispute Resolution
                 </Typography>
                 <Typography variant="s" weight="regular" className="text-neutral-600 mb-4">
@@ -287,7 +287,7 @@ const TermsAndConditionsPage: React.FC = () => {
 
               {/* Class Action Waiver */}
               <section>
-                <Typography variant="subtitle" weight="bold" className="text-neutral-900 mb-4">
+                <Typography variant="h3" weight="bold" className="text-neutral-900 mb-4">
                   Class Action Waiver
                 </Typography>
                 <Typography variant="s" weight="regular" className="text-neutral-600 mb-4">
@@ -297,10 +297,10 @@ const TermsAndConditionsPage: React.FC = () => {
 
               {/* Governing Law, Jurisdiction and Non-Where */}
               <section>
-                <Typography variant="subtitle" weight="bold" className="text-neutral-900 mb-4">
+                <Typography variant="h3" weight="bold" className="text-neutral-900 mb-4">
                   Governing Law, Jurisdiction and Non-Where
                 </Typography>
-                <Typography variant="p" weight="regular" className="text-neutral-600">
+                <Typography variant="s" weight="medium" className="text-neutral-500">
                   These Terms shall be governed by and construed in accordance with the laws of the State of Wyoming, United States, without regard to its conflict of law provisions. Any legal action or proceeding arising under these Terms will be brought exclusively in the courts of Sheridan, Wyoming.
                 </Typography>
               </section>

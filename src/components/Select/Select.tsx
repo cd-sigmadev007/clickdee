@@ -18,6 +18,7 @@ export interface SelectProps {
   label?: string;
   multiSelect?: boolean;
   className?: string;
+  height?: number; // Height in pixels, defaults to 44px
 }
 
 export const Select: React.FC<SelectProps> = ({
@@ -30,6 +31,7 @@ export const Select: React.FC<SelectProps> = ({
   label,
   multiSelect = false,
   className = '',
+  height = 44,
 }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [internalValue, setInternalValue] = useState<string | string[]>(multiSelect ? [] : '');
@@ -129,7 +131,8 @@ export const Select: React.FC<SelectProps> = ({
     }
   };
 
-  const baseClasses = 'w-full px-[14px] py-[10px] rounded-[10px] font-medium text-s transition-all duration-200 outline-none min-h-[44px]';
+  const baseClasses = `w-full px-[14px] py-[10px] rounded-[10px] font-medium text-s transition-all duration-200 outline-none`;
+  const heightStyle = { minHeight: `${height}px` };
   
   const stateClasses = {
     default: 'bg-neutral-50 border border-neutral-200 text-neutral-500',
@@ -166,6 +169,7 @@ export const Select: React.FC<SelectProps> = ({
             type="button"
             onClick={handleToggle}
             className={`${classes} flex items-center justify-between cursor-pointer`}
+            style={heightStyle}
           >
             <div className="flex flex-wrap gap-[10px] items-center flex-1 min-w-0">
               {selectedValues.length === 0 ? (
@@ -216,6 +220,7 @@ export const Select: React.FC<SelectProps> = ({
             type="button"
             onClick={handleToggle}
             className={`${classes} flex items-center justify-between cursor-pointer`}
+            style={heightStyle}
           >
             <span className={selectedOption ? 'text-neutral-900' : 'text-neutral-500'}>
               {selectedOption ? selectedOption.label : placeholder}

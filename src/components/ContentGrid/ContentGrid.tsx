@@ -2,7 +2,6 @@ import React from 'react';
 import { Typography } from '@/components/Typography';
 import gridResultBlack from '@/assets/images/grid-result-black.png';
 import gridImage from '@/assets/images/image.png';
-import gridLayers from '@/assets/images/Grid layers - v1.png';
 import { TextSection, ImageSection, StatsSection, ContentGridProps, BenefitCard, ChecklistSection, IconHeadingSection } from './types';
 import clsx from 'clsx';
 

@@ -1,53 +1,57 @@
 import React from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { Typography } from '@/components';
+import arrowRightLegal from '@/assets/icons/arrow-right-legal.svg';
+
+export interface PolicyNavigationLink {
+  path: string;
+  label: string;
+}
 
 export interface PolicyNavigationCardProps {
   className?: string;
+  links?: PolicyNavigationLink[];
+  title?: string;
 }
 
-export const PolicyNavigationCard: React.FC<PolicyNavigationCardProps> = ({ className = '' }) => {
+export const PolicyNavigationCard: React.FC<PolicyNavigationCardProps> = ({ className = '', links, title }) => {
   const location = useLocation();
 
-  const links = [
+  const defaultLinks: PolicyNavigationLink[] = [
     { path: '/privacy-policy', label: 'Privacy Policy' },
     { path: '/terms-and-conditions', label: 'Terms & Conditions' },
     { path: '/do-not-sell', label: 'Do Not Sell My Information' },
   ];
 
+  const navigationLinks = links || defaultLinks;
+
   return (
-    <div className={`bg-white rounded-[20px] shadow-[0px_10px_25px_0px_rgba(0,0,0,0.05)] p-6 flex flex-col gap-4 w-full lg:w-auto ${className}`}>
-      {links.map((link) => {
+    <div className={`bg-white border border-neutral-200 rounded-[20px] shadow-[0px_10px_16px_0px_rgba(0,0,0,0.05)] p-6 flex flex-col gap-6 w-full lg:w-auto ${className}`}>
+      {title && (
+        <Typography variant="xs" weight="medium" className="text-neutral-500">
+          {title}
+        </Typography>
+      )}
+      {navigationLinks.map((link) => {
         const isActive = location.pathname === link.path;
         return (
           <Link
             key={link.path}
             to={link.path}
-            className="flex items-center justify-between group transition-colors"
+            className="flex items-center gap-2.5 group transition-colors"
           >
+            <img
+              src={arrowRightLegal}
+              alt=""
+              className="w-5 h-5 flex-shrink-0"
+            />
             <Typography
-              variant="p"
+              variant="xs"
               weight="medium"
               className={isActive ? 'text-primary-500' : 'text-neutral-900 group-hover:text-primary-500'}
             >
               {link.label}
             </Typography>
-            <svg
-              width="16"
-              height="16"
-              viewBox="0 0 16 16"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-              className={isActive ? 'text-primary-500' : 'text-neutral-500 group-hover:text-primary-500'}
-            >
-              <path
-                d="M6 4L10 8L6 12"
-                stroke="currentColor"
-                strokeWidth="2"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              />
-            </svg>
           </Link>
         );
       })}
