@@ -64,7 +64,7 @@ export const BillableCallsSection: React.FC = () => {
       {/* Cards Grid */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 w-full max-w-[1280px]">
         {billableCallCards.map((card) => (
-          <Card key={card.id} variant="elevated" className="flex flex-col gap-4 items-center justify-center h-[250px] p-8">
+          <Card key={card.id} variant="elevated" className="flex flex-col gap-4 items-center justify-center h-[200px] p-8">
             <div className="relative w-12 h-12 flex items-center justify-center">
               <img src={card.icon} alt={card.description} className="w-full h-full object-contain" />
             </div>

@@ -8,7 +8,7 @@ import SingleArticlePage from './modules/articles/pages/SingleArticlePage';
 import { ContactUsPage } from './modules/contact';
 import { FAQPage } from './modules/faq';
 import { CompanyValuesPage } from './modules/company-values';
-import { PrivacyPolicyPage, TermsAndConditionsPage, DoNotSellPage, LeadBuyingGuidelinesPage } from './modules/legal';
+import { PrivacyPolicyPage, TermsAndConditionsPage, DoNotSellPage, LeadBuyingGuidelinesPage, OnboardingInstructionsPage } from './modules/legal';
 import AffiliatePage from './modules/affiliates/pages/AffiliatePage';
 
 export const routes: RouteObject[] = [
@@ -67,5 +67,9 @@ export const routes: RouteObject[] = [
   {
     path: '/lead-buying-guidelines',
     element: <LeadBuyingGuidelinesPage />,
+  },
+  {
+    path: '/onboarding-instructions',
+    element: <OnboardingInstructionsPage />,
   },
 ];

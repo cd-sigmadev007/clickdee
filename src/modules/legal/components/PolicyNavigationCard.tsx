@@ -26,7 +26,7 @@ export const PolicyNavigationCard: React.FC<PolicyNavigationCardProps> = ({ clas
   const navigationLinks = links || defaultLinks;
 
   return (
-    <div className={`bg-white border border-neutral-200 rounded-[20px] shadow-[0px_10px_16px_0px_rgba(0,0,0,0.05)] p-6 flex flex-col gap-6 w-full lg:w-auto ${className}`}>
+    <div className={`bg-white border lg:min-w-[400px] border-neutral-200 rounded-[20px] shadow-[0px_10px_16px_0px_rgba(0,0,0,0.05)] p-6 flex flex-col gap-6 w-full lg:w-auto ${className}`}>
       {title && (
         <Typography variant="xs" weight="medium" className="text-neutral-500">
           {title}
