@@ -23,7 +23,7 @@ const isChecklistSection = (item: any): item is ChecklistSection => {
 };
 
 const isIconHeadingSection = (item: any): item is IconHeadingSection => {
-  return item && typeof item === 'object' && 'heading' in item && 'icon' in item;
+  return item && typeof item === 'object' && 'heading' in item && !('items' in item) && !('src' in item) && !('stats' in item) && !('paragraph' in item);
 };
 
 const renderTextSection = (section: TextSection, className?: string) => {
@@ -101,7 +101,9 @@ const renderImageSection = (section: ImageSection, className?: string) => {
         alt={section.alt}
         className={clsx(`w-full h-full object-cover block`, section.className)}
       />
- 
+      {section.filter === 'blue' && (
+        <div className="absolute inset-0 bg-primary-500 opacity-40"></div>
+      )}
     </div>
   );
 };
@@ -120,11 +122,11 @@ const renderChecklistSection = (section: ChecklistSection, className?: string) =
               <path d="M7 11L10 14L15 8" stroke="white" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
             </svg>
           </div>
-          <Typography variant="s" weight="medium" className={`${textColor} leading-[1.3] flex-1`}>
+          <div className={`font-satoshi not-italic text-s font-medium ${textColor} leading-[1.3] flex-1`}>
             {item.text.split('\n').map((line, i) => (
-              <p key={i} className={i === 0 ? 'mb-0' : ''}>{line || '\u00A0'}</p>
+              <span key={i} className={i === 0 ? 'block' : 'block'}>{line || '\u00A0'}</span>
             ))}
-          </Typography>
+          </div>
         </div>
       ))}
     </div>
@@ -134,9 +136,12 @@ const renderChecklistSection = (section: ChecklistSection, className?: string) =
 const renderIconHeadingSection = (section: IconHeadingSection, className?: string) => {
   const bgColor = section.bgColor || 'bg-neutral-900';
   const textColor = section.textColor || 'text-white';
+  const hasIcon = !!section.icon;
+  const alignClass = hasIcon ? 'items-start' : 'items-center';
+  const textAlignClass = hasIcon ? '' : 'text-center';
   
   return (
-    <div className={`${bgColor} flex flex-col gap-6 items-start justify-center px-6 py-12 relative w-full h-full overflow-hidden ${className || ''}`}>
+    <div className={`${bgColor} flex flex-col gap-6 ${alignClass} justify-center px-6 py-12 relative w-full h-full overflow-hidden ${className || ''}`}>
       {section.gridPattern && (
         <img 
           src={gridResultBlack} 
@@ -144,13 +149,13 @@ const renderIconHeadingSection = (section: IconHeadingSection, className?: strin
           className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[863px] h-[470px] invert pointer-events-none scale-y-[-1]" 
         />
       )}
-      <div className="relative z-10 flex flex-col gap-6 w-full">
+      <div className={`relative z-10 flex flex-col gap-6 w-full ${alignClass}`}>
         {section.icon && (
           <div className="w-8 h-8 flex items-center justify-center flex-shrink-0">
             <img src={section.icon} alt="" className="w-full h-full object-contain" />
           </div>
         )}
-        <Typography variant="h2" weight="bold" className={textColor}>
+        <Typography variant="h2" weight="bold" className={`${textColor} ${textAlignClass}`}>
           {section.heading}
         </Typography>
       </div>

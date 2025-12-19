@@ -176,7 +176,7 @@ export const Footer: React.FC<FooterProps> = ({ className = '' }) => {
 
             {/* Navigation Links Column 2 */}
             <nav className="flex lg:flex-col flex-wrap gap-3" aria-label="Footer navigation">
-              <a href="/affiliates" className="group transition-colors">
+              <Link to="/affiliates" className="group transition-colors">
                 <Typography
                   variant="s"
                   weight="medium"
@@ -184,8 +184,8 @@ export const Footer: React.FC<FooterProps> = ({ className = '' }) => {
                 >
                   Affiliates
                 </Typography>
-              </a>
-              <a href="/company-values" className="group transition-colors">
+              </Link>
+              <Link to="/company-values" className="group transition-colors">
                 <Typography
                   variant="s"
                   weight="medium"
@@ -193,7 +193,7 @@ export const Footer: React.FC<FooterProps> = ({ className = '' }) => {
                 >
                   Company Values
                 </Typography>
-              </a>
+              </Link>
               <Link to="/privacy-policy" className="group transition-colors">
                 <Typography
                   variant="s"

@@ -7,6 +7,7 @@ import { Textarea } from '@/components/Textarea';
 import { Checkbox } from '@/components/Checkbox';
 import { FormStep, FormField } from '../types';
 import { useMultiStepForm } from '../hooks/useMultiStepForm';
+import gridResultBlack from '@/assets/images/grid-result-black.png';
 
 export interface MultiStepFormProps {
   steps: FormStep[];
@@ -14,6 +15,7 @@ export interface MultiStepFormProps {
   onSubmit: (formData: Record<string, any>) => void;
   onFormDataChange?: (formData: Record<string, any>) => void;
   className?: string;
+  darkFooter?: boolean;
 }
 
 export const MultiStepForm: React.FC<MultiStepFormProps> = ({
@@ -22,6 +24,7 @@ export const MultiStepForm: React.FC<MultiStepFormProps> = ({
   onSubmit,
   onFormDataChange,
   className = '',
+  darkFooter = false,
 }) => {
   const {
     currentStep,
@@ -268,10 +271,17 @@ export const MultiStepForm: React.FC<MultiStepFormProps> = ({
       </div>
 
       {/* Footer with Navigation */}
-      <div className="flex flex-col px-4 py-4 md:p-6">
-        <div className="flex items-center justify-between">
+      <div className={`flex flex-col px-4 py-4 md:p-6 ${darkFooter ? 'bg-neutral-900 relative overflow-hidden' : ''}`}>
+        {darkFooter && (
+          <img 
+            src={gridResultBlack}
+            alt="" 
+            className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[863px] h-[470px] opacity-20 invert pointer-events-none" 
+          />
+        )}
+        <div className={`flex items-center justify-between ${darkFooter ? 'relative z-10' : ''}`}>
           <div className="flex flex-col gap-1.5 items-start">
-            <Typography variant="p" weight="medium" className="text-neutral-900">
+            <Typography variant="p" weight="medium" className={darkFooter ? 'text-white' : 'text-neutral-900'}>
               Call our Advertising Specialists
             </Typography>
             <Typography variant="s" weight="bold" className="text-primary-500">
@@ -291,9 +301,9 @@ export const MultiStepForm: React.FC<MultiStepFormProps> = ({
               variant="primary"
               onClick={handleNext}
               disabled={!isStepValid && !isLastStep}
-              className={`px-6 py-[14px] ${!isStepValid && !isLastStep ? 'bg-neutral-300' : ''}`}
+              className={`px-6 py-[14px] ${!isStepValid && !isLastStep ? 'bg-neutral-300' : ''} ${isLastStep && darkFooter ? 'px-[24px]' : ''}`}
             >
-              {isLastStep ? 'Submit' : 'Next'}
+              {isLastStep ? (darkFooter ? 'Apply Now' : 'Submit') : 'Next'}
             </Button>
           </div>
         </div>

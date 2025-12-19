@@ -31,7 +31,7 @@ const AboutUsPage: React.FC = () => {
         }}
         bottomRight={{
           heading: 'We are Focused on Results',
-          paragraph: 'With a wealth of experience in lead generation, Inquirly\'s founders are applying their knowledge towards being the most authentic, transparent lead company in the home services space.',
+          paragraph: "With a wealth of experience in lead generation, Inquirly's founders are applying their knowledge towards being the most authentic, transparent lead company in the home services space.",
         }}
       />
       <ValuesSection />

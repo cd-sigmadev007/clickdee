@@ -7,7 +7,9 @@ import { ArticlesPage } from './modules/articles';
 import SingleArticlePage from './modules/articles/pages/SingleArticlePage';
 import { ContactUsPage } from './modules/contact';
 import { FAQPage } from './modules/faq';
+import { CompanyValuesPage } from './modules/company-values';
 import { PrivacyPolicyPage, TermsAndConditionsPage, DoNotSellPage } from './modules/legal';
+import AffiliatePage from './modules/affiliates/pages/AffiliatePage';
 
 export const routes: RouteObject[] = [
   {
@@ -41,6 +43,14 @@ export const routes: RouteObject[] = [
   {
     path: '/faq',
     element: <FAQPage />,
+  },
+  {
+    path: '/company-values',
+    element: <CompanyValuesPage />,
+  },
+  {
+    path: '/affiliates',
+    element: <AffiliatePage />,
   },
   {
     path: '/privacy-policy',

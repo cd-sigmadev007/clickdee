@@ -34,13 +34,15 @@ export const Banner: React.FC<BannerProps> = ({
             {icon}
           </div>
         )}
-        <div className="flex flex-col gap-[10px] flex-1">
+        <div className={`flex flex-col ${description ? 'gap-[10px]' : ''} flex-1`}>
           <h2 className="font-bold text-h2 max-lg:text-h3 text-neutral-900">
             {title}
           </h2>
-          <p className="font-medium text-p max-lg:text-s text-neutral-500">
-            {description}
-          </p>
+          {description && (
+            <p className="font-medium text-p max-lg:text-s text-neutral-500">
+              {description}
+            </p>
+          )}
         </div>
       </div>
       {actionLabel && (

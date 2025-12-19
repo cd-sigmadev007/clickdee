@@ -1,6 +1,6 @@
 import React from 'react';
 
-export interface CardProps {
+export interface CardProps extends React.HTMLAttributes<HTMLDivElement> {
   children: React.ReactNode;
   variant?: 'default' | 'bordered' | 'elevated';
   className?: string;
@@ -18,6 +18,8 @@ export const Card: React.FC<CardProps> = ({
   variant = 'default',
   className = '',
   onClick,
+  style,
+  ...props
 }) => {
   return (
     <div
@@ -28,6 +30,8 @@ export const Card: React.FC<CardProps> = ({
         ${className}
       `}
       onClick={onClick}
+      style={style}
+      {...props}
     >
       {children}
     </div>
