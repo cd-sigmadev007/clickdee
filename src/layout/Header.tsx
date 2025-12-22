@@ -95,6 +95,38 @@ export const Header: React.FC<HeaderProps> = ({ className = '' }) => {
     return () => document.removeEventListener('mousedown', handleClickOutside);
   }, []);
 
+  // Prevent body scroll when mobile menu is open, but allow scrolling within the menu
+  useEffect(() => {
+    if (isMobileMenuOpen) {
+      // Store the current scroll position
+      const scrollY = window.scrollY;
+      // Prevent body scroll
+      document.body.style.position = 'fixed';
+      document.body.style.top = `-${scrollY}px`;
+      document.body.style.width = '100%';
+      document.body.style.overflow = 'hidden';
+    } else {
+      // Restore body scroll
+      const scrollY = document.body.style.top;
+      document.body.style.position = '';
+      document.body.style.top = '';
+      document.body.style.width = '';
+      document.body.style.overflow = '';
+      // Restore scroll position
+      if (scrollY) {
+        window.scrollTo(0, parseInt(scrollY || '0') * -1);
+      }
+    }
+
+    // Cleanup on unmount
+    return () => {
+      document.body.style.position = '';
+      document.body.style.top = '';
+      document.body.style.width = '';
+      document.body.style.overflow = '';
+    };
+  }, [isMobileMenuOpen]);
+
   return (
     <>
       {/* Desktop Header - Matching Figma node-id=1-7648 exactly */}
@@ -228,12 +260,12 @@ export const Header: React.FC<HeaderProps> = ({ className = '' }) => {
         {isMobileMenuOpen && (
           <>
             <div
-              className="fixed inset-0 bg-black bg-opacity-50 z-40"
+              className="fixed inset-0 bg-black bg-opacity-50 top-[75px] z-50"
               onClick={() => setIsMobileMenuOpen(false)}
             />
             <div
               ref={mobileMenuRef}
-              className="fixed top-[66px] left-0 bg-white w-[430px] md:w-[768px] max-w-[90vw] h-[calc(100vh-66px)] px-6 py-8 shadow-lg z-50 overflow-y-auto"
+              className="fixed top-[75px] left-0 bg-white w-[430px] md:w-[768px] max-w-[90vw] h-[calc(100vh-66px)] px-6 py-8 shadow-lg z-50 overflow-y-auto"
             >
               <div className="flex flex-col gap-[10px]">
                 {/* Services with Dropdown - font-medium text-h4 */}

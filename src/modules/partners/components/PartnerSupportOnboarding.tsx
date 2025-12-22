@@ -78,7 +78,8 @@ export const PartnerSupportOnboardingSection: React.FC<
               </div>
 
               {/* Text */}
-              <div className="flex flex-col gap-3 flex-1 min-w-0">
+              <div className="flex flex-col gap-3 flex-1 min-w-0 justify-between">
+                <div className="flex flex-col gap-2">
                 <Typography
                   variant="h4"
                   weight="bold"
@@ -86,7 +87,6 @@ export const PartnerSupportOnboardingSection: React.FC<
                 >
                   {feature.title}
                 </Typography>
-
                 <Typography
                   variant="p"
                   weight="regular"
@@ -94,23 +94,24 @@ export const PartnerSupportOnboardingSection: React.FC<
                 >
                   {feature.description}
                 </Typography>
+                </div>
                 <div className="flex justify-end">
-              <svg
-                width="20"
-                height="20"
-                viewBox="0 0 20 20"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  d="M5 15L15 5M15 5H5M15 5V15"
-                  stroke="#71717A"
-                  strokeWidth="1.5"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                />
-              </svg>
-            </div>
+                  <svg
+                    width="20"
+                    height="20"
+                    viewBox="0 0 20 20"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M5 15L15 5M15 5H5M15 5V15"
+                      stroke="#71717A"
+                      strokeWidth="1.5"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                    />
+                  </svg>
+                </div>
               </div>
             </div>
 
