@@ -49,18 +49,18 @@ export const useMultiStepForm = ({
     step.fields.forEach((field) => {
       const value = formData[field.name];
       
-      // Check required fields
-      if (field.required && (!value || (Array.isArray(value) && value.length === 0))) {
-        stepErrors[field.name] = `${field.label || field.name} is required`;
-        return;
-      }
-
-      // Run custom validation
-      if (field.validation && value) {
+      // Run custom validation first (it may handle required check)
+      if (field.validation) {
         const error = field.validation(value);
         if (error) {
           stepErrors[field.name] = error;
+          return; // Don't run required check if validation already failed
         }
+      }
+      
+      // Check required fields (only if no custom validation or validation passed)
+      if (field.required && (!value || (Array.isArray(value) && value.length === 0) || value === false)) {
+        stepErrors[field.name] = `${field.label || field.name} is required`;
       }
     });
 

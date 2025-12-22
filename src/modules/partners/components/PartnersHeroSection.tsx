@@ -27,9 +27,9 @@ export const PartnersHeroSection: React.FC = () => {
         </Typography>
         
         {/* CTA Button */}
-        <Button variant="outline" className="mt-2">
+        {/* <Button variant="outline" className="mt-2">
           Visit Partner Dashboard
-        </Button>
+        </Button> */}
       </div>
     </HeroBackground>
   );

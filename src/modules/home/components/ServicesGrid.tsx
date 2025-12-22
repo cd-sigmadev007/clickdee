@@ -66,32 +66,54 @@ export const ServicesGrid: React.FC<ServicesGridProps> = ({ services, onServiceC
           </div>
         </div>
         
-        {/* Desktop: 2-column nested flex layout */}
+        {/* Desktop: Nested flex layout matching Figma exactly */}
         <div className="hidden lg:flex flex-col gap-[16px] w-full">
           {/* First Row */}
           <div className="flex gap-[16px] w-full">
             {/* Left Column */}
-            <div className="flex flex-col gap-[16px] flex-1">
-              <div className="flex gap-[16px]">
-                {medicare && <div className="flex-1"><ServiceCard service={medicare} onClick={() => onServiceClick?.(medicare)} /></div>}
-                {aca && <div className="flex-1"><ServiceCard service={aca} onClick={() => onServiceClick?.(aca)} /></div>}
+            <div className="basis-0 flex flex-col gap-[16px] grow items-center min-h-px min-w-px relative shrink-0">
+              {/* Medicare + ACA side by side */}
+              <div className="flex gap-[16px] items-end relative shrink-0 w-full">
+                {medicare && (
+                  <div className="basis-0 flex-1 grow shrink-0">
+                    <ServiceCard service={medicare} onClick={() => onServiceClick?.(medicare)} />
+                  </div>
+                )}
+                {aca && (
+                  <div className="basis-0 flex-1 grow shrink-0">
+                    <ServiceCard service={aca} onClick={() => onServiceClick?.(aca)} />
+                  </div>
+                )}
               </div>
+              {/* Home Insurance - large card */}
               {homeInsurance && (
-                <div className="flex-1">
+                <div className="w-full">
                   <ServiceCard service={homeInsurance} onClick={() => onServiceClick?.(homeInsurance)} />
                 </div>
               )}
             </div>
             {/* Right Column */}
-            <div className="flex flex-col gap-[16px] flex-1">
+            <div className="basis-0 flex flex-row grow items-center self-stretch shrink-0">
+              <div className="basis-0 flex flex-col gap-[16px] grow h-full items-center min-h-px min-w-px relative shrink-0">
+                {/* U65 Health Insurance - large card on top */}
               {u65Health && (
-                <div className="flex-1">
+                  <div className="w-full">
                   <ServiceCard service={u65Health} onClick={() => onServiceClick?.(u65Health)} />
                 </div>
               )}
-              <div className="flex gap-[16px]">
-                {finalExpense && <div className="flex-1"><ServiceCard service={finalExpense} onClick={() => onServiceClick?.(finalExpense)} /></div>}
-                {autoInsurance && <div className="flex-1"><ServiceCard service={autoInsurance} onClick={() => onServiceClick?.(autoInsurance)} /></div>}
+                {/* Final Expense + Auto Insurance side by side */}
+                <div className="flex gap-[16px] items-end relative shrink-0 w-full">
+                  {finalExpense && (
+                    <div className="basis-0 flex-1 grow shrink-0">
+                      <ServiceCard service={finalExpense} onClick={() => onServiceClick?.(finalExpense)} />
+                    </div>
+                  )}
+                  {autoInsurance && (
+                    <div className="basis-0 flex-1 grow shrink-0">
+                      <ServiceCard service={autoInsurance} onClick={() => onServiceClick?.(autoInsurance)} />
+                    </div>
+                  )}
+                </div>
               </div>
             </div>
           </div>
@@ -183,95 +205,99 @@ export const ServicesGrid: React.FC<ServicesGridProps> = ({ services, onServiceC
         {/* First Row */}
         <div className="flex gap-[16px] w-full">
           {/* Left Column */}
-          <div className="flex flex-col gap-[16px] flex-1">
+          <div className="basis-0 flex flex-col gap-[16px] grow items-center min-h-px min-w-px relative shrink-0">
             {/* Fire Damage + Bathroom Remodel side by side */}
-            <div className="flex gap-[16px]">
+            <div className="flex gap-[16px] items-end relative shrink-0 w-full">
               {fireDamage && (
-                <div className="flex-1">
+                <div className="basis-0 flex-1 grow shrink-0">
                   <ServiceCard service={fireDamage} onClick={() => onServiceClick?.(fireDamage)} />
                 </div>
               )}
               {bathroomRemodel && (
-                <div className="flex-1">
+                <div className="basis-0 flex-1 grow shrink-0">
                   <ServiceCard service={bathroomRemodel} onClick={() => onServiceClick?.(bathroomRemodel)} />
                 </div>
               )}
             </div>
-            {/* Water Damage - spans 2 rows (gradient card) */}
+            {/* Water Damage - large card */}
             {waterDamage && (
-              <div className="flex-1">
+              <div className="w-full">
                 <ServiceCard service={waterDamage} onClick={() => onServiceClick?.(waterDamage)} />
               </div>
             )}
           </div>
           {/* Right Column */}
-          <div className="flex flex-col gap-[16px] flex-1">
+          <div className="basis-0 flex flex-row grow items-center self-stretch shrink-0">
+            <div className="basis-0 flex flex-col gap-[16px] grow h-full items-center min-h-px min-w-px relative shrink-0">
             {/* Gutter - large card on top */}
             {gutter && (
-              <div className="flex-1">
+                <div className="w-full">
                 <ServiceCard service={gutter} onClick={() => onServiceClick?.(gutter)} />
               </div>
             )}
             {/* Appliance Repair + Mold Removal side by side */}
-            <div className="flex gap-[16px]">
+              <div className="flex gap-[16px] items-end relative shrink-0 w-full">
               {applianceRepair && (
-                <div className="flex-1">
+                  <div className="basis-0 flex-1 grow shrink-0">
                   <ServiceCard service={applianceRepair} onClick={() => onServiceClick?.(applianceRepair)} />
                 </div>
               )}
               {moldRemoval && (
-                <div className="flex-1">
+                  <div className="basis-0 flex-1 grow shrink-0">
                   <ServiceCard service={moldRemoval} onClick={() => onServiceClick?.(moldRemoval)} />
                 </div>
               )}
+              </div>
             </div>
           </div>
         </div>
         
         {/* Second Row */}
-        <div className="flex gap-[16px] w-full">
+        <div className="flex gap-[16px] items-center relative shrink-0 w-full">
           {/* Left Column */}
-          <div className="flex flex-col gap-[16px] flex-1">
+          <div className="basis-0 flex flex-col gap-[16px] grow items-center min-h-px min-w-px relative shrink-0">
             {/* Roofing + Locksmith side by side */}
-            <div className="flex gap-[16px]">
+            <div className="flex gap-[16px] items-end relative shrink-0 w-full">
               {roofing && (
-                <div className="flex-1">
+                <div className="basis-0 flex-1 grow shrink-0">
                   <ServiceCard service={roofing} onClick={() => onServiceClick?.(roofing)} />
                 </div>
               )}
               {locksmith && (
-                <div className="flex-1">
+                <div className="basis-0 flex-1 grow shrink-0">
                   <ServiceCard service={locksmith} onClick={() => onServiceClick?.(locksmith)} />
                 </div>
               )}
             </div>
             {/* Electrician - large card */}
             {electrician && (
-              <div className="flex-1">
+              <div className="w-full">
                 <ServiceCard service={electrician} onClick={() => onServiceClick?.(electrician)} />
               </div>
             )}
           </div>
           {/* Right Column */}
-          <div className="flex flex-col gap-[16px] flex-1">
+          <div className="basis-0 flex flex-row grow items-center self-stretch shrink-0">
+            <div className="basis-0 flex flex-col gap-[16px] grow h-full items-center min-h-px min-w-px relative shrink-0">
             {/* Pest Control - large card on top */}
             {pestControl && (
-              <div className="flex-1">
+                <div className="w-full">
                 <ServiceCard service={pestControl} onClick={() => onServiceClick?.(pestControl)} />
               </div>
             )}
             {/* HVAC + Plumbing side by side */}
-            <div className="flex gap-[16px]">
+              <div className="flex gap-[16px] items-end relative shrink-0 w-full">
               {hvac && (
-                <div className="flex-1">
+                  <div className="basis-0 flex-1 grow shrink-0">
                   <ServiceCard service={hvac} onClick={() => onServiceClick?.(hvac)} />
                 </div>
               )}
               {plumbing && (
-                <div className="flex-1">
+                  <div className="basis-0 flex-1 grow shrink-0">
                   <ServiceCard service={plumbing} onClick={() => onServiceClick?.(plumbing)} />
                 </div>
               )}
+              </div>
             </div>
           </div>
         </div>

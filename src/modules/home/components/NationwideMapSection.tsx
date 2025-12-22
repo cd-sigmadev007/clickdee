@@ -80,7 +80,7 @@ export const NationwideMapSection: React.FC = () => {
       </div>
       
       {/* CTA Button */}
-      <Button variant="secondary" className="bg-white text-neutral-900 flex items-center gap-[5px]">
+      <Button variant="secondary" className="bg-white !text-neutral-900 flex items-center gap-[5px]">
         Get Leads Now
         <img src={chevronLeftIcon} alt="" className="w-4 h-4 rotate-180" data-node-id="1:14270" />
       </Button>

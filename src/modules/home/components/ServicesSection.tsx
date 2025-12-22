@@ -5,6 +5,7 @@ import { ServiceCategoriesTabs } from './ServiceCategoriesTabs';
 import { ServicesGrid } from './ServicesGrid';
 import { Service, ServiceCategory } from '../types';
 import { generateSlug } from '@/modules/services/types/serviceData';
+import { isLargeCardPosition } from '../utils/cardSizeCalculator';
 import fireDamageIcon from '@/assets/icons/fire-damage-leads.svg';
 import bathroomRemodelIcon from '@/assets/icons/bathroom-remodel-leads.svg';
 import waterDamageIcon from '@/assets/icons/water-damage-leads.svg';
@@ -25,7 +26,8 @@ import u65HealthIcon from '@/assets/icons/gutter-leads.svg'; // Placeholder
 import finalExpenseIcon from '@/assets/icons/appliance-repair.svg'; // Placeholder
 import autoInsuranceIcon from '@/assets/icons/mold-removal-leads.svg'; // Placeholder
 
-const homeServices: Service[] = [
+// Base service arrays without large property - will be calculated dynamically
+const baseHomeServices: Omit<Service, 'large'>[] = [
   {
     id: 'fire-damage',
     name: 'Fire Damage',
@@ -46,9 +48,6 @@ const homeServices: Service[] = [
     description: 'Leverage our expansive network to connect with local homeowners seeking immediate assistance for the water damage services you offer.',
     icon: waterDamageIcon,
     category: 'home-services',
-    featured: true,
-    gradient: true,
-    large: false,
   },
   {
     id: 'gutter',
@@ -56,7 +55,6 @@ const homeServices: Service[] = [
     description: 'Respond to the call of homeowners in our community, seeking ...',
     icon: gutterIcon,
     category: 'home-services',
-    large: true,
   },
   {
     id: 'appliance-repair',
@@ -92,7 +90,6 @@ const homeServices: Service[] = [
     description: 'Our skilled electricians offer tailored solutions, addressin...',
     icon: electricianIcon,
     category: 'home-services',
-    large: true,
   },
   {
     id: 'pest-control',
@@ -100,7 +97,6 @@ const homeServices: Service[] = [
     description: 'Tap into our vast network to connect with local residents se...',
     icon: pestControlIcon,
     category: 'home-services',
-    large: true,
   },
   {
     id: 'hvac',
@@ -108,7 +104,6 @@ const homeServices: Service[] = [
     description: 'Meet the needs of issues your area, seek our expertise to en...',
     icon: hvacIcon,
     category: 'home-services',
-    large: true,
   },
   {
     id: 'plumbing',
@@ -119,7 +114,7 @@ const homeServices: Service[] = [
   },
 ];
 
-const insuranceServices: Service[] = [
+const baseInsuranceServices: Omit<Service, 'large'>[] = [
   {
     id: 'medicare',
     name: 'Medicare',
@@ -135,22 +130,18 @@ const insuranceServices: Service[] = [
     category: 'insurance',
   },
   {
-    id: 'home-insurance',
-    name: 'Home Insurance',
-    description: 'Our network connects you with local homeowners seeking prompt assistance for water damage services you offer.',
-    icon: homeInsuranceIcon,
-    category: 'insurance',
-    featured: true,
-    gradient: true,
-    large: false,
-  },
-  {
     id: 'u65-health',
     name: 'U65 Health Insurance',
     description: 'Respond to the call of homeowners in our community, seeking ...',
     icon: u65HealthIcon,
     category: 'insurance',
-    large: true,
+  },
+  {
+    id: 'home-insurance',
+    name: 'Home Insurance',
+    description: 'Our network connects you with local homeowners seeking prompt assistance for water damage services you offer.',
+    icon: homeInsuranceIcon,
+    category: 'insurance',
   },
   {
     id: 'final-expense',
@@ -167,6 +158,17 @@ const insuranceServices: Service[] = [
     category: 'insurance',
   },
 ];
+
+// Calculate large property based on position (1-based indexing)
+const homeServices: Service[] = baseHomeServices.map((service, index) => ({
+  ...service,
+  large: isLargeCardPosition(index + 1),
+}));
+
+const insuranceServices: Service[] = baseInsuranceServices.map((service, index) => ({
+  ...service,
+  large: isLargeCardPosition(index + 1),
+}));
 
 export const ServicesSection: React.FC = () => {
   const [activeCategory, setActiveCategory] = useState<ServiceCategory>('home-services');

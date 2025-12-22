@@ -12,7 +12,7 @@ export interface FooterProps {
 export const Footer: React.FC<FooterProps> = ({ className = '' }) => {
   return (
     <footer className={`bg-neutral-10 border-t border-neutral-200 ${className}`}>
-      <div className="mx-auto px-4 sm:px-6 lg:px-20 py-12 lg:py-16">
+      <div className="mx-auto px-[16px] md:px-[24px] sm:px-[16px] lg:px-[80px] py-[40px] lg:py-[88px]">
         {/* Logo - Outside flex container */}
         <Link to="/">
           <Logo className="mb-8 lg:mb-12" />
@@ -60,7 +60,7 @@ export const Footer: React.FC<FooterProps> = ({ className = '' }) => {
             </div>
 
             {/* Office Locations Section */}
-            <div className="flex flex-col space-y-6 flex-1 min-w-0">
+            <div className="flex flex-col space-y-6 flex-1 w-full min-w-0">
               <div>
                 <Typography
                   variant="s"
@@ -73,11 +73,10 @@ export const Footer: React.FC<FooterProps> = ({ className = '' }) => {
                   <Typography
                     variant="s"
                     weight="medium"
-                    className="text-neutral-500"
+                    className="text-neutral-500 lg:whitespace-nowrap"
                   >
                     Clickdee Mediashare OÜ<br />
-                    6 Sepapaja, Harijumma<br />
-                    Tallinn, Estonia-15551
+                    6 Sepapaja, Harijumma, Tallinn, Estonia-15551
                   </Typography>
                 </address>
               </div>
@@ -93,11 +92,10 @@ export const Footer: React.FC<FooterProps> = ({ className = '' }) => {
                   <Typography
                     variant="s"
                     weight="medium"
-                    className="text-neutral-500"
+                    className="text-neutral-500 lg:whitespace-nowrap"
                   >
                     Clickdee LLC<br />
-                    30 N Gould St Ste R<br />
-                    Sheridan Wyoming-82801
+                    30 N Gould St Ste R, Sheridan Wyoming-82801
                   </Typography>
                 </address>
               </div>
@@ -106,7 +104,7 @@ export const Footer: React.FC<FooterProps> = ({ className = '' }) => {
             {/* Navigation Links Container */}
           </div>
 
-          <div className="flex flex-col lg:flex-row gap-6 flex-1  min-w-0">
+          <div className="flex flex-col lg:flex-row gap-6 flex-1  min-w-0 justify-end">
             {/* Navigation Links Column 1 */}
             <nav className="flex lg:flex-col flex-wrap gap-3" aria-label="Footer navigation">
               <Link to="/" className="group transition-colors">

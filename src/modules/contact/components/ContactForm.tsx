@@ -4,6 +4,19 @@ import { FormStep } from '../types';
 import { servicesData } from '@/modules/services/types/serviceData';
 import { usStates } from '@/modules/home/utils/stateData';
 import clsx from 'clsx';
+import {
+  validatePhoneNumber,
+  validateEmail,
+  validateName,
+  validateZipCode,
+  validateCompanyName,
+  validateAddress,
+  validateServices,
+  validateState,
+  validateCity,
+  validateBackgroundCheckConsent,
+  validateTermsAccepted,
+} from '../utils/validators';
 
 // Simple city mapping - in production this would come from an API or comprehensive data
 const citiesByState: Record<string, string[]> = {
@@ -116,6 +129,7 @@ export const ContactForm: React.FC<ContactFormProps> = ({
           required: true,
           options: serviceOptions,
           separatorAfter: true,
+          validation: (value: string[]) => validateServices(value),
         },
         {
           type: 'text',
@@ -123,12 +137,14 @@ export const ContactForm: React.FC<ContactFormProps> = ({
           label: 'Company Profile',
           placeholder: 'Company',
           required: true,
+          validation: (value: string) => validateCompanyName(value),
         },
         {
           type: 'text',
           name: 'address',
           placeholder: 'Address',
           required: true,
+          validation: (value: string) => validateAddress(value),
         },
         {
           type: 'select',
@@ -137,6 +153,7 @@ export const ContactForm: React.FC<ContactFormProps> = ({
           required: true,
           options: stateOptions,
           groupWith: ['state', 'city', 'zipCode'],
+          validation: (value: string) => validateState(value),
         },
         {
           type: 'select',
@@ -145,6 +162,7 @@ export const ContactForm: React.FC<ContactFormProps> = ({
           required: true,
           options: cityOptions,
           groupWith: ['state', 'city', 'zipCode'],
+          validation: (value: string) => validateCity(value),
         },
         {
           type: 'text',
@@ -152,6 +170,7 @@ export const ContactForm: React.FC<ContactFormProps> = ({
           placeholder: 'Zip Code',
           required: true,
           groupWith: ['state', 'city', 'zipCode'],
+          validation: (value: string) => validateZipCode(value),
         },
       ],
     },
@@ -178,28 +197,33 @@ export const ContactForm: React.FC<ContactFormProps> = ({
           label: 'About you',
           placeholder: 'First Name',
           required: true,
+          groupWith: ['firstName', 'lastName'],
+          validation: (value: string) => validateName(value, 'First Name'),
         },
         {
           type: 'text',
           name: 'lastName',
           placeholder: 'Last Name',
           required: true,
+          groupWith: ['firstName', 'lastName'],
+          validation: (value: string) => validateName(value, 'Last Name'),
         },
         {
           type: 'text',
           name: 'email',
           placeholder: 'Email',
           required: true,
-          validation: (value: string) => {
-            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-            return emailRegex.test(value) ? null : 'Please enter a valid email address';
-          },
+          groupWith: ['email', 'phone'],
+          validation: (value: string) => validateEmail(value),
         },
         {
-          type: 'text',
+          type: 'phone',
           name: 'phone',
-          placeholder: 'Phone',
+          placeholder: '(555) 555-5555',
           required: true,
+          groupWith: ['email', 'phone'],
+          validation: (value: string) => validatePhoneNumber(value),
+          separatorAfter: true,
         },
         {
           type: 'radio',
@@ -210,12 +234,15 @@ export const ContactForm: React.FC<ContactFormProps> = ({
             { value: 'yes', label: 'Yes' },
             { value: 'no', label: 'No' },
           ],
+          validation: (value: string) => validateBackgroundCheckConsent(value),
+          separatorAfter: true,
         },
         {
           type: 'checkbox',
           name: 'termsAccepted',
           label: 'You agree to receive automated promotional messages. You also agree to the Terms of Service and Privacy Policy.\nThis agreement isn\'t a condition of any purchase. 4 Msgs/Month.\nMsg & Data rates may apply. Reply STOP to end or HELP for help.',
           required: true,
+          validation: (value: boolean) => validateTermsAccepted(value),
         },
       ],
     },

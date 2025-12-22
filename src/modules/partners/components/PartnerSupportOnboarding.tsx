@@ -53,6 +53,11 @@ export const PartnerSupportOnboardingSection: React.FC<
               p-8
               h-full
               flex flex-col
+              transition-all duration-300 ease-in-out
+              hover:shadow-lg
+              hover:border-primary-500
+              cursor-pointer
+              group
             "
           >
             {/* Main Content */}
@@ -66,13 +71,15 @@ export const PartnerSupportOnboardingSection: React.FC<
                     h-[180px]
                     rounded-[16px]
                     bg-primary-200
+                    group-hover:bg-primary-500
                     grid place-items-center
+                    transition-all duration-300 ease-in-out
                   "
                 >
                   <img
                     src={feature.icon}
                     alt={feature.title}
-                    className="w-[132px] h-[132px] object-contain block"
+                    className="w-[132px] h-[132px] object-contain block transition-transform duration-300 ease-in-out group-hover:scale-110"
                   />
                 </div>
               </div>
@@ -102,6 +109,7 @@ export const PartnerSupportOnboardingSection: React.FC<
                     viewBox="0 0 20 20"
                     fill="none"
                     xmlns="http://www.w3.org/2000/svg"
+                    className="transition-all duration-300 ease-in-out group-hover:translate-x-1 group-hover:-translate-y-1"
                   >
                     <path
                       d="M5 15L15 5M15 5H5M15 5V15"
@@ -109,6 +117,7 @@ export const PartnerSupportOnboardingSection: React.FC<
                       strokeWidth="1.5"
                       strokeLinecap="round"
                       strokeLinejoin="round"
+                      className="transition-colors duration-300 ease-in-out group-hover:stroke-primary-500"
                     />
                   </svg>
                 </div>

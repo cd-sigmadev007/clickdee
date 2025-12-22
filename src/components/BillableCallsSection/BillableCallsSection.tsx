@@ -48,7 +48,7 @@ const billableCallCards: BillableCallCard[] = [
 
 export const BillableCallsSection: React.FC = () => {
   return (
-    <div className="bg-primary-500 flex flex-col gap-6 sm:gap-8 items-center justify-center px-4 py-8 sm:px-6 sm:py-12 lg:px-[80px] lg:py-[88px] relative w-full">
+    <div className="bg-primary-500 flex flex-col gap-6 sm:gap-8 items-center justify-center px-4 py-8 sm:px-6 sm:py-12 lg:px-[180px] lg:py-[88px] relative w-full">
       {/* Title */}
       <div className="flex flex-col sm:flex-row gap-2.5 items-center justify-center w-full">
         <Typography variant="title" weight="bold" className="text-white text-center">
@@ -64,7 +64,7 @@ export const BillableCallsSection: React.FC = () => {
       {/* Cards Grid */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 w-full max-w-[1280px]">
         {billableCallCards.map((card) => (
-          <Card key={card.id} variant="elevated" className="flex flex-col gap-4 items-center justify-center h-[200px] p-8">
+          <Card key={card.id} variant="elevated" className="flex flex-col items-center justify-center p-8">
             <div className="relative w-12 h-12 flex items-center justify-center">
               <img src={card.icon} alt={card.description} className="w-full h-full object-contain" />
             </div>

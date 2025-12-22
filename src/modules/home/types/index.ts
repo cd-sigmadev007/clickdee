@@ -8,8 +8,6 @@ export interface Service {
   description: string;
   icon: string;
   category: 'home-services' | 'insurance';
-  featured?: boolean;
-  gradient?: boolean;
   large?: boolean;
 }
 

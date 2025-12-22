@@ -1,5 +1,5 @@
 export interface FormField {
-  type: 'text' | 'textarea' | 'select' | 'multiselect' | 'radio' | 'checkbox';
+  type: 'text' | 'textarea' | 'select' | 'multiselect' | 'radio' | 'checkbox' | 'phone';
   name: string;
   label?: string;
   placeholder?: string;
