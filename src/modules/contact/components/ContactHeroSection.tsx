@@ -18,7 +18,7 @@ export const ContactHeroSection: React.FC = () => {
   
   if (isSubmitted) {
     return (
-      <HeroBackground className='flex items-center justify-center'>
+      <HeroBackground className='flex items-center justify-center' style={{ height: 'calc(100vh - 75px)' }}>
         <div className="flex flex-col gap-8 items-center justify-center relative shrink-0 w-full">
           <div className="w-[100px] h-[100px] flex items-center justify-center flex-shrink-0">
             <img src={tickWithGola} alt="" className="w-full h-full object-contain" />
@@ -49,7 +49,7 @@ export const ContactHeroSection: React.FC = () => {
   }
   
   return (
-    <HeroBackground className='flex items-center justify-center'>
+    <HeroBackground className='flex items-center justify-center' style={{ height: 'calc(100vh - 75px)' }}>
       <div className="flex flex-col lg:flex-row gap-8 items-center justify-between relative shrink-0 w-full">
         <div className="flex flex-col gap-[5px] items-center lg:items-start justify-center lg:justify-start lg:flex-1 relative shrink-0 lg:max-w-[50%] w-full">
           <Typography variant="headline" weight="bold" className="text-neutral-900 lg:text-left text-center">

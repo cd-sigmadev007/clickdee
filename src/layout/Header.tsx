@@ -212,9 +212,11 @@ export const Header: React.FC<HeaderProps> = ({ className = '' }) => {
         </nav>
 
         {/* Contact Button - Primary variant, px-6 py-[14px] */}
-        <Button variant="primary" className="px-6 py-[14px]">
-          Contact
-        </Button>
+        <Link to="/contact">
+          <Button variant="primary" className="px-6 py-[14px]">
+            Contact
+          </Button>
+        </Link>
       </header>
 
       {/* Mobile Header - Matching Figma node-ids=1-9476, 1-12279 exactly */}
@@ -252,9 +254,11 @@ export const Header: React.FC<HeaderProps> = ({ className = '' }) => {
         </div>
 
         {/* Contact Button - px-6 py-[10px] for mobile */}
-        <Button variant="primary" className="px-6 py-[10px]">
-          Contact
-        </Button>
+        <Link to="/contact">
+          <Button variant="primary" className="px-6 py-[10px]">
+            Contact
+          </Button>
+        </Link>
 
         {/* Mobile Menu Overlay - Fixed position, width 430px mobile / 768px tablet */}
         {isMobileMenuOpen && (
