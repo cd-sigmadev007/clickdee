@@ -37,6 +37,7 @@ export default {
         },
       },
       fontFamily: {
+        sans: ['Satoshi', 'Inter', 'sans-serif'],
         satoshi: ['Satoshi', 'sans-serif'],
         lato: ['Lato', 'sans-serif'],
       },

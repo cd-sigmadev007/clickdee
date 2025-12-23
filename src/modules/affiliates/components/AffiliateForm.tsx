@@ -230,7 +230,7 @@ export const AffiliateForm: React.FC<AffiliateFormProps> = ({
           groupWith: ['email', 'phone'],
         },
         {
-          type: 'text',
+          type: 'phone',
           name: 'phone',
           placeholder: 'Phone',
           required: true,

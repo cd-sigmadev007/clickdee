@@ -2,10 +2,11 @@ import React from 'react';
 import { Typography } from '@/components/Typography';
 import { Card } from '@/components/Card';
 import hugeiconsCustomerSupport from '@/assets/icons/hugeicons_customer-support.svg';
+import hugeiconsAnalytics from '@/assets/icons/hugeicons_analytics.svg';
 import streamlinePayment10 from '@/assets/icons/streamline_payment-10.svg';
 import solarBillListOutline from '@/assets/icons/solar_bill-list-outline.svg';
 import mageLocation from '@/assets/icons/mage_location.svg';
-import solarGraphUpOutline from '@/assets/icons/solar_graph-up-outline.svg';
+import mageDashboardIcon from '@/assets/icons/mage-dashboard.svg';
 
 interface AdvantageCard {
   id: string;
@@ -19,7 +20,7 @@ const advantages: AdvantageCard[] = [
     id: 'transparent-platform',
     title: 'Transparent Platform',
     description: '24/7 access to your account center, performance reports, activity and APIs.',
-    icon: solarGraphUpOutline, // Using analytics icon as placeholder for dashboard
+    icon: mageDashboardIcon, // Using analytics icon as placeholder for dashboard
   },
   {
     id: 'top-payouts',
@@ -49,7 +50,7 @@ const advantages: AdvantageCard[] = [
     id: 'real-time-analytics',
     title: 'Real Time Analytics',
     description: 'The reporting dashboard will give you an up to the minute view into how your traffic is converting and what advertisers are paying for your customers.',
-    icon: solarGraphUpOutline,
+    icon: hugeiconsAnalytics,
   },
 ];
 

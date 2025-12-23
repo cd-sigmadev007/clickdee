@@ -10,7 +10,7 @@ export const AffiliateFormSection: React.FC = () => {
   };
 
   return (
-    <div className="bg-white flex flex-col lg:flex-row gap-8 items-start px-4 py-8 sm:px-6 sm:py-12 lg:px-[80px] lg:py-[56px] w-full">
+    <div className="bg-white flex flex-col lg:flex-row gap-8 items-start px-4 py-8 sm:px-6 sm:py-12 lg:px-[80px] lg:py-[56px] w-full" style={{ minHeight: '100vh' }}>
       {/* Left: Title */}
       <div className="flex flex-col gap-[5px] items-start justify-center lg:flex-1">
         <Typography variant="title" weight="bold" className="text-neutral-900">

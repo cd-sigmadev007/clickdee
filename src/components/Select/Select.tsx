@@ -37,8 +37,10 @@ export const Select: React.FC<SelectProps> = ({
   const [internalValue, setInternalValue] = useState<string | string[]>(multiSelect ? [] : '');
   const selectRef = useRef<HTMLDivElement>(null);
   const dropdownRef = useRef<HTMLDivElement>(null);
+  const tagsContainerRef = useRef<HTMLDivElement>(null);
   const [isTyping, setIsTyping] = useState(false);
   const [dropdownPosition, setDropdownPosition] = useState<{ top: number; left: number; width: number } | null>(null);
+  const [visibleTagsCount, setVisibleTagsCount] = useState<number | null>(null);
 
   const currentValue = value !== undefined ? value : internalValue;
   const isMulti = multiSelect;
@@ -155,6 +157,94 @@ export const Select: React.FC<SelectProps> = ({
 
   const selectedOption = getSelectedOption();
 
+  // Calculate how many tags fit in one line
+  useEffect(() => {
+    if (!isMulti || selectedValues.length === 0 || !tagsContainerRef.current) {
+      setVisibleTagsCount(null);
+      return;
+    }
+
+    const calculateVisibleTags = () => {
+      const container = tagsContainerRef.current;
+      if (!container) return;
+
+      const containerWidth = container.offsetWidth;
+      const chevronWidth = 48; // Approximate width of chevron button + margin
+      const availableWidth = containerWidth - chevronWidth;
+      
+      // Create a temporary container to measure tag widths
+      const tempContainer = document.createElement('div');
+      tempContainer.style.position = 'absolute';
+      tempContainer.style.visibility = 'hidden';
+      tempContainer.style.display = 'flex';
+      tempContainer.style.gap = '10px';
+      tempContainer.style.flexWrap = 'nowrap';
+      tempContainer.style.fontFamily = 'Satoshi, sans-serif';
+      tempContainer.style.fontSize = '14px';
+      tempContainer.style.fontWeight = '500';
+      document.body.appendChild(tempContainer);
+
+      let totalWidth = 0;
+      let count = 0;
+      const gap = 10;
+
+      for (const val of selectedValues) {
+        const option = options.find(opt => opt.value === val);
+        const tag = document.createElement('div');
+        tag.style.display = 'flex';
+        tag.style.alignItems = 'center';
+        tag.style.gap = '5px';
+        tag.style.padding = '6px 10px';
+        tag.style.borderRadius = '24px';
+        tag.style.whiteSpace = 'nowrap';
+        tag.style.border = '1px solid #E4E4E7';
+        
+        const label = document.createElement('span');
+        label.textContent = option?.label || val;
+        label.style.fontSize = '14px';
+        label.style.fontWeight = '500';
+        tag.appendChild(label);
+        
+        // Add close button width (16px + 5px gap)
+        const closeBtn = document.createElement('div');
+        closeBtn.style.width = '16px';
+        closeBtn.style.height = '16px';
+        closeBtn.style.flexShrink = '0';
+        tag.appendChild(closeBtn);
+        
+        tempContainer.appendChild(tag);
+        const tagWidth = tag.offsetWidth;
+        
+        // Check if this tag fits (including gap)
+        const widthWithGap = totalWidth + (count > 0 ? gap : 0) + tagWidth;
+        
+        if (widthWithGap <= availableWidth) {
+          totalWidth = widthWithGap;
+          count++;
+        } else {
+          break;
+        }
+      }
+
+      document.body.removeChild(tempContainer);
+      setVisibleTagsCount(count);
+    };
+
+    // Use requestAnimationFrame to ensure DOM is ready
+    const timeoutId = setTimeout(calculateVisibleTags, 0);
+    
+    // Recalculate on window resize
+    const handleResize = () => {
+      calculateVisibleTags();
+    };
+    window.addEventListener('resize', handleResize);
+    
+    return () => {
+      clearTimeout(timeoutId);
+      window.removeEventListener('resize', handleResize);
+    };
+  }, [isMulti, selectedValues, options, isOpen]);
+
   return (
     <div className="flex gap-[14px] flex-col" ref={selectRef}>
       {label && (
@@ -171,23 +261,23 @@ export const Select: React.FC<SelectProps> = ({
             className={`${classes} flex items-center justify-between cursor-pointer`}
             style={heightStyle}
           >
-            <div className="flex flex-wrap gap-[10px] items-center flex-1 min-w-0">
+            <div ref={tagsContainerRef} className="flex flex-nowrap gap-[10px] items-center flex-1 min-w-0 overflow-hidden">
               {selectedValues.length === 0 ? (
                 <span className="text-neutral-500">{placeholder}</span>
               ) : (
                 <>
-                  {selectedValues.slice(0, 2).map((val) => {
+                  {selectedValues.slice(0, visibleTagsCount !== null ? visibleTagsCount : selectedValues.length).map((val) => {
                     const option = options.find(opt => opt.value === val);
                     return (
                       <div
                         key={val}
                         className="bg-white border border-neutral-200 flex items-center gap-[5px] px-[10px] py-[6px] rounded-[24px] shrink-0"
                       >
-                        <span className="font-medium text-s text-neutral-900">{option?.label || val}</span>
+                        <span className="font-medium text-s text-neutral-900 whitespace-nowrap">{option?.label || val}</span>
                         <button
                           type="button"
                           onClick={(e) => handleRemoveTag(val, e)}
-                          className="w-4 h-4 flex items-center justify-center"
+                          className="w-4 h-4 flex items-center justify-center shrink-0"
                         >
                           <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path d="M12 4L4 12M4 4L12 12" stroke="#18181B" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
@@ -196,9 +286,9 @@ export const Select: React.FC<SelectProps> = ({
                       </div>
                     );
                   })}
-                  {selectedValues.length > 2 && (
+                  {visibleTagsCount !== null && visibleTagsCount < selectedValues.length && (
                     <div className="bg-white border border-neutral-200 flex items-center px-[10px] py-[6px] rounded-[24px] shrink-0">
-                      <span className="font-medium text-s text-neutral-900">{selectedValues.length - 2}+</span>
+                      <span className="font-medium text-s text-neutral-900">+{selectedValues.length - visibleTagsCount}</span>
                     </div>
                   )}
                 </>

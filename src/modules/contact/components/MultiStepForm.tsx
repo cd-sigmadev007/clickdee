@@ -267,6 +267,7 @@ export const MultiStepForm: React.FC<MultiStepFormProps> = ({
   const currentStepData = steps[currentStep];
 
   const isStep3 = currentStepData.id === 'reference-person';
+  const isYourProfile = currentStepData.id === 'your-profile';
 
   return (
     <div className={`bg-white border border-neutral-200 flex flex-col rounded-[16px] shadow-[0px_10px_16px_0px_rgba(0,0,0,0.05)] relative z-10 ${className}`}>
@@ -322,6 +323,68 @@ export const MultiStepForm: React.FC<MultiStepFormProps> = ({
               </div>
             );
           }
+
+          // Special handling for "your-profile" step "About you" section
+          if (isYourProfile && field.name === 'firstName' && field.label === 'About you') {
+            return (
+              <div key={`about-you-section`} className="w-full">
+                <Typography variant="p" weight="medium" className="text-neutral-900 mb-[14px]">
+                  {field.label}
+                </Typography>
+                <div className="flex flex-col md:flex-row gap-[14px] w-full">
+                  {groupFields.map(groupField => {
+                    // Remove label for grouped fields
+                    const fieldWithoutLabel = { ...groupField, label: undefined };
+                    return (
+                      <div key={groupField.name} className="flex-1 w-full">
+                        {renderField(fieldWithoutLabel)}
+                      </div>
+                    );
+                  })}
+                </div>
+              </div>
+            );
+          }
+
+          // Special handling for "your-profile" step "Your Location" section
+          if (isYourProfile && field.name === 'country' && field.label === 'Your Location') {
+            return (
+              <div key={`location-section`} className="w-full">
+                <Typography variant="p" weight="medium" className="text-neutral-900 mb-[14px]">
+                  {field.label}
+                </Typography>
+                <div className="flex flex-col md:flex-row gap-[14px] w-full mb-[14px]">
+                  {groupFields.map(groupField => {
+                    // Remove label for grouped fields
+                    const fieldWithoutLabel = { ...groupField, label: undefined };
+                    return (
+                      <div key={groupField.name} className="flex-1 w-full">
+                        {renderField(fieldWithoutLabel)}
+                      </div>
+                    );
+                  })}
+                </div>
+                {/* City and Zip Code row */}
+                {(() => {
+                  const cityField = currentStepData.fields.find(f => f.name === 'city');
+                  const zipField = currentStepData.fields.find(f => f.name === 'zipCode');
+                  if (cityField && zipField) {
+                    return (
+                      <div className="flex flex-col md:flex-row gap-[14px] w-full">
+                        <div className="flex-1 w-full">
+                          {renderField({ ...cityField, label: undefined })}
+                        </div>
+                        <div className="flex-1 w-full">
+                          {renderField({ ...zipField, label: undefined })}
+                        </div>
+                      </div>
+                    );
+                  }
+                  return null;
+                })()}
+              </div>
+            );
+          }
           
           // Special handling for email/phone group in step 3
           if (isStep3 && field.name === 'email' && field.groupWith?.includes('email')) {
@@ -345,8 +408,32 @@ export const MultiStepForm: React.FC<MultiStepFormProps> = ({
             );
           }
 
+          // Special handling for email/phone group in "your-profile" step
+          if (isYourProfile && field.name === 'email' && field.groupWith?.includes('email')) {
+            return (
+              <div key={`email-phone-group`} className="w-full">
+                <div className="flex flex-col md:flex-row gap-[14px] w-full">
+                  {groupFields.map(groupField => {
+                    // Remove label for grouped fields
+                    const fieldWithoutLabel = { ...groupField, label: undefined };
+                    return (
+                      <div key={groupField.name} className="flex-1 w-full">
+                        {renderField(fieldWithoutLabel)}
+                      </div>
+                    );
+                  })}
+                </div>
+              </div>
+            );
+          }
+
+          // Skip city and zipCode if already rendered in location section
+          if (isYourProfile && (field.name === 'city' || field.name === 'zipCode' || field.name === 'state')) {
+            return null;
+          }
+
           // Render grouped fields in a row
-          if (isFirstInGroup && field.groupWith && !(isStep3 && field.name === 'firstName')) {
+          if (isFirstInGroup && field.groupWith && !(isStep3 && field.name === 'firstName') && !(isYourProfile && (field.name === 'firstName' || field.name === 'country' || field.name === 'email'))) {
             return (
               <div key={`group-${field.name}`} className="w-full">
                 <div className="flex flex-col md:flex-row gap-[14px] w-full">
