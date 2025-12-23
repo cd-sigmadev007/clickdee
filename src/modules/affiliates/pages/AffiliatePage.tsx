@@ -20,12 +20,14 @@ const AffiliatePage: React.FC = () => {
 
       {/* ContentGrid Section 1: About Clickdee + Services Card */}
       <ContentGrid
+          className='max-h-[390px]'
         left={<AffiliateAboutSection />}
         right={<AffiliateServicesCard />}
       />
 
       {/* ContentGrid Section 2: Image + Revenue Text */}
       <ContentGrid
+      className='max-h-[390px]'
         left={{
           src: affiliateImage,
           alt: 'Business professionals celebrating success',

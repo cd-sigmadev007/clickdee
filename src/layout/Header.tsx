@@ -6,6 +6,11 @@ import { generateSlug } from '@/modules/services/types/serviceData';
 import heroiconsChevronUp from '@/assets/icons/heroicons_chevron-up.svg';
 import heroiconsChevronDown from '@/assets/icons/heroicons_chevron-down.svg';
 
+// About Us icons
+import hugeiconsCustomerSupport from '@/assets/icons/hugeicons_customer-support.svg';
+import solarMedalStar from '@/assets/icons/solar_medal-star-square-linear.svg';
+import hugeiconsDollarReceive from '@/assets/icons/hugeicons_dollar-receive-01.svg';
+
 // Service icons - importing all downloaded icons
 import applianceRepairIcon from '@/assets/icons/appliance-repair.svg';
 import asbestosRemovalIcon from '@/assets/icons/asbestos-removal.svg';
@@ -72,8 +77,10 @@ export interface HeaderProps {
 
 export const Header: React.FC<HeaderProps> = ({ className = '' }) => {
   const [isServicesOpen, setIsServicesOpen] = useState(false);
+  const [isAboutUsOpen, setIsAboutUsOpen] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const servicesRef = useRef<HTMLDivElement>(null);
+  const aboutUsRef = useRef<HTMLDivElement>(null);
   const mobileMenuRef = useRef<HTMLDivElement>(null);
 
   // Close dropdown when clicking outside
@@ -81,6 +88,9 @@ export const Header: React.FC<HeaderProps> = ({ className = '' }) => {
     const handleClickOutside = (event: MouseEvent) => {
       if (servicesRef.current && !servicesRef.current.contains(event.target as Node)) {
         setIsServicesOpen(false);
+      }
+      if (aboutUsRef.current && !aboutUsRef.current.contains(event.target as Node)) {
+        setIsAboutUsOpen(false);
       }
       if (mobileMenuRef.current && !mobileMenuRef.current.contains(event.target as Node)) {
         // Don't close if clicking the hamburger button
@@ -190,13 +200,59 @@ export const Header: React.FC<HeaderProps> = ({ className = '' }) => {
             )}
           </div>
 
-          {/* Other Navigation Links - font-medium text-s text-neutral-900 */}
-          <Link
-            to="/about"
-            className="font-medium text-s text-neutral-900 hover:text-primary-500 transition-colors whitespace-nowrap"
-          >
-            About Us
-          </Link>
+          {/* About Us Dropdown */}
+          <div className="relative" ref={aboutUsRef}>
+            <button
+              onClick={() => setIsAboutUsOpen(!isAboutUsOpen)}
+              className="flex items-center gap-[5px] font-medium text-s transition-colors"
+            >
+              <span className={isAboutUsOpen ? 'text-primary-500' : 'text-neutral-900'}>
+                About Us
+              </span>
+              <img
+                src={isAboutUsOpen ? heroiconsChevronUp : heroiconsChevronDown}
+                alt=""
+                className="w-3.5 h-3.5"
+                style={{
+                  filter: isAboutUsOpen
+                    ? 'brightness(0) saturate(100%) invert(28%) sepia(100%) saturate(7500%) hue-rotate(200deg) brightness(100%) contrast(100%)'
+                    : 'brightness(0) saturate(100%) invert(8%) sepia(4%) saturate(2000%) hue-rotate(200deg) brightness(95%) contrast(95%)',
+                }}
+              />
+            </button>
+
+            {/* About Us Dropdown Menu */}
+            {isAboutUsOpen && (
+              <div className="absolute top-full left-0 mt-2 bg-white border border-neutral-200 rounded-[10px] shadow-[0px_10px_16px_0px_rgba(0,0,0,0.05)] p-[14px] w-[280px] z-50">
+                <div className="flex flex-col gap-0">
+                  <Link
+                    to="/faq"
+                    onClick={() => setIsAboutUsOpen(false)}
+                    className="flex items-center gap-[10px] px-[14px] py-2 rounded-[10px] transition-colors hover:bg-neutral-50 text-neutral-900"
+                  >
+                    <img src={hugeiconsCustomerSupport} alt="" className="w-8 h-8 flex-shrink-0" />
+                    <span className="font-medium text-s whitespace-nowrap">FAQs</span>
+                  </Link>
+                  <Link
+                    to="/company-values"
+                    onClick={() => setIsAboutUsOpen(false)}
+                    className="flex items-center gap-[10px] px-[14px] py-2 rounded-[10px] transition-colors hover:bg-neutral-50 text-neutral-900"
+                  >
+                    <img src={solarMedalStar} alt="" className="w-8 h-8 flex-shrink-0" />
+                    <span className="font-medium text-s whitespace-nowrap">Company Values</span>
+                  </Link>
+                  <Link
+                    to="/lead-buying-guidelines"
+                    onClick={() => setIsAboutUsOpen(false)}
+                    className="flex items-center gap-[10px] px-[14px] py-2 rounded-[10px] transition-colors hover:bg-neutral-50 text-neutral-900"
+                  >
+                    <img src={hugeiconsDollarReceive} alt="" className="w-8 h-8 flex-shrink-0" />
+                    <span className="font-medium text-s whitespace-nowrap">Billable leads and returns</span>
+                  </Link>
+                </div>
+              </div>
+            )}
+          </div>
           <Link
             to="/articles"
             className="font-medium text-s text-neutral-900 hover:text-primary-500 transition-colors whitespace-nowrap"
@@ -321,14 +377,62 @@ export const Header: React.FC<HeaderProps> = ({ className = '' }) => {
                   )}
                 </div>
 
-                {/* Other Navigation Links - font-medium text-h4 */}
-                <Link
-                  to="/about"
-                  className="px-[14px] py-2 rounded-[10px] font-medium text-h4 text-neutral-900"
-                  onClick={() => setIsMobileMenuOpen(false)}
-                >
-                  About Us
-                </Link>
+                {/* About Us with Dropdown - font-medium text-h4 */}
+                <div>
+                  <button
+                    onClick={() => setIsAboutUsOpen(!isAboutUsOpen)}
+                    className="w-full flex items-center justify-between px-[14px] py-2 rounded-[10px] font-medium text-h4 text-neutral-900"
+                  >
+                    <span>About Us</span>
+                    <img
+                      src={isAboutUsOpen ? heroiconsChevronUp : heroiconsChevronDown}
+                      alt=""
+                      className="w-3.5 h-3.5"
+                      style={{
+                        transform: isAboutUsOpen ? 'scale-y-[-1]' : 'none',
+                      }}
+                    />
+                  </button>
+
+                  {/* Mobile About Us Dropdown */}
+                  {isAboutUsOpen && (
+                    <div className="mt-[10px] flex flex-col gap-0">
+                      <Link
+                        to="/faq"
+                        onClick={() => {
+                          setIsAboutUsOpen(false);
+                          setIsMobileMenuOpen(false);
+                        }}
+                        className="flex items-center gap-[10px] px-[14px] py-2 rounded-[10px] transition-colors text-neutral-900 hover:bg-neutral-50"
+                      >
+                        <img src={hugeiconsCustomerSupport} alt="" className="w-8 h-8 flex-shrink-0" />
+                        <span className="font-medium text-s">FAQs</span>
+                      </Link>
+                      <Link
+                        to="/company-values"
+                        onClick={() => {
+                          setIsAboutUsOpen(false);
+                          setIsMobileMenuOpen(false);
+                        }}
+                        className="flex items-center gap-[10px] px-[14px] py-2 rounded-[10px] transition-colors text-neutral-900 hover:bg-neutral-50"
+                      >
+                        <img src={solarMedalStar} alt="" className="w-8 h-8 flex-shrink-0" />
+                        <span className="font-medium text-s">Company Values</span>
+                      </Link>
+                      <Link
+                        to="/lead-buying-guidelines"
+                        onClick={() => {
+                          setIsAboutUsOpen(false);
+                          setIsMobileMenuOpen(false);
+                        }}
+                        className="flex items-center gap-[10px] px-[14px] py-2 rounded-[10px] transition-colors text-neutral-900 hover:bg-neutral-50"
+                      >
+                        <img src={hugeiconsDollarReceive} alt="" className="w-8 h-8 flex-shrink-0" />
+                        <span className="font-medium text-s">Billable leads and returns</span>
+                      </Link>
+                    </div>
+                  )}
+                </div>
                 <Link
                   to="/articles"
                   className="px-[14px] py-2 rounded-[10px] font-medium text-h4 text-neutral-900"

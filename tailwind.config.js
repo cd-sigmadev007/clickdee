@@ -62,6 +62,30 @@ export default {
         'card': '20px',
         'label': '24px',
       },
+      keyframes: {
+        'scroll-left': {
+          '0%': { transform: 'translateX(0)' },
+          '100%': { transform: 'translateX(calc(-100% / 3))' },
+        },
+        'scroll-right': {
+          '0%': { transform: 'translateX(calc(-100% / 3))' },
+          '100%': { transform: 'translateX(0)' },
+        },
+        'scroll-left-services': {
+          '0%': { transform: 'translateX(0)' },
+          '100%': { transform: 'translateX(calc(-100% / 3))' },
+        },
+        'scroll-right-services': {
+          '0%': { transform: 'translateX(calc(-100% / 3))' },
+          '100%': { transform: 'translateX(0)' },
+        },
+      },
+      animation: {
+        'scroll-left': 'scroll-left 30s linear infinite',
+        'scroll-right': 'scroll-right 30s linear infinite',
+        'scroll-left-services': 'scroll-left-services 10s linear infinite',
+        'scroll-right-services': 'scroll-right-services 10s linear infinite',
+      },
     },
   },
   plugins: [],

@@ -1,0 +1,257 @@
+[
+  {
+    "id": "appliance-repair",
+    "slug": "appliance-repair",
+    "name": "Appliance Repair",
+    "category": "home-services",
+    "description": "We help customers seeking repair solutions for their malfunctioning appliances.",
+    "icon": "applianceRepair",
+    "heroImage": "/placeholder-hero.jpg",
+    "incomingLeadCount": 1,
+    "avgCostPerLead": "$30"
+  },
+  {
+    "id": "asbestos-removal",
+    "slug": "asbestos-removal",
+    "name": "Asbestos Removal",
+    "category": "home-services",
+    "description": "Professional asbestos removal services for safe home environments.",
+    "icon": "asbestosRemoval",
+    "heroImage": "/placeholder-hero.jpg",
+    "incomingLeadCount": 1,
+    "avgCostPerLead": "$30"
+  },
+  {
+    "id": "bathroom-remodel-leads",
+    "slug": "bathroom-remodel-leads",
+    "name": "Bathroom Remodel Leads",
+    "category": "home-services",
+    "description": "Providing yearning for professionals to rejuvenate their bathrooms.",
+    "icon": "bathroomRemodelLeads",
+    "heroImage": "/placeholder-hero.jpg",
+    "incomingLeadCount": 1,
+    "avgCostPerLead": "$30"
+  },
+  {
+    "id": "biohazard-leads",
+    "slug": "biohazard-leads",
+    "name": "Biohazard Leads",
+    "category": "home-services",
+    "description": "Professional biohazard cleanup and restoration services.",
+    "icon": "biohazardLeads",
+    "heroImage": "/placeholder-hero.jpg",
+    "incomingLeadCount": 1,
+    "avgCostPerLead": "$30"
+  },
+  {
+    "id": "electrician-leads",
+    "slug": "electrician-leads",
+    "name": "Electrician Leads",
+    "category": "home-services",
+    "description": "Our skilled electricians offer tailored solutions, addressing all your electrical needs.",
+    "icon": "electricianLeads",
+    "heroImage": "/placeholder-hero.jpg",
+    "incomingLeadCount": 1,
+    "avgCostPerLead": "$30"
+  },
+  {
+    "id": "fire-damage-leads",
+    "slug": "fire-damage-leads",
+    "name": "Fire Restoration Leads",
+    "category": "home-services",
+    "description": "We help urgently seeking immediate assistance with fire damage restoration.",
+    "icon": "fireDamageLeads",
+    "heroImage": "/fire-damage-hero-image.jpg",
+    "centerIcon": "/fire-damage-hero-center-icon.svg",
+    "incomingLeadCount": 1,
+    "avgCostPerLead": "$30"
+  },
+  {
+    "id": "flooring-leads",
+    "slug": "flooring-leads",
+    "name": "Flooring Leads",
+    "category": "home-services",
+    "description": "Connect with homeowners seeking flooring installation and repair services.",
+    "icon": "flooringLeads",
+    "heroImage": "/placeholder-hero.jpg",
+    "incomingLeadCount": 1,
+    "avgCostPerLead": "$30"
+  },
+  {
+    "id": "gutter-leads",
+    "slug": "gutter-leads",
+    "name": "Gutter Leads",
+    "category": "home-services",
+    "description": "Respond to the call of homeowners in our community, seeking gutter services.",
+    "icon": "gutterLeads",
+    "heroImage": "/placeholder-hero.jpg",
+    "incomingLeadCount": 1,
+    "avgCostPerLead": "$30"
+  },
+  {
+    "id": "hvac-leads",
+    "slug": "hvac-leads",
+    "name": "HVAC Leads",
+    "category": "home-services",
+    "description": "Meet the needs of issues your area, seek our expertise to ensure comfort.",
+    "icon": "hvacLeads",
+    "heroImage": "/placeholder-hero.jpg",
+    "incomingLeadCount": 1,
+    "avgCostPerLead": "$30"
+  },
+  {
+    "id": "locksmith-leads",
+    "slug": "locksmith-leads",
+    "name": "Locksmith Leads",
+    "category": "home-services",
+    "description": "Providing reliable locksmith solutions, we assist in fortifying your security.",
+    "icon": "locksmithLeads",
+    "heroImage": "/placeholder-hero.jpg",
+    "incomingLeadCount": 1,
+    "avgCostPerLead": "$30"
+  },
+  {
+    "id": "mold-removal-leads",
+    "slug": "mold-removal-leads",
+    "name": "Mold Removal Leads",
+    "category": "home-services",
+    "description": "With precision and care, we eliminate mold infestations, offering safe solutions.",
+    "icon": "moldRemovalLeads",
+    "heroImage": "/placeholder-hero.jpg",
+    "incomingLeadCount": 1,
+    "avgCostPerLead": "$30"
+  },
+  {
+    "id": "pest-control-leads",
+    "slug": "pest-control-leads",
+    "name": "Pest Control Leads",
+    "category": "home-services",
+    "description": "Tap into our vast network to connect with local residents seeking pest control.",
+    "icon": "pestControlLeads",
+    "heroImage": "/placeholder-hero.jpg",
+    "incomingLeadCount": 1,
+    "avgCostPerLead": "$30"
+  },
+  {
+    "id": "plumbing-leads",
+    "slug": "plumbing-leads",
+    "name": "Plumbing Leads",
+    "category": "home-services",
+    "description": "From repairs to installations, our plumbing solutions keep your systems running smoothly.",
+    "icon": "plumbingLeads",
+    "heroImage": "/placeholder-hero.jpg",
+    "incomingLeadCount": 1,
+    "avgCostPerLead": "$30"
+  },
+  {
+    "id": "roofing-leads",
+    "slug": "roofing-leads",
+    "name": "Roofing Leads",
+    "category": "home-services",
+    "description": "Our roofing solutions ensure homeowners' peace of mind, safeguarding their investments.",
+    "icon": "roofingLeads",
+    "heroImage": "/placeholder-hero.jpg",
+    "incomingLeadCount": 1,
+    "avgCostPerLead": "$30"
+  },
+  {
+    "id": "siding-leads",
+    "slug": "siding-leads",
+    "name": "Siding Leads",
+    "category": "home-services",
+    "description": "Professional siding installation and repair services for your home.",
+    "icon": "sidingLeads",
+    "heroImage": "/placeholder-hero.jpg",
+    "incomingLeadCount": 1,
+    "avgCostPerLead": "$30"
+  },
+  {
+    "id": "tree-services-leads",
+    "slug": "tree-services-leads",
+    "name": "Tree Services Leads",
+    "category": "home-services",
+    "description": "Connect with homeowners needing tree removal and maintenance services.",
+    "icon": "treeServicesLeads",
+    "heroImage": "/placeholder-hero.jpg",
+    "incomingLeadCount": 1,
+    "avgCostPerLead": "$30"
+  },
+  {
+    "id": "water-damage-leads",
+    "slug": "water-damage-leads",
+    "name": "Water Damage Leads",
+    "category": "home-services",
+    "description": "Leverage our expansive network to connect with local homeowners seeking immediate assistance for water damage services.",
+    "icon": "waterDamageLeads",
+    "heroImage": "/placeholder-hero.jpg",
+    "incomingLeadCount": 1,
+    "avgCostPerLead": "$30"
+  },
+  {
+    "id": "medicare",
+    "slug": "medicare",
+    "name": "Medicare",
+    "category": "insurance",
+    "description": "Discover urgent requests from homeowners in our vicinity, seeking Medicare services.",
+    "icon": "medicare",
+    "heroImage": "/placeholder-hero.jpg",
+    "incomingLeadCount": 1,
+    "avgCostPerLead": "$30"
+  },
+  {
+    "id": "aca",
+    "slug": "aca",
+    "name": "ACA",
+    "category": "insurance",
+    "description": "Providing yearning for professionals to rejuvenate their healthcare coverage.",
+    "icon": "aca",
+    "heroImage": "/placeholder-hero.jpg",
+    "incomingLeadCount": 1,
+    "avgCostPerLead": "$30"
+  },
+  {
+    "id": "u65-health",
+    "slug": "u65-health",
+    "name": "U65 Health Insurance",
+    "category": "insurance",
+    "description": "Respond to the call of homeowners in our community, seeking health insurance.",
+    "icon": "u65Health",
+    "heroImage": "/placeholder-hero.jpg",
+    "incomingLeadCount": 1,
+    "avgCostPerLead": "$30"
+  },
+  {
+    "id": "home-insurance",
+    "slug": "home-insurance",
+    "name": "Home Insurance",
+    "category": "insurance",
+    "description": "Our network connects you with local homeowners seeking prompt assistance for home insurance services.",
+    "icon": "homeInsurance",
+    "heroImage": "/placeholder-hero.jpg",
+    "incomingLeadCount": 1,
+    "avgCostPerLead": "$30"
+  },
+  {
+    "id": "final-expense",
+    "slug": "final-expense",
+    "name": "Final Expense",
+    "category": "insurance",
+    "description": "We help customers seeking solutions for their final expense insurance needs.",
+    "icon": "finalExpense",
+    "heroImage": "/placeholder-hero.jpg",
+    "incomingLeadCount": 1,
+    "avgCostPerLead": "$30"
+  },
+  {
+    "id": "auto-insurance",
+    "slug": "auto-insurance",
+    "name": "Auto Insurance",
+    "category": "insurance",
+    "description": "With precision and care, we provide auto insurance solutions, offering comprehensive coverage.",
+    "icon": "autoInsurance",
+    "heroImage": "/placeholder-hero.jpg",
+    "incomingLeadCount": 1,
+    "avgCostPerLead": "$30"
+  }
+]
+

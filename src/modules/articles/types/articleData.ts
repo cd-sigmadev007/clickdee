@@ -31,6 +31,8 @@ export interface Article {
   heroImage?: string; // Path to hero image for single article page
   categories: ArticleCategory[]; // Can have multiple categories
   isFeatured?: boolean; // Featured articles appear first with special styling
+  isPopular?: boolean; // Popular articles for sidebar
+  isLatest?: boolean; // Latest articles for sidebar
   excerpt?: string; // Short description for listing pages
   readTime?: string; // e.g., "3 min read"
   tableOfContents?: TableOfContentsItem[]; // Table of contents items

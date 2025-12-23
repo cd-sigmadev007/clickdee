@@ -18,7 +18,7 @@ const benefitsChecklist: ChecklistSection = {
 
 const BenefitsTitleCard: React.FC = () => {
   return (
-    <div className="bg-neutral-900 flex flex-col gap-6 min-h-[470px] items-center justify-center px-6 py-12 relative w-full h-full overflow-hidden">
+    <div className="bg-neutral-900 flex flex-col gap-6 items-center justify-center px-6 py-12 relative w-full h-full overflow-hidden">
       {/* Grid background */}
 
 
@@ -90,6 +90,7 @@ const BenefitsTitleCard: React.FC = () => {
 export const AffiliateBenefitsChecklistSection: React.FC = () => {
   return (
     <ContentGrid
+        className='max-h-[390px]'
       left={benefitsChecklist}
       right={<BenefitsTitleCard />}
     />

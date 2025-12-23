@@ -13,4 +13,5 @@ export { ServiceCategoriesTabs } from './ServiceCategoriesTabs';
 export { ServicesGrid } from './ServicesGrid';
 export { USMap } from './USMap';
 export { StatsCards } from './StatsCards';
+export { BlogsSection } from './BlogsSection';
 

@@ -98,6 +98,10 @@ const bottomRowBadges: ServiceBadge[] = [
   },
 ];
 
+// Duplicate badges for seamless infinite scroll
+const duplicatedTopRow = [...topRowBadges, ...topRowBadges, ...topRowBadges];
+const duplicatedBottomRow = [...bottomRowBadges, ...bottomRowBadges, ...bottomRowBadges];
+
 const ServiceBadgeItem: React.FC<{ badge: ServiceBadge }> = ({ badge }) => (
   <div
     className="flex gap-1.5 items-center justify-center px-2 py-2 rounded-[10px] shadow-[0px_4.924px_12.31px_0px_rgba(0,0,0,0.05)] border border-primary-200 shrink-0"
@@ -123,7 +127,7 @@ const ServiceBadgeItem: React.FC<{ badge: ServiceBadge }> = ({ badge }) => (
 
 export const AffiliateServicesCard: React.FC = () => {
   return (
-    <div className="bg-gradient-to-b from-primary-600 to-primary-500 relative w-full h-full overflow-hidden">
+    <div className="bg-gradient-to-b from-primary-600 to-primary-500 relative w-full h-full overflow-hidden" style={{ overflow: 'hidden' }}>
       {/* Gridlines background - centered and flipped vertically */}
       <div className="absolute top-0 bottom-[50%] w-full h-auto pointer-events-none scale-y-[-1]">
         <img 
@@ -137,43 +141,65 @@ export const AffiliateServicesCard: React.FC = () => {
       <div 
         className="absolute left-1/2 z-10 pointer-events-none"
         style={{
-          top: '25%', // Center of the grid (which spans top 50% of container)
+          top: '20%', // Center of the grid (which spans top 50% of container)
           transform: 'translate(-50%, -50%)',
         }}
       >
         <Logo className="brightness-0 invert" />
       </div>
       
-      {/* Service badges */}
-      <div className="relative z-10 w-full h-full">
-        {/* Top row - 6 badges, centered */}
+      {/* Service badges - Carousel */}
+      <div className="relative z-10 w-full h-full" style={{ overflow: 'hidden' }}>
+        {/* Top row - Moving Left */}
         <div
-          className="absolute flex gap-6 items-center"
+          className="absolute flex gap-6 items-center whitespace-nowrap"
           style={{
-            left: 'calc(50% + 0.42px)',
             bottom: '20%',
-            transform: 'translateX(-50%)',
+            left: '0',
+            willChange: 'transform',
+            animation: 'scroll-left-services 60s linear infinite',
           }}
         >
-          {topRowBadges.map((badge) => (
-            <ServiceBadgeItem key={badge.id} badge={badge} />
+          {duplicatedTopRow.map((badge, index) => (
+            <ServiceBadgeItem key={`${badge.id}-${index}`} badge={badge} />
           ))}
         </div>
 
-        {/* Bottom row - 6 badges */}
+        {/* Bottom row - Moving Right */}
         <div
-          className="absolute flex gap-6 items-center"
+          className="absolute flex gap-6 items-center whitespace-nowrap"
           style={{
-            left: '-20.18px',
             bottom: '40%',
-            width: '879.183px',
+            left: '0',
+            willChange: 'transform',
+            animation: 'scroll-right-services 60s linear infinite',
           }}
         >
-          {bottomRowBadges.map((badge) => (
-            <ServiceBadgeItem key={badge.id} badge={badge} />
+          {duplicatedBottomRow.map((badge, index) => (
+            <ServiceBadgeItem key={`${badge.id}-${index}`} badge={badge} />
           ))}
         </div>
       </div>
+
+      <style>{`
+        @keyframes scroll-left-services {
+          0% {
+            transform: translateX(0);
+          }
+          100% {
+            transform: translateX(calc(-100% / 3));
+          }
+        }
+
+        @keyframes scroll-right-services {
+          0% {
+            transform: translateX(calc(-100% / 3));
+          }
+          100% {
+            transform: translateX(0);
+          }
+        }
+      `}</style>
     </div>
   );
 };

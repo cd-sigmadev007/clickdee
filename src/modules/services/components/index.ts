@@ -7,5 +7,6 @@ export { BenefitsSection } from './BenefitsSection';
 export type { ServiceHeroSectionProps } from './ServiceHeroSection';
 export type { FAQSectionProps, FAQItem } from './FAQSection';
 export type { ProcessSectionProps, ProcessStep } from './ProcessSection';
-export type { LeadProfilesSectionProps } from './LeadProfilesSection';
+export type { LeadProfilesSectionProps, LeadDetail } from './LeadProfilesSection';
 export type { BenefitsSectionProps } from './BenefitsSection';
+export type { CommitmentSectionProps, CommitmentFeature } from './CommitmentSection';

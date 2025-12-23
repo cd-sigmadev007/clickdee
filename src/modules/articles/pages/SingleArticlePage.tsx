@@ -1,8 +1,12 @@
 import React, { useMemo } from 'react';
 import { useParams, Navigate, useNavigate } from 'react-router-dom';
 import { ArticleHeroSection, ArticleContent, TableOfContents, ArticleSidebar, RelatedArticlesGrid } from '../components';
-import { articlesData } from '../data/articlesData';
-import { getArticleBySlug, getPopularArticles, getLatestArticles } from '../types/articleData';
+import {
+  getArticleBySlug,
+  getPopularArticles,
+  getLatestArticles,
+  getAllArticles,
+} from '../data/articlesDataLoader';
 import { CTASection } from '@/modules/home/components';
 
 const SingleArticlePage: React.FC = () => {
@@ -14,7 +18,7 @@ const SingleArticlePage: React.FC = () => {
     return <Navigate to="/articles" replace />;
   }
 
-  const article = getArticleBySlug(articlesData, slug);
+  const article = getArticleBySlug(slug);
 
   if (!article) {
     return <Navigate to="/articles" replace />;
@@ -23,14 +27,14 @@ const SingleArticlePage: React.FC = () => {
   // Get sidebar articles
   const sidebarArticles = useMemo(() => {
     if (sidebarTab === 'popular') {
-      return getPopularArticles(articlesData);
+      return getPopularArticles();
     }
-    return getLatestArticles(articlesData);
+    return getLatestArticles();
   }, [sidebarTab]);
 
   // Get related articles (exclude current article)
   const relatedArticles = useMemo(() => {
-    return articlesData
+    return getAllArticles()
       .filter(a => a.id !== article.id)
       .slice(0, 9); // Get up to 9 articles for 3x3 grid
   }, [article.id]);

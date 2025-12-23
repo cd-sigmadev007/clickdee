@@ -8,24 +8,24 @@ import {
   CategoryFilters,
   ArticleSearch,
 } from '../components';
-import { articlesData } from '../data/articlesData';
 import {
-  ArticleCategory,
   getArticlesByCategory,
-  filterArticlesBySearch,
   getPopularArticles,
   getLatestArticles,
-} from '../types/articleData';
+  getArticlesPageData,
+} from '../data/articlesDataLoader';
+import { ArticleCategory } from '../types/articleData';
 import chevronUpIcon from '@/assets/icons/heroicons_chevron-up.svg';
 import { CTASection } from '@/modules/home/components';
 
-const categoryOptions: Array<{ label: string; value: ArticleCategory }> = [
-  { label: 'All', value: 'all' },
-  { label: 'Pest Identification', value: 'pest-identification' },
-  { label: 'Prevention', value: 'prevention' },
-  { label: 'Insights', value: 'insights' },
-  { label: 'Pest control', value: 'pest-control' },
-];
+// Get category options from JSON data
+const articlesPageData = getArticlesPageData();
+const categoryOptions: Array<{ label: string; value: ArticleCategory }> = articlesPageData.categories.map(
+  (cat: { label: string; value: string }) => ({
+    label: cat.label,
+    value: cat.value as ArticleCategory,
+  })
+);
 
 const ArticlesPage: React.FC = () => {
   const navigate = useNavigate();
@@ -37,17 +37,24 @@ const ArticlesPage: React.FC = () => {
 
   // Filter articles based on category and search
   const filteredArticles = useMemo(() => {
-    let filtered = getArticlesByCategory(articlesData, activeCategory);
-    filtered = filterArticlesBySearch(filtered, searchQuery);
+    let filtered = getArticlesByCategory(activeCategory);
+    if (searchQuery.trim()) {
+      const query = searchQuery.toLowerCase();
+      filtered = filtered.filter(article =>
+        article.title.toLowerCase().includes(query) ||
+        article.excerpt?.toLowerCase().includes(query) ||
+        article.author.toLowerCase().includes(query)
+      );
+    }
     return filtered;
   }, [activeCategory, searchQuery]);
 
   // Get sidebar articles based on active tab
   const sidebarArticles = useMemo(() => {
     if (sidebarTab === 'popular') {
-      return getPopularArticles(articlesData);
+      return getPopularArticles();
     }
-    return getLatestArticles(articlesData);
+    return getLatestArticles();
   }, [sidebarTab]);
 
   // Match search bar width to sidebar width on desktop
@@ -81,7 +88,11 @@ const ArticlesPage: React.FC = () => {
   return (
     <div className="w-full bg-white">
       {/* Hero Section */}
-      <ArticlesHeroSection />
+      <ArticlesHeroSection
+        highlightedTitle={articlesPageData.hero.highlightedTitle}
+        title={articlesPageData.hero.title}
+        description={articlesPageData.hero.description}
+      />
 
       {/* Main Content */}
       <div className="flex flex-col gap-8 md:gap-[32px] items-start justify-center px-4 sm:px-6 md:px-6 lg:px-20 py-12 md:py-10 lg:py-12 relative shrink-0 w-full">

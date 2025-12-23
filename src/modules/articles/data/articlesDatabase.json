@@ -1,0 +1,468 @@
+{
+  "articlesPage": {
+    "hero": {
+      "highlightedTitle": "Explore insights",
+      "title": "from our experts",
+      "description": "Industry best practices, marketing news, case studies, tips and tricks, plus much more."
+    },
+    "categories": [
+      { "label": "All", "value": "all" },
+      { "label": "Pest Identification", "value": "pest-identification" },
+      { "label": "Prevention", "value": "prevention" },
+      { "label": "Insights", "value": "insights" },
+      { "label": "Pest control", "value": "pest-control" }
+    ]
+  },
+  "articles": [
+    {
+      "id": "natural-pest-control-remedies",
+      "slug": "natural-pest-control-remedies-eco-friendly-solutions",
+      "title": "Natural Pest Control Remedies: Eco-Friendly Solutions for a Pest-Free Home",
+      "date": "August 3, 2024",
+      "author": "Aishwarya Gindham",
+      "authorAvatar": "author-avatar.jpg",
+      "image": "natural-pest-control-remedies.jpg",
+      "heroImage": "natural-pest-control-hero.jpg",
+      "categories": ["pest-control", "prevention"],
+      "isFeatured": true,
+      "isPopular": true,
+      "isLatest": false,
+      "excerpt": "Discover eco-friendly ways to keep your home pest-free using natural remedies and sustainable solutions.",
+      "readTime": "3 min read",
+      "tableOfContents": [
+        { "id": "what-could-be-the-eco-friendly-solutions", "label": "What could be the eco-friendly solutions?" },
+        { "id": "essential-oils-as-repellents", "label": "Essential Oils as Repellents" },
+        { "id": "diatomaceous-earth-de", "label": "Diatomaceous Earth (DE)" },
+        { "id": "vinegar-for-ant-control", "label": "Vinegar for Ant Control" },
+        { "id": "baking-soda-for-cockroach-control", "label": "Baking Soda for Cockroach Control" },
+        { "id": "homemade-traps", "label": "Homemade Traps" },
+        { "id": "conclusion", "label": "Conclusion" }
+      ],
+      "content": {
+        "sections": [
+          {
+            "heading": "What could be the eco-friendly solutions?",
+            "paragraphs": [
+              "In the quest for a pest-free home, many homeowners are turning to natural pest control remedies as a safer and more eco-friendly alternative to chemical pesticides. These natural solutions not only help keep pests at bay but also minimize the environmental impact and reduce exposure to potentially harmful substances. In this blog post, we'll explore some effective natural pest control remedies that you can easily implement to protect your home and loved ones."
+            ]
+          },
+          {
+            "heading": "Essential Oils as Repellents",
+            "paragraphs": [
+              "Essential oils are potent extracts derived from plants and have long been used for their aromatic and medicinal properties. Many essential oils, such as peppermint, lavender, eucalyptus, and tea tree oil, are natural repellents for pests like ants, spiders, mosquitoes, and flies. You can create your own natural pest spray by diluting a few drops of essential oil in water and spraying it around entry points, windows, and other areas where pests may enter your home."
+            ]
+          },
+          {
+            "heading": "Diatomaceous Earth (DE)",
+            "paragraphs": [
+              "Diatomaceous earth is a naturally occurring sedimentary rock powder that is highly effective against crawling insects like ants, cockroaches, and bed bugs. DE works by absorbing the oils and fats from the exoskeletons of insects, causing them to dehydrate and die. Simply sprinkle diatomaceous earth in areas where pests are present, such as cracks, crevices, and along baseboards, to create a barrier against them."
+            ]
+          },
+          {
+            "heading": "Vinegar for Ant Control",
+            "paragraphs": [
+              "Vinegar is a versatile household ingredient that can be used to deter ants from invading your home. Mix equal parts of white vinegar and water in a spray bottle and apply it to ant trails, entry points, and other areas where ants are active. The strong scent of vinegar disrupts the ants' pheromone trails, making it difficult for them to navigate and communicate with each other, ultimately discouraging them from entering your home."
+            ]
+          },
+          {
+            "heading": "Baking Soda for Cockroach Control",
+            "paragraphs": [
+              "Baking soda, also known as sodium bicarbonate, is a common kitchen ingredient with natural pest control properties. Create a bait using equal parts of baking soda and powdered sugar and place it in areas frequented by cockroaches, such as under sinks, behind appliances, and in cabinets. Cockroaches are attracted to the sugar but are unable to digest the baking soda, leading to their eventual demise."
+            ]
+          },
+          {
+            "heading": "Homemade Traps",
+            "paragraphs": [
+              "Homemade traps are an effective and environmentally friendly way to capture and eliminate pests without the use of chemicals. You can create simple traps using household items such as jars, bottles, or cardboard tubes and bait them with food or attractants that are appealing to the target pests. Once the pests are trapped, you can safely release them outdoors or dispose of them as needed."
+            ]
+          },
+          {
+            "heading": "Conclusion",
+            "paragraphs": [
+              "Natural pest control remedies offer a safe, eco-friendly, and sustainable approach to managing pest infestations in your home. By harnessing the power of natural ingredients and simple DIY techniques, you can effectively keep pests at bay while minimizing your environmental footprint. Incorporate these natural pest control remedies into your home maintenance routine to create a healthier and pest-free living environment for you and your family."
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "common-household-pests",
+      "slug": "10-common-household-pests-identifying-preventing",
+      "title": "10 Common Household Pests: Identifying and Preventing Infestations",
+      "date": "August 3, 2024",
+      "author": "Aishwarya Gindham",
+      "authorAvatar": "author-avatar.jpg",
+      "image": "common-household-pests.jpg",
+      "categories": ["pest-control", "prevention"],
+      "isPopular": true,
+      "isLatest": true,
+      "excerpt": "Learn about the most common household pests and how to identify and prevent infestations before they become serious problems.",
+      "readTime": "5 min read",
+      "tableOfContents": [
+        { "id": "introduction", "label": "Introduction" },
+        { "id": "ants", "label": "Ants" },
+        { "id": "cockroaches", "label": "Cockroaches" },
+        { "id": "mice-and-rats", "label": "Mice and Rats" },
+        { "id": "spiders", "label": "Spiders" },
+        { "id": "prevention-tips", "label": "Prevention Tips" }
+      ],
+      "content": {
+        "sections": [
+          {
+            "heading": "Introduction",
+            "paragraphs": [
+              "Household pests are a common problem that many homeowners face. Understanding the types of pests that can invade your home and how to identify them is the first step in effective pest management. This comprehensive guide will help you recognize the most common household pests and provide strategies to prevent infestations."
+            ]
+          },
+          {
+            "heading": "Ants",
+            "paragraphs": [
+              "Ants are one of the most common household pests, especially during warmer months. They enter homes in search of food and water, often forming visible trails. Common species include carpenter ants, fire ants, and sugar ants. To prevent ant infestations, keep your kitchen clean, seal entry points, and eliminate standing water sources."
+            ]
+          },
+          {
+            "heading": "Cockroaches",
+            "paragraphs": [
+              "Cockroaches are resilient pests that can survive in various environments. They are attracted to warm, moist areas and can carry diseases. German cockroaches and American cockroaches are the most common types found in homes. Prevention involves maintaining cleanliness, fixing leaks, and sealing cracks and crevices."
+            ]
+          },
+          {
+            "heading": "Mice and Rats",
+            "paragraphs": [
+              "Rodents like mice and rats can cause significant damage to your home and pose health risks. They can chew through wires, insulation, and even structural elements. Signs of rodent infestation include droppings, gnaw marks, and scratching sounds. Seal entry points, store food properly, and maintain a clean environment to prevent rodent problems."
+            ]
+          },
+          {
+            "heading": "Spiders",
+            "paragraphs": [
+              "While most spiders are harmless, some species can be dangerous. Spiders enter homes seeking shelter and prey. Common household spiders include house spiders, cellar spiders, and occasionally black widows. Regular cleaning, reducing clutter, and sealing entry points can help prevent spider infestations."
+            ]
+          },
+          {
+            "heading": "Prevention Tips",
+            "paragraphs": [
+              "The best way to deal with household pests is prevention. Maintain cleanliness, seal entry points, eliminate moisture sources, and store food properly. Regular inspections and early intervention can prevent minor pest problems from becoming major infestations. If you notice signs of a significant infestation, consider consulting with a professional pest control service."
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "rodent-proofing-home",
+      "slug": "rodent-proofing-your-home-essential-tips-mice-rats",
+      "title": "Rodent-Proofing Your Home: Essential Tips for Keeping Mice and Rats Out",
+      "date": "August 3, 2024",
+      "author": "Aishwarya Gindham",
+      "authorAvatar": "author-avatar.jpg",
+      "image": "rodent-proofing-home.jpg",
+      "categories": ["pest-control", "prevention"],
+      "isPopular": true,
+      "isLatest": true,
+      "excerpt": "Essential tips and strategies to protect your home from rodents and keep mice and rats at bay.",
+      "readTime": "4 min read",
+      "tableOfContents": [
+        { "id": "why-rodent-proof", "label": "Why Rodent-Proof Your Home?" },
+        { "id": "seal-entry-points", "label": "Seal Entry Points" },
+        { "id": "eliminate-food-sources", "label": "Eliminate Food Sources" },
+        { "id": "maintain-cleanliness", "label": "Maintain Cleanliness" },
+        { "id": "professional-help", "label": "When to Seek Professional Help" }
+      ],
+      "content": {
+        "sections": [
+          {
+            "heading": "Why Rodent-Proof Your Home?",
+            "paragraphs": [
+              "Rodents like mice and rats can cause extensive damage to your property and pose serious health risks. They can chew through electrical wires, insulation, and structural materials, leading to costly repairs. Additionally, they can contaminate food and spread diseases. Rodent-proofing your home is essential for protecting your property and family's health."
+            ]
+          },
+          {
+            "heading": "Seal Entry Points",
+            "paragraphs": [
+              "Mice can squeeze through openings as small as a dime, while rats can enter through holes the size of a quarter. Inspect your home's exterior for cracks, gaps, and holes, especially around doors, windows, pipes, and vents. Use steel wool, caulk, or metal flashing to seal these entry points effectively."
+            ]
+          },
+          {
+            "heading": "Eliminate Food Sources",
+            "paragraphs": [
+              "Rodents are attracted to easily accessible food. Store all food in airtight containers, clean up spills immediately, and avoid leaving pet food out overnight. Keep garbage in sealed containers and dispose of it regularly. Remove fallen fruits and nuts from your yard, as these can attract rodents."
+            ]
+          },
+          {
+            "heading": "Maintain Cleanliness",
+            "paragraphs": [
+              "A clean home is less attractive to rodents. Regularly clean your kitchen, sweep floors, and vacuum carpets. Reduce clutter in storage areas like basements and attics, as these provide hiding places for rodents. Keep your yard tidy by trimming vegetation and removing debris."
+            ]
+          },
+          {
+            "heading": "When to Seek Professional Help",
+            "paragraphs": [
+              "If you notice signs of a significant rodent infestation, such as multiple droppings, gnaw marks, or scratching sounds, it's time to call a professional pest control service. Professionals have the expertise and tools to effectively eliminate rodent problems and prevent future infestations."
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "day-in-life-exterminator",
+      "slug": "behind-scenes-day-life-pest-exterminator",
+      "title": "Behind the Scenes: A Day in the Life of a Pest Exterminator",
+      "date": "August 3, 2024",
+      "author": "Aishwarya Gindham",
+      "authorAvatar": "author-avatar.jpg",
+      "image": "day-in-life-exterminator.jpg",
+      "categories": ["insights"],
+      "isPopular": true,
+      "isLatest": false,
+      "excerpt": "Get an inside look at what a day in the life of a professional pest exterminator really looks like.",
+      "readTime": "6 min read",
+      "tableOfContents": [
+        { "id": "morning-routine", "label": "Morning Routine" },
+        { "id": "on-site-inspections", "label": "On-Site Inspections" },
+        { "id": "treatment-process", "label": "Treatment Process" },
+        { "id": "customer-education", "label": "Customer Education" },
+        { "id": "challenges-rewards", "label": "Challenges and Rewards" }
+      ],
+      "content": {
+        "sections": [
+          {
+            "heading": "Morning Routine",
+            "paragraphs": [
+              "A typical day for a pest exterminator starts early, often before sunrise. The day begins with reviewing the schedule, preparing equipment, and loading the service vehicle with necessary tools and treatments. Safety is paramount, so checking personal protective equipment and ensuring all materials are properly labeled and stored is the first priority."
+            ]
+          },
+          {
+            "heading": "On-Site Inspections",
+            "paragraphs": [
+              "Each job begins with a thorough inspection of the property. Exterminators look for signs of pest activity, identify the type of pest, assess the extent of the infestation, and determine the best treatment approach. This inspection phase is crucial for developing an effective pest control strategy tailored to each unique situation."
+            ]
+          },
+          {
+            "heading": "Treatment Process",
+            "paragraphs": [
+              "After the inspection, exterminators implement the appropriate treatment plan. This may involve applying pesticides, setting traps, sealing entry points, or using integrated pest management techniques. The goal is to eliminate current pests while preventing future infestations, always prioritizing safety for residents and pets."
+            ]
+          },
+          {
+            "heading": "Customer Education",
+            "paragraphs": [
+              "An important part of an exterminator's job is educating customers about pest prevention. They explain what attracted the pests, how to prevent future problems, and what signs to watch for. This educational component helps homeowners maintain a pest-free environment long after the treatment is complete."
+            ]
+          },
+          {
+            "heading": "Challenges and Rewards",
+            "paragraphs": [
+              "Pest extermination can be physically demanding and requires problem-solving skills. Exterminators face various challenges, from difficult-to-reach infestation sites to unique pest behaviors. However, the reward comes from helping homeowners regain peace of mind and protecting their properties from damage and health risks."
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "climate-change-pest-infestations",
+      "slug": "impact-climate-change-pest-infestations-need-know",
+      "title": "The Impact of Climate Change on Pest Infestations: What You Need to Know",
+      "date": "August 3, 2024",
+      "author": "Aishwarya Gindham",
+      "authorAvatar": "author-avatar.jpg",
+      "image": "climate-change-pest-infestations.jpg",
+      "categories": ["insights"],
+      "isPopular": true,
+      "isLatest": false,
+      "excerpt": "Understanding how climate change is affecting pest populations and what it means for homeowners.",
+      "readTime": "7 min read",
+      "tableOfContents": [
+        { "id": "climate-pest-connection", "label": "The Climate-Pest Connection" },
+        { "id": "warmer-temperatures", "label": "Warmer Temperatures" },
+        { "id": "changing-patterns", "label": "Changing Pest Patterns" },
+        { "id": "new-threats", "label": "New Pest Threats" },
+        { "id": "adaptation-strategies", "label": "Adaptation Strategies" }
+      ],
+      "content": {
+        "sections": [
+          {
+            "heading": "The Climate-Pest Connection",
+            "paragraphs": [
+              "Climate change is having a significant impact on pest populations worldwide. Rising temperatures, changing precipitation patterns, and shifting seasons are creating new challenges for pest management. Understanding these changes is crucial for homeowners who want to protect their properties from increasingly aggressive pest infestations."
+            ]
+          },
+          {
+            "heading": "Warmer Temperatures",
+            "paragraphs": [
+              "Warmer temperatures allow pests to survive in regions where they previously couldn't. Many pest species are expanding their ranges northward, bringing new threats to areas that haven't dealt with them before. Additionally, warmer winters mean fewer pests die off, leading to larger populations in the spring and summer months."
+            ]
+          },
+          {
+            "heading": "Changing Pest Patterns",
+            "paragraphs": [
+              "Climate change is altering the timing and behavior of pest activity. Some pests are becoming active earlier in the year and remaining active later into the fall. This extended activity period means homeowners need to be vigilant for longer periods and may require more frequent pest control treatments."
+            ]
+          },
+          {
+            "heading": "New Pest Threats",
+            "paragraphs": [
+              "As climate conditions change, new pest species are emerging in areas where they weren't previously found. This includes both native pests expanding their ranges and invasive species finding new suitable habitats. Homeowners may encounter pests they've never seen before, requiring updated pest management strategies."
+            ]
+          },
+          {
+            "heading": "Adaptation Strategies",
+            "paragraphs": [
+              "To adapt to changing pest patterns, homeowners should focus on integrated pest management approaches. This includes maintaining proper home maintenance, sealing entry points, eliminating moisture sources, and working with pest control professionals who understand the evolving pest landscape. Regular inspections and proactive prevention are more important than ever."
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "pest-prevention-tips",
+      "slug": "ultimate-pest-prevention-tips-homeowners",
+      "title": "Ultimate Pest Prevention Tips for Homeowners",
+      "date": "August 10, 2024",
+      "author": "Aishwarya Gindham",
+      "authorAvatar": "author-avatar.jpg",
+      "image": "common-household-pests.jpg",
+      "categories": ["prevention", "pest-control"],
+      "isPopular": false,
+      "isLatest": true,
+      "excerpt": "Comprehensive guide to preventing pests from entering your home with practical, easy-to-implement tips.",
+      "readTime": "5 min read",
+      "tableOfContents": [
+        { "id": "seal-your-home", "label": "Seal Your Home" },
+        { "id": "maintain-cleanliness", "label": "Maintain Cleanliness" },
+        { "id": "proper-storage", "label": "Proper Food Storage" },
+        { "id": "moisture-control", "label": "Moisture Control" },
+        { "id": "regular-inspections", "label": "Regular Inspections" }
+      ],
+      "content": {
+        "sections": [
+          {
+            "heading": "Seal Your Home",
+            "paragraphs": [
+              "The first line of defense against pests is sealing your home. Inspect the exterior of your home for cracks, gaps, and holes. Pay special attention to areas around windows, doors, pipes, and utility lines. Use caulk, weatherstripping, or steel wool to seal these entry points and prevent pests from gaining access to your home."
+            ]
+          },
+          {
+            "heading": "Maintain Cleanliness",
+            "paragraphs": [
+              "A clean home is less attractive to pests. Regularly clean your kitchen, especially after cooking, to remove food particles and spills. Vacuum carpets and sweep floors regularly. Don't forget to clean behind appliances and in hard-to-reach areas where crumbs and debris can accumulate."
+            ]
+          },
+          {
+            "heading": "Proper Food Storage",
+            "paragraphs": [
+              "Store all food in airtight containers made of glass, metal, or thick plastic. This includes dry goods, pet food, and even items in your pantry. Pests are attracted to easily accessible food sources, so proper storage is essential for prevention."
+            ]
+          },
+          {
+            "heading": "Moisture Control",
+            "paragraphs": [
+              "Many pests are attracted to moisture. Fix leaky pipes, ensure proper drainage around your home, and use dehumidifiers in damp areas like basements. Keep gutters clean and ensure water flows away from your foundation to prevent moisture buildup."
+            ]
+          },
+          {
+            "heading": "Regular Inspections",
+            "paragraphs": [
+              "Conduct regular inspections of your home, both inside and out. Look for signs of pest activity such as droppings, gnaw marks, or damaged materials. Early detection allows for quicker intervention and prevents minor problems from becoming major infestations."
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "identifying-pest-damage",
+      "slug": "how-to-identify-pest-damage-your-home",
+      "title": "How to Identify Pest Damage in Your Home",
+      "date": "August 15, 2024",
+      "author": "Aishwarya Gindham",
+      "authorAvatar": "author-avatar.jpg",
+      "image": "common-household-pests.jpg",
+      "categories": ["pest-identification"],
+      "isPopular": false,
+      "isLatest": true,
+      "excerpt": "Learn to recognize the signs of pest damage and take action before it becomes a serious problem.",
+      "readTime": "4 min read",
+      "tableOfContents": [
+        { "id": "visual-signs", "label": "Visual Signs of Damage" },
+        { "id": "structural-damage", "label": "Structural Damage" },
+        { "id": "electrical-issues", "label": "Electrical Issues" },
+        { "id": "when-to-call-professional", "label": "When to Call a Professional" }
+      ],
+      "content": {
+        "sections": [
+          {
+            "heading": "Visual Signs of Damage",
+            "paragraphs": [
+              "The most obvious signs of pest damage include visible holes, gnaw marks, and damaged materials. Look for small holes in walls, baseboards, or furniture. Check for shredded materials like paper, fabric, or insulation. These signs often indicate the presence of rodents or other destructive pests."
+            ]
+          },
+          {
+            "heading": "Structural Damage",
+            "paragraphs": [
+              "Some pests can cause significant structural damage. Termites, carpenter ants, and wood-boring beetles can weaken wooden structures. Look for sagging floors, hollow-sounding wood, or visible tunnels in wood. Early detection of structural damage is crucial for preventing costly repairs."
+            ]
+          },
+          {
+            "heading": "Electrical Issues",
+            "paragraphs": [
+              "Rodents often chew through electrical wires, which can create fire hazards. If you experience unexplained electrical issues, flickering lights, or circuit breaker problems, it could be a sign of pest damage. Have an electrician inspect your wiring if you suspect pest-related damage."
+            ]
+          },
+          {
+            "heading": "When to Call a Professional",
+            "paragraphs": [
+              "If you notice significant damage or signs of an active infestation, it's time to call a professional pest control service. Professionals can assess the extent of the damage, identify the pest responsible, and develop an effective treatment and prevention plan."
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "seasonal-pest-guide",
+      "slug": "seasonal-pest-control-guide-year-round-protection",
+      "title": "Seasonal Pest Control Guide: Year-Round Protection",
+      "date": "August 20, 2024",
+      "author": "Aishwarya Gindham",
+      "authorAvatar": "author-avatar.jpg",
+      "image": "common-household-pests.jpg",
+      "categories": ["prevention", "insights"],
+      "isPopular": false,
+      "isLatest": true,
+      "excerpt": "A comprehensive guide to pest control throughout the year, with season-specific tips and strategies.",
+      "readTime": "6 min read",
+      "tableOfContents": [
+        { "id": "spring-preparation", "label": "Spring Preparation" },
+        { "id": "summer-maintenance", "label": "Summer Maintenance" },
+        { "id": "fall-prevention", "label": "Fall Prevention" },
+        { "id": "winter-protection", "label": "Winter Protection" }
+      ],
+      "content": {
+        "sections": [
+          {
+            "heading": "Spring Preparation",
+            "paragraphs": [
+              "Spring is the time when many pests become active after winter dormancy. Inspect your home for any damage that occurred during winter, seal new entry points, and clean up debris from your yard. This is also a good time to schedule a professional inspection to catch any problems early."
+            ]
+          },
+          {
+            "heading": "Summer Maintenance",
+            "paragraphs": [
+              "Summer brings peak pest activity. Maintain your yard by trimming vegetation away from your home, eliminating standing water, and keeping garbage sealed. Regularly inspect your home's exterior and interior for signs of pest activity. Consider preventive treatments during this high-activity season."
+            ]
+          },
+          {
+            "heading": "Fall Prevention",
+            "paragraphs": [
+              "As temperatures drop, pests seek warm shelter, often entering homes. Seal all entry points, store firewood away from your home, and clean gutters to prevent moisture buildup. This is a critical time to prevent pests from establishing themselves in your home for the winter."
+            ]
+          },
+          {
+            "heading": "Winter Protection",
+            "paragraphs": [
+              "During winter, focus on maintaining a clean, dry environment indoors. Reduce clutter that provides hiding places, store food properly, and address any moisture issues. While pest activity may decrease, prevention during winter prevents spring infestations."
+            ]
+          }
+        ]
+      }
+    }
+  ]
+}
+

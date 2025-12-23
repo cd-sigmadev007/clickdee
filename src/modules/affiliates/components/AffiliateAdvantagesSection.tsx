@@ -53,9 +53,17 @@ const advantages: AdvantageCard[] = [
   },
 ];
 
+// Split advantages into two rows
+const row1 = advantages.slice(0, 3);
+const row2 = advantages.slice(3, 6);
+
+// Duplicate items for seamless infinite scroll
+const duplicatedRow1 = [...row1, ...row1, ...row1];
+const duplicatedRow2 = [...row2, ...row2, ...row2];
+
 export const AffiliateAdvantagesSection: React.FC = () => {
   return (
-    <div className="bg-neutral-100 flex flex-col gap-8 lg:gap-[32px] items-center justify-center px-4 py-8 sm:px-6 sm:py-12 lg:px-[80px] lg:py-[88px] w-full">
+    <div className="bg-neutral-100 flex flex-col gap-8 lg:gap-[32px] items-center justify-center px-4 py-8 sm:px-6 sm:py-12 lg:px-[80px] lg:py-[88px] w-full overflow-hidden">
       {/* Title */}
       <div className="flex flex-col sm:flex-row gap-[10px] items-center justify-center">
         <Typography variant="h1" weight="bold" className="text-neutral-900 text-center sm:text-left">
@@ -75,40 +83,85 @@ export const AffiliateAdvantagesSection: React.FC = () => {
         and streamline your business growth effortlessly.
       </Typography>
 
-      {/* Advantages Grid */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 lg:gap-[16px] w-full max-w-7xl">
-        {advantages.map((advantage) => (
-          <Card
-            key={advantage.id}
-            variant="bordered"
-            className="flex flex-col gap-6 justify-between p-8 h-full"
-          >
-            {/* Header with Title and Icon */}
-            <div className="flex items-start justify-between w-full">
-              <Typography
-                variant="h3"
-                weight="bold"
-                className="text-neutral-900 flex-1"
-              >
-                {advantage.title}
-              </Typography>
-              <img
-                src={advantage.icon}
-                alt=""
-                className="w-8 h-8 flex-shrink-0 ml-4"
-              />
-            </div>
+      {/* Carousel Container */}
+      <div className="w-full max-w-7xl flex flex-col gap-4 lg:gap-[16px] overflow-hidden">
+        {/* Row 1 - Moving Left */}
+        <div className="relative overflow-hidden">
+          <div className="flex gap-4 lg:gap-[16px] animate-scroll-left">
+            {duplicatedRow1.map((advantage, index) => (
+              <div key={`${advantage.id}-${index}`} className="flex-shrink-0 w-[calc((100%-32px)/3)] md:w-[calc((100%-32px)/3)] lg:w-[calc((100%-32px)/3)]">
+                <Card
+                  variant="bordered"
+                  className="flex flex-col gap-6 justify-between p-8 h-full"
+                >
+                  {/* Header with Title and Icon */}
+                  <div className="flex items-start justify-between w-full">
+                    <Typography
+                      variant="h3"
+                      weight="bold"
+                      className="text-neutral-900 flex-1"
+                    >
+                      {advantage.title}
+                    </Typography>
+                    <img
+                      src={advantage.icon}
+                      alt=""
+                      className="w-8 h-8 flex-shrink-0 ml-4"
+                    />
+                  </div>
 
-            {/* Description */}
-            <Typography
-              variant="s"
-              weight="medium"
-              className="text-neutral-500 leading-[1.3]"
-            >
-              {advantage.description}
-            </Typography>
-          </Card>
-        ))}
+                  {/* Description */}
+                  <Typography
+                    variant="s"
+                    weight="medium"
+                    className="text-neutral-500 leading-[1.3]"
+                  >
+                    {advantage.description}
+                  </Typography>
+                </Card>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* Row 2 - Moving Right */}
+        <div className="relative overflow-hidden">
+          <div className="flex gap-4 lg:gap-[16px] animate-scroll-right">
+            {duplicatedRow2.map((advantage, index) => (
+              <div key={`${advantage.id}-${index}`} className="flex-shrink-0 w-[calc((100%-32px)/3)] md:w-[calc((100%-32px)/3)] lg:w-[calc((100%-32px)/3)]">
+                <Card
+                  variant="bordered"
+                  className="flex flex-col gap-6 justify-between p-8 h-full"
+                >
+                  {/* Header with Title and Icon */}
+                  <div className="flex items-start justify-between w-full">
+                    <Typography
+                      variant="h3"
+                      weight="bold"
+                      className="text-neutral-900 flex-1"
+                    >
+                      {advantage.title}
+                    </Typography>
+                    <img
+                      src={advantage.icon}
+                      alt=""
+                      className="w-8 h-8 flex-shrink-0 ml-4"
+                    />
+                  </div>
+
+                  {/* Description */}
+                  <Typography
+                    variant="s"
+                    weight="medium"
+                    className="text-neutral-500 leading-[1.3]"
+                  >
+                    {advantage.description}
+                  </Typography>
+                </Card>
+              </div>
+            ))}
+          </div>
+        </div>
       </div>
     </div>
   );

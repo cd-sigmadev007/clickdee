@@ -117,8 +117,13 @@ const renderChecklistSection = (section: ChecklistSection, className?: string) =
         <div key={index} className="flex gap-[14px] items-start w-full">
           <div className="flex-shrink-0 w-[22px] h-[22px] flex items-center justify-center">
             <svg width="22" height="22" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <circle cx="11" cy="11" r="10" fill="#18181B"/>
-              <path d="M7 11L10 14L15 8" stroke="white" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+              <mask id={`mask0_1_13544_${index}`} style={{maskType: 'luminance'}} maskUnits="userSpaceOnUse" x="2" y="2" width="18" height="18">
+                <path d="M11.0002 18.5627C11.9936 18.564 12.9774 18.369 13.8951 17.9888C14.8128 17.6087 15.6464 17.0509 16.3478 16.3476C17.0512 15.6461 17.6089 14.8126 17.9891 13.8948C18.3692 12.9771 18.5642 11.9933 18.563 11C18.5642 10.0067 18.3692 9.02286 17.989 8.10514C17.6089 7.18742 17.0511 6.35387 16.3478 5.65238C15.6464 4.94906 14.8128 4.3913 13.8951 4.01115C12.9774 3.63101 11.9936 3.43598 11.0002 3.43726C10.0069 3.436 9.0231 3.63104 8.10538 4.01118C7.18766 4.39133 6.35411 4.94908 5.65263 5.65238C4.94932 6.35387 4.39157 7.18742 4.01143 8.10514C3.63128 9.02286 3.43624 10.0067 3.43751 11C3.43622 11.9933 3.63125 12.9771 4.0114 13.8948C4.39154 14.8126 4.94931 15.6461 5.65263 16.3476C6.35411 17.0509 7.18766 17.6086 8.10538 17.9888C9.0231 18.3689 10.0069 18.564 11.0002 18.5627Z" fill="white" stroke="white" strokeWidth="1.5" strokeLinejoin="round"/>
+                <path d="M7.97656 11L10.2454 13.2688L14.783 8.7312" stroke="black" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+              </mask>
+              <g mask={`url(#mask0_1_13544_${index})`}>
+                <path d="M1.92578 1.92456H20.0763V20.0751H1.92578V1.92456Z" fill="#71717A"/>
+              </g>
             </svg>
           </div>
           <div className={`font-satoshi not-italic text-s font-medium ${textColor} leading-[1.3] flex-1`}>

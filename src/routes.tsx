@@ -3,6 +3,7 @@ import { HomePage } from './modules/home';
 import { AboutUsPage } from './modules/about';
 import { PartnersPage } from './modules/partners';
 import { ServicePage } from './modules/services';
+import ServicesPage from './modules/services/pages/ServicesPage';
 import { ArticlesPage } from './modules/articles';
 import SingleArticlePage from './modules/articles/pages/SingleArticlePage';
 import { ContactUsPage } from './modules/contact';
@@ -23,6 +24,10 @@ export const routes: RouteObject[] = [
   {
     path: '/partners',
     element: <PartnersPage />,
+  },
+  {
+    path: '/services',
+    element: <ServicesPage />,
   },
   {
     path: '/services/:slug',

@@ -7,17 +7,34 @@ import baseMapImage from '@/assets/images/base-map.png';
 import mapMarkerIcon from '@/assets/images/services-map-marker.svg';
 import avatarAlbertFlores from '@/assets/images/avatar-peter-renolds.png'; // Using available avatar as placeholder
 
-export interface LeadProfilesSectionProps {
-  className?: string;
-}
-
-interface LeadDetail {
+export interface LeadDetail {
   label: string;
   value: string;
   centerAlign?: boolean;
 }
 
-const firstGroupDetails: LeadDetail[] = [
+export interface LeadProfilesSectionProps {
+  className?: string;
+  title?: string;
+  highlightedTitle?: string;
+  description?: string;
+  leadDetails?: {
+    firstGroup: LeadDetail[];
+    secondGroup: LeadDetail[];
+  };
+  testimonial?: {
+    name: string;
+    role: string;
+    text: string;
+  };
+  pricing?: {
+    title: string;
+    description: string;
+    ctaText: string;
+  };
+}
+
+const defaultFirstGroupDetails: LeadDetail[] = [
   { label: 'Project', value: 'Fire damage', centerAlign: true },
   { label: 'Location Type', value: 'Residence', centerAlign: true },
   { label: 'Homeowner', value: 'Yes', centerAlign: true },
@@ -27,9 +44,9 @@ const firstGroupDetails: LeadDetail[] = [
   { label: 'Claim Insured', value: 'Yes', centerAlign: true },
 ];
 
-const secondGroupDetails: LeadDetail[] = [
+const defaultSecondGroupDetails: LeadDetail[] = [
   { label: 'Address', value: '123 Main Street Omaha, NE (68007)', centerAlign: false },
-  { label: 'Contact', value: '(855) 387-7272 help@inquirly.com', centerAlign: true },
+  { label: 'Contact', value: '(855) 387-7272 help@clickdee.com', centerAlign: true },
   { label: 'Average Winning Cost Per Lead', value: '$350*', centerAlign: true },
 ];
 
@@ -44,7 +61,15 @@ const Divider = () => (
   </div>
 );
 
-export const LeadProfilesSection: React.FC<LeadProfilesSectionProps> = ({ className = '' }) => {
+export const LeadProfilesSection: React.FC<LeadProfilesSectionProps> = ({ 
+  className = '',
+  title = 'Visualizing your',
+  highlightedTitle = 'Lead Profiles',
+  description = 'We sell restoration leads on a per-lead basis with no minimums and no monthly commitments.',
+  leadDetails,
+  testimonial,
+  pricing,
+}) => {
   const ChevronIcon = () => (
     <img
       src={chevronUpIcon}
@@ -52,6 +77,9 @@ export const LeadProfilesSection: React.FC<LeadProfilesSectionProps> = ({ classN
       className="w-4 h-4 rotate-[270deg] scale-y-[-100%] brightness-0 invert"
     />
   );
+
+  const firstGroupDetails = leadDetails?.firstGroup || defaultFirstGroupDetails;
+  const secondGroupDetails = leadDetails?.secondGroup || defaultSecondGroupDetails;
 
   return (
     <div className={`bg-primary-500 flex flex-col gap-6 sm:gap-8 lg:gap-[32px] items-center justify-center w-full relative overflow-hidden ${className}`}>
@@ -70,7 +98,7 @@ export const LeadProfilesSection: React.FC<LeadProfilesSectionProps> = ({ classN
             weight="bold"
             className="text-white text-center sm:text-left"
           >
-            Visualizing your
+            {title}
           </Typography>
           <div className="bg-primary-100 px-[10px] py-[5px] rounded-[10px]">
             <Typography
@@ -78,7 +106,7 @@ export const LeadProfilesSection: React.FC<LeadProfilesSectionProps> = ({ classN
               weight="bold"
               className="text-primary-500 whitespace-nowrap"
             >
-              Lead Profiles
+              {highlightedTitle}
             </Typography>
           </div>
         </div>
@@ -87,7 +115,7 @@ export const LeadProfilesSection: React.FC<LeadProfilesSectionProps> = ({ classN
           weight="medium"
           className="text-white text-center leading-[1.3] max-w-4xl"
         >
-          We sell fire leads leads on a per-lead basis with no minimums and no monthly commitments.
+          {description}
         </Typography>
       </div>
 
@@ -168,68 +196,72 @@ export const LeadProfilesSection: React.FC<LeadProfilesSectionProps> = ({ classN
               </div>
 
               {/* Client Testimonial */}
-              <div className="flex flex-col sm:flex-row gap-4 sm:gap-[40px] items-start sm:items-center px-0 py-[14px] rounded-[20px] shrink-0 w-full">
-                <div className="flex gap-[10px] items-center shrink-0">
-                  <div className="shrink-0 w-12 h-12">
-                    <img
-                      src={avatarAlbertFlores}
-                      alt="Albert Flores"
-                      className="w-12 h-12 object-cover rounded-full"
-                    />
+              {testimonial && (
+                <div className="flex flex-col sm:flex-row gap-4 sm:gap-[40px] items-start sm:items-center px-0 py-[14px] rounded-[20px] shrink-0 w-full">
+                  <div className="flex gap-[10px] items-center shrink-0">
+                    <div className="shrink-0 w-12 h-12">
+                      <img
+                        src={avatarAlbertFlores}
+                        alt={testimonial.name}
+                        className="w-12 h-12 object-cover rounded-full"
+                      />
+                    </div>
+                    <div className="flex flex-col gap-[4px] items-start justify-center leading-[1.3] not-italic shrink-0 text-s text-center text-nowrap">
+                      <Typography
+                        variant="s"
+                        weight="bold"
+                        className="text-neutral-800 shrink-0"
+                      >
+                        {testimonial.name}
+                      </Typography>
+                      <Typography
+                        variant="s"
+                        weight="medium"
+                        className="text-neutral-500 shrink-0"
+                      >
+                        {testimonial.role}
+                      </Typography>
+                    </div>
                   </div>
-                  <div className="flex flex-col gap-[4px] items-start justify-center leading-[1.3] not-italic shrink-0 text-s text-center text-nowrap">
-                    <Typography
-                      variant="s"
-                      weight="bold"
-                      className="text-neutral-800 shrink-0"
-                    >
-                      Albert Flores
-                    </Typography>
-                    <Typography
-                      variant="s"
-                      weight="medium"
-                      className="text-neutral-500 shrink-0"
-                    >
-                      Client
-                    </Typography>
-                  </div>
+                  <Typography
+                    variant="xs"
+                    weight="medium"
+                    className="basis-0 grow min-w-0 shrink-0 text-neutral-500 leading-[1.3]"
+                  >
+                    {testimonial.text}
+                  </Typography>
                 </div>
-                <Typography
-                  variant="xs"
-                  weight="medium"
-                  className="basis-0 grow min-w-0 shrink-0 text-neutral-500 leading-[1.3]"
-                >
-                  &quot;Kitchen cabinets caught on fire. Need clean up services and smoke odor removal.&quot;
-                </Typography>
-              </div>
+              )}
             </div>
           </div>
 
           {/* Lower Section: Lead Pricing and CTA */}
-          <div className="bg-white flex flex-col lg:flex-row gap-4 lg:gap-[32px] items-start lg:items-center overflow-hidden px-4 sm:px-6 lg:px-[32px] py-4 sm:py-6 lg:py-[24px] rounded-bl-[20px] rounded-br-[20px] shrink-0 w-full">
-            <Typography
-              variant="p"
-              weight="bold"
-              className="text-neutral-900 leading-[1.3] shrink-0 text-nowrap"
-            >
-              Lead Pricing and Criteria
-            </Typography>
-            <Typography
-              variant="xs"
-              weight="medium"
-              className="basis-0 grow min-w-0 shrink-0 text-neutral-500 leading-[1.3]"
-            >
-              We offer fire damage leads individually, without any minimum requirements or monthly commitments. Our pricing depends on the lead type: form leads range from $75 to $200 per lead, while calls range from $100 to $900 per call.
-            </Typography>
-            <Button
-              variant="primary"
-              icon={<ChevronIcon />}
-              iconPosition="right"
-              className="px-[24px] py-[14px] gap-[5px] shrink-0 w-full lg:w-auto"
-            >
-              Contact Us
-            </Button>
-          </div>
+          {pricing && (
+            <div className="bg-white flex flex-col lg:flex-row gap-4 lg:gap-[32px] items-start lg:items-center overflow-hidden px-4 sm:px-6 lg:px-[32px] py-4 sm:py-6 lg:py-[24px] rounded-bl-[20px] rounded-br-[20px] shrink-0 w-full">
+              <Typography
+                variant="p"
+                weight="bold"
+                className="text-neutral-900 leading-[1.3] shrink-0 text-nowrap"
+              >
+                {pricing.title}
+              </Typography>
+              <Typography
+                variant="xs"
+                weight="medium"
+                className="basis-0 grow min-w-0 shrink-0 text-neutral-500 leading-[1.3]"
+              >
+                {pricing.description}
+              </Typography>
+              <Button
+                variant="primary"
+                icon={<ChevronIcon />}
+                iconPosition="right"
+                className="px-[24px] py-[14px] gap-[5px] shrink-0 w-full lg:w-auto"
+              >
+                {pricing.ctaText}
+              </Button>
+            </div>
+          )}
         </div>
       </div>
     </div>

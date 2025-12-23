@@ -1,7 +1,6 @@
 import React from 'react';
 import { HeroBackground } from '@/components/HeroBackground';
 import { Typography } from '@/components';
-import { Button } from '@/components/Button';
 
 export const PartnersHeroSection: React.FC = () => {
   return (

@@ -2,8 +2,7 @@ import React from 'react';
 import { useParams, Navigate } from 'react-router-dom';
 import { Typography, TestimonialsSection } from '@/components';
 import { ServiceHeroSection, CommitmentSection, FAQSection, ProcessSection, LeadProfilesSection, BenefitsSection } from '../components';
-import { getServiceBySlug } from '../types/serviceData';
-import { fireRestorationFAQ } from '../data/faqData';
+import { getServiceBySlug, getPageSectionsData, convertToServicePageData } from '../data/servicesDataLoader';
 
 const ServicePage: React.FC = () => {
   const { slug } = useParams<{ slug: string }>();
@@ -31,25 +30,70 @@ const ServicePage: React.FC = () => {
     );
   }
 
-  // Get FAQ data based on service slug
-  const getFAQData = () => {
-    switch (service.slug) {
-      case 'fire-damage-leads':
-        return fireRestorationFAQ;
-      // Add more cases for other services as needed
-      default:
-        return fireRestorationFAQ; // Default fallback
-    }
-  };
+  // Get page-specific sections data for this service
+  const pageData = getPageSectionsData(slug);
+
+  // Convert ServiceData to ServicePageData format
+  const servicePageData = convertToServicePageData(service);
 
   return (
     <div className="w-full bg-primary-500">
-      <ServiceHeroSection service={service} />
-      <CommitmentSection />
-      <FAQSection items={getFAQData()} defaultOpen={['quality']} />
-      <ProcessSection />
-      <LeadProfilesSection />
-      <BenefitsSection />
+      <ServiceHeroSection service={servicePageData} />
+      
+      {/* Commitment Section */}
+      {pageData.commitment && (
+        <CommitmentSection 
+          title={pageData.commitment.title}
+          highlightedTitle={pageData.commitment.highlightedTitle}
+          description={pageData.commitment.description}
+          features={pageData.commitment.features}
+          banner={pageData.commitment.banner}
+        />
+      )}
+
+      {/* FAQ Section */}
+      {pageData.faq && (
+        <FAQSection 
+          title={pageData.faq.title}
+          items={pageData.faq.items} 
+          defaultOpen={pageData.faq.defaultOpen} 
+        />
+      )}
+
+      {/* Process Section */}
+      {pageData.process && (
+        <ProcessSection
+          title={pageData.process.title}
+          subtitle={pageData.process.subtitle}
+          description={pageData.process.description}
+          steps={pageData.process.steps}
+        />
+      )}
+
+      {/* Lead Profiles Section */}
+      {pageData.leadProfiles && (
+        <LeadProfilesSection
+          title={pageData.leadProfiles.title}
+          highlightedTitle={pageData.leadProfiles.highlightedTitle}
+          description={pageData.leadProfiles.description}
+          leadDetails={pageData.leadProfiles.leadDetails}
+          testimonial={pageData.leadProfiles.testimonial}
+          pricing={pageData.leadProfiles.pricing}
+        />
+      )}
+
+      {/* Benefits Section */}
+      {pageData.benefits && (
+        <BenefitsSection
+          fireRestorationCard={pageData.benefits.fireRestorationCard}
+          payPerLeadCard={pageData.benefits.payPerLeadCard}
+          spendingRevenueCard={pageData.benefits.spendingRevenueCard}
+          shareInterestsCard={pageData.benefits.shareInterestsCard}
+          avoidWastingCard={pageData.benefits.avoidWastingCard}
+          trackROICard={pageData.benefits.trackROICard}
+        />
+      )}
+
       <TestimonialsSection />
     </div>
   );
