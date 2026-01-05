@@ -130,7 +130,7 @@ export const ContactHeroSection: React.FC = () => {
                   </Typography>
                 </div>
               )}
-              <ContactForm onSubmit={handleSubmit} disabled={isSubmitting} />
+              <ContactForm onSubmit={handleSubmit} disabled={isSubmitting} loading={isSubmitting} />
             </div>
           </motion.div>
         ) : (

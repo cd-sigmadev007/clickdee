@@ -22,6 +22,7 @@ export interface MultiStepFormProps {
   darkFooter?: boolean;
   fieldHeight?: number; // Height for input and select fields, defaults to 44px
   disabled?: boolean; // Disable form submission
+  loading?: boolean; // Show loading spinner on submit button
 }
 
 export const MultiStepForm: React.FC<MultiStepFormProps> = ({
@@ -33,6 +34,7 @@ export const MultiStepForm: React.FC<MultiStepFormProps> = ({
   darkFooter = false,
   fieldHeight = 44,
   disabled = false,
+  loading = false,
 }) => {
   const {
     currentStep,
@@ -503,6 +505,7 @@ export const MultiStepForm: React.FC<MultiStepFormProps> = ({
               variant={isStep3 && !isStepValid ? 'primary' : 'primary'}
               onClick={handleNext}
               disabled={disabled || (!isStepValid && !isLastStep)}
+              loading={loading && isLastStep}
               className={`${isStep3 ? 'px-[24px] py-[14px]' : 'px-6 py-[14px]'} ${(!isStepValid && !isLastStep) || disabled ? (isStep3 ? 'bg-neutral-300 text-white' : 'bg-neutral-300') : ''} ${isLastStep && darkFooter ? 'px-[24px]' : ''}`}
             >
               {isLastStep ? (darkFooter ? 'Apply Now' : 'Submit') : 'Next'}

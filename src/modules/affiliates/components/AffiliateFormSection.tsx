@@ -57,6 +57,7 @@ export const AffiliateFormSection: React.FC = () => {
           onSubmit={handleSubmit}
           className={clsx('-mx-4 md:-mx-6 lg:mx-0')}
           disabled={isSubmitting}
+          loading={isSubmitting}
         />
       </div>
     </div>

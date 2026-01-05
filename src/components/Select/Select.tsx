@@ -38,9 +38,12 @@ export const Select: React.FC<SelectProps> = ({
   const selectRef = useRef<HTMLDivElement>(null);
   const dropdownRef = useRef<HTMLDivElement>(null);
   const tagsContainerRef = useRef<HTMLDivElement>(null);
+  const searchInputRef = useRef<HTMLInputElement>(null);
   const [isTyping, setIsTyping] = useState(false);
   const [dropdownPosition, setDropdownPosition] = useState<{ top: number; left: number; width: number } | null>(null);
   const [visibleTagsCount, setVisibleTagsCount] = useState<number | null>(null);
+  const [searchQuery, setSearchQuery] = useState('');
+  const [highlightedIndex, setHighlightedIndex] = useState<number>(-1);
 
   const currentValue = value !== undefined ? value : internalValue;
   const isMulti = multiSelect;
@@ -66,6 +69,8 @@ export const Select: React.FC<SelectProps> = ({
         setIsOpen(false);
         setIsTyping(false);
         setDropdownPosition(null);
+        setSearchQuery('');
+        setHighlightedIndex(-1);
       }
     };
 
@@ -74,6 +79,24 @@ export const Select: React.FC<SelectProps> = ({
       return () => document.removeEventListener('mousedown', handleClickOutside);
     }
   }, [isOpen]);
+
+  // Reset search when dropdown closes
+  useEffect(() => {
+    if (!isOpen) {
+      setSearchQuery('');
+      setHighlightedIndex(-1);
+    }
+  }, [isOpen]);
+
+  // Filter options based on search query
+  const filteredOptions = React.useMemo(() => {
+    if (!searchQuery.trim()) return options;
+    const query = searchQuery.toLowerCase();
+    return options.filter(option => 
+      option.label.toLowerCase().includes(query) || 
+      option.value.toLowerCase().includes(query)
+    );
+  }, [options, searchQuery]);
 
   const handleToggle = () => {
     if (!isOpen && selectRef.current) {
@@ -89,6 +112,14 @@ export const Select: React.FC<SelectProps> = ({
     }
     setIsOpen(!isOpen);
     setIsTyping(true);
+    if (!isOpen) {
+      setSearchQuery('');
+      setHighlightedIndex(-1);
+      // Focus search input when opening
+      setTimeout(() => {
+        searchInputRef.current?.focus();
+      }, 0);
+    }
   };
 
   const handleSelect = (optionValue: string) => {
@@ -109,8 +140,71 @@ export const Select: React.FC<SelectProps> = ({
       onChange?.(optionValue);
       setIsOpen(false);
       setIsTyping(false);
+      setSearchQuery('');
+      setHighlightedIndex(-1);
     }
   };
+
+  // Handle keyboard navigation
+  const handleKeyDown = (e: React.KeyboardEvent) => {
+    if (!isOpen) {
+      if (e.key === 'Enter' || e.key === ' ' || e.key === 'ArrowDown' || e.key === 'ArrowUp') {
+        e.preventDefault();
+        handleToggle();
+      }
+      return;
+    }
+
+    switch (e.key) {
+      case 'ArrowDown':
+        e.preventDefault();
+        setHighlightedIndex(prev => 
+          prev < filteredOptions.length - 1 ? prev + 1 : prev
+        );
+        break;
+      case 'ArrowUp':
+        e.preventDefault();
+        setHighlightedIndex(prev => prev > 0 ? prev - 1 : -1);
+        break;
+      case 'Enter':
+        e.preventDefault();
+        if (highlightedIndex >= 0 && highlightedIndex < filteredOptions.length) {
+          handleSelect(filteredOptions[highlightedIndex].value);
+        }
+        break;
+      case 'Escape':
+        e.preventDefault();
+        setIsOpen(false);
+        setSearchQuery('');
+        setHighlightedIndex(-1);
+        break;
+      default:
+        // Allow typing to search
+        if (e.key.length === 1 || e.key === 'Backspace') {
+          // Focus will be on search input, so typing will work naturally
+        }
+        break;
+    }
+  };
+
+  // Handle search input change
+  const handleSearchChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setSearchQuery(e.target.value);
+    setHighlightedIndex(-1); // Reset highlight when searching
+  };
+
+  // Scroll highlighted option into view
+  useEffect(() => {
+    if (highlightedIndex >= 0 && dropdownRef.current) {
+      const optionElements = dropdownRef.current.querySelectorAll('button');
+      if (optionElements[highlightedIndex]) {
+        optionElements[highlightedIndex].scrollIntoView({
+          block: 'nearest',
+          behavior: 'smooth',
+        });
+      }
+    }
+  }, [highlightedIndex]);
 
   const handleRemoveTag = (optionValue: string, e: React.MouseEvent) => {
     e.stopPropagation();
@@ -258,38 +352,54 @@ export const Select: React.FC<SelectProps> = ({
           <button
             type="button"
             onClick={handleToggle}
+            onKeyDown={handleKeyDown}
             className={`${classes} flex items-center justify-between cursor-pointer`}
             style={heightStyle}
           >
             <div ref={tagsContainerRef} className="flex flex-nowrap gap-[10px] items-center flex-1 min-w-0 overflow-hidden">
-              {selectedValues.length === 0 ? (
-                <span className="text-neutral-500">{placeholder}</span>
+              {isOpen ? (
+                <input
+                  ref={searchInputRef}
+                  type="text"
+                  value={searchQuery}
+                  onChange={handleSearchChange}
+                  onKeyDown={handleKeyDown}
+                  placeholder={placeholder}
+                  className="flex-1 bg-transparent outline-none text-neutral-900 placeholder:text-neutral-500 min-w-[100px]"
+                  onClick={(e) => e.stopPropagation()}
+                />
               ) : (
                 <>
-                  {selectedValues.slice(0, visibleTagsCount !== null ? visibleTagsCount : selectedValues.length).map((val) => {
-                    const option = options.find(opt => opt.value === val);
-                    return (
-                      <div
-                        key={val}
-                        className="bg-white border border-neutral-200 flex items-center gap-[5px] px-[10px] py-[6px] rounded-[24px] shrink-0"
-                      >
-                        <span className="font-medium text-s text-neutral-900 whitespace-nowrap">{option?.label || val}</span>
-                        <button
-                          type="button"
-                          onClick={(e) => handleRemoveTag(val, e)}
-                          className="w-4 h-4 flex items-center justify-center shrink-0"
-                        >
-                          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M12 4L4 12M4 4L12 12" stroke="#18181B" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
-                          </svg>
-                        </button>
-                      </div>
-                    );
-                  })}
-                  {visibleTagsCount !== null && visibleTagsCount < selectedValues.length && (
-                    <div className="bg-white border border-neutral-200 flex items-center px-[10px] py-[6px] rounded-[24px] shrink-0">
-                      <span className="font-medium text-s text-neutral-900">+{selectedValues.length - visibleTagsCount}</span>
-                    </div>
+                  {selectedValues.length === 0 ? (
+                    <span className="text-neutral-500">{placeholder}</span>
+                  ) : (
+                    <>
+                      {selectedValues.slice(0, visibleTagsCount !== null ? visibleTagsCount : selectedValues.length).map((val) => {
+                        const option = options.find(opt => opt.value === val);
+                        return (
+                          <div
+                            key={val}
+                            className="bg-white border border-neutral-200 flex items-center gap-[5px] px-[10px] py-[6px] rounded-[24px] shrink-0"
+                          >
+                            <span className="font-medium text-s text-neutral-900 whitespace-nowrap">{option?.label || val}</span>
+                            <button
+                              type="button"
+                              onClick={(e) => handleRemoveTag(val, e)}
+                              className="w-4 h-4 flex items-center justify-center shrink-0"
+                            >
+                              <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M12 4L4 12M4 4L12 12" stroke="#18181B" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+                              </svg>
+                            </button>
+                          </div>
+                        );
+                      })}
+                      {visibleTagsCount !== null && visibleTagsCount < selectedValues.length && (
+                        <div className="bg-white border border-neutral-200 flex items-center px-[10px] py-[6px] rounded-[24px] shrink-0">
+                          <span className="font-medium text-s text-neutral-900">+{selectedValues.length - visibleTagsCount}</span>
+                        </div>
+                      )}
+                    </>
                   )}
                 </>
               )}
@@ -309,12 +419,26 @@ export const Select: React.FC<SelectProps> = ({
           <button
             type="button"
             onClick={handleToggle}
+            onKeyDown={handleKeyDown}
             className={`${classes} flex items-center justify-between cursor-pointer`}
             style={heightStyle}
           >
-            <span className={selectedOption ? 'text-neutral-900' : 'text-neutral-500'}>
-              {selectedOption ? selectedOption.label : placeholder}
-            </span>
+            {isOpen ? (
+              <input
+                ref={searchInputRef}
+                type="text"
+                value={searchQuery}
+                onChange={handleSearchChange}
+                onKeyDown={handleKeyDown}
+                placeholder={placeholder}
+                className="flex-1 bg-transparent outline-none text-neutral-900 placeholder:text-neutral-500"
+                onClick={(e) => e.stopPropagation()}
+              />
+            ) : (
+              <span className={selectedOption ? 'text-neutral-900' : 'text-neutral-500'}>
+                {selectedOption ? selectedOption.label : placeholder}
+              </span>
+            )}
             <div className="flex items-center justify-center shrink-0 ml-2">
               <img
                 src={chevronUpIcon}
@@ -337,39 +461,48 @@ export const Select: React.FC<SelectProps> = ({
             }}
           >
             <div className="p-[5px]">
-              {options.map((option) => {
-                const isSelected = isMulti 
-                  ? selectedValues.includes(option.value)
-                  : singleValue === option.value;
+              {filteredOptions.length === 0 ? (
+                <div className="px-4 py-[10px] text-center">
+                  <span className="font-medium text-s text-neutral-500">No options found</span>
+                </div>
+              ) : (
+                filteredOptions.map((option, index) => {
+                  const isSelected = isMulti 
+                    ? selectedValues.includes(option.value)
+                    : singleValue === option.value;
+                  const isHighlighted = index === highlightedIndex;
 
-                return (
-                  <button
-                    key={option.value}
-                    type="button"
-                    onClick={() => handleSelect(option.value)}
-                    className={`
-                      w-full flex items-center justify-between px-4 py-[10px] rounded-[10px] text-left
-                      ${isSelected ? 'bg-primary-100' : 'hover:bg-neutral-50'}
-                    `}
-                  >
-                    <span className="font-medium text-s text-neutral-900">{option.label}</span>
-                    {isMulti && (
-                      <div className="w-4 h-4 flex items-center justify-center shrink-0">
-                        {isSelected ? (
-                          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <rect x="2" y="2" width="12" height="12" rx="2" fill="#0070FF"/>
-                            <path d="M5 8L7 10L11 6" stroke="white" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
-                          </svg>
-                        ) : (
-                          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <rect x="2" y="2" width="12" height="12" rx="2" stroke="#E4E4E7" strokeWidth="1.5"/>
-                          </svg>
-                        )}
-                      </div>
-                    )}
-                  </button>
-                );
-              })}
+                  return (
+                    <button
+                      key={option.value}
+                      type="button"
+                      onClick={() => handleSelect(option.value)}
+                      className={`
+                        w-full flex items-center justify-between px-4 py-[10px] rounded-[10px] text-left
+                        ${isSelected ? 'bg-primary-100' : ''}
+                        ${isHighlighted && !isSelected ? 'bg-neutral-100' : ''}
+                        ${!isSelected && !isHighlighted ? 'hover:bg-neutral-50' : ''}
+                      `}
+                    >
+                      <span className="font-medium text-s text-neutral-900">{option.label}</span>
+                      {isMulti && (
+                        <div className="w-4 h-4 flex items-center justify-center shrink-0">
+                          {isSelected ? (
+                            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                              <rect x="2" y="2" width="12" height="12" rx="2" fill="#0070FF"/>
+                              <path d="M5 8L7 10L11 6" stroke="white" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+                            </svg>
+                          ) : (
+                            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                              <rect x="2" y="2" width="12" height="12" rx="2" stroke="#E4E4E7" strokeWidth="1.5"/>
+                            </svg>
+                          )}
+                        </div>
+                      )}
+                    </button>
+                  );
+                })
+              )}
             </div>
           </div>,
           document.body
