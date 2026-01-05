@@ -22,7 +22,7 @@ export const Button: React.FC<ButtonProps> = ({
   const variantClasses = {
     primary: 'bg-primary-500 text-white hover:bg-primary-600 active:bg-primary-600',
     secondary: 'bg-primary-200 text-primary-500 hover:bg-primary-100 active:bg-primary-100',
-    outline: 'border border-neutral-900 text-neutral-900 hover:bg-neutral-50 active:bg-neutral-50',
+    outline: 'border border-neutral-900 text-neutral-900 hover:bg-neutral-900 hover:text-white active:bg-neutral-900 active:text-white',
   };
 
   const disabledClasses = 'opacity-50 cursor-not-allowed';

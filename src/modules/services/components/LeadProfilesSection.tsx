@@ -61,6 +61,30 @@ const Divider = () => (
   </div>
 );
 
+// Helper function to render contact value with clickable phone and email
+const renderContactValue = (value: string) => {
+  // Match phone number pattern: (XXX) XXX-XXXX
+  const phoneRegex = /\((\d{3})\)\s*(\d{3})-(\d{4})/;
+  const phoneMatch = value.match(phoneRegex);
+  
+  if (phoneMatch) {
+    const phoneNumber = phoneMatch[0];
+    const telLink = `tel:+1${phoneMatch[1]}${phoneMatch[2]}${phoneMatch[3]}`;
+    const restOfText = value.replace(phoneRegex, '').trim();
+    
+    return (
+      <>
+        <a href={telLink} className="text-primary-500 hover:text-primary-600 transition-colors">
+          {phoneNumber}
+        </a>
+        {restOfText && ` ${restOfText}`}
+      </>
+    );
+  }
+  
+  return value;
+};
+
 export const LeadProfilesSection: React.FC<LeadProfilesSectionProps> = ({ 
   className = '',
   title = 'Visualizing your',
@@ -187,7 +211,7 @@ export const LeadProfilesSection: React.FC<LeadProfilesSectionProps> = ({
                         weight="bold"
                         className={`text-neutral-800 shrink-0 ${detail.centerAlign ? 'text-center text-nowrap' : ''}`}
                       >
-                        {detail.value}
+                        {detail.label === 'Contact' ? renderContactValue(detail.value) : detail.value}
                       </Typography>
                     </div>
                     {index < secondGroupDetails.length - 1 && <Divider />}

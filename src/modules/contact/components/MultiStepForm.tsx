@@ -21,6 +21,7 @@ export interface MultiStepFormProps {
   className?: string;
   darkFooter?: boolean;
   fieldHeight?: number; // Height for input and select fields, defaults to 44px
+  disabled?: boolean; // Disable form submission
 }
 
 export const MultiStepForm: React.FC<MultiStepFormProps> = ({
@@ -31,6 +32,7 @@ export const MultiStepForm: React.FC<MultiStepFormProps> = ({
   className = '',
   darkFooter = false,
   fieldHeight = 44,
+  disabled = false,
 }) => {
   const {
     currentStep,
@@ -59,6 +61,7 @@ export const MultiStepForm: React.FC<MultiStepFormProps> = ({
   }, []);
 
   const handleNext = () => {
+    if (disabled) return;
     const canProceed = handleNextStep();
     if (canProceed && isLastStep) {
       onSubmit(formData);
@@ -481,9 +484,11 @@ export const MultiStepForm: React.FC<MultiStepFormProps> = ({
             <Typography variant="p" weight="medium" className={darkFooter ? 'text-white' : 'text-neutral-900'}>
               Call our Advertising Specialists
             </Typography>
-            <Typography variant="s" weight="bold" className="text-primary-500">
-              (855) 387-7272
-            </Typography>
+            <a href="tel:+18553877272" className="text-primary-500 hover:text-primary-600 transition-colors">
+              <Typography variant="s" weight="bold" className="text-primary-500">
+                (855) 387-7272
+              </Typography>
+            </a>
           </div>
           <div className={`flex items-center ${isStep3 ? 'gap-[16px]' : 'gap-4'}`}>
             <Button
@@ -497,8 +502,8 @@ export const MultiStepForm: React.FC<MultiStepFormProps> = ({
             <Button
               variant={isStep3 && !isStepValid ? 'primary' : 'primary'}
               onClick={handleNext}
-              disabled={!isStepValid && !isLastStep}
-              className={`${isStep3 ? 'px-[24px] py-[14px]' : 'px-6 py-[14px]'} ${!isStepValid && !isLastStep ? (isStep3 ? 'bg-neutral-300 text-white' : 'bg-neutral-300') : ''} ${isLastStep && darkFooter ? 'px-[24px]' : ''}`}
+              disabled={disabled || (!isStepValid && !isLastStep)}
+              className={`${isStep3 ? 'px-[24px] py-[14px]' : 'px-6 py-[14px]'} ${(!isStepValid && !isLastStep) || disabled ? (isStep3 ? 'bg-neutral-300 text-white' : 'bg-neutral-300') : ''} ${isLastStep && darkFooter ? 'px-[24px]' : ''}`}
             >
               {isLastStep ? (darkFooter ? 'Apply Now' : 'Submit') : 'Next'}
             </Button>

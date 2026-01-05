@@ -10,6 +10,8 @@ A comprehensive React TypeScript design system built with Vite, Tailwind CSS, Ta
 
 ### Installation
 
+#### Frontend
+
 ```bash
 # Install dependencies
 npm install
@@ -24,14 +26,48 @@ npm run build
 npm run preview
 ```
 
+#### Backend (Email Service)
+
+The backend service handles form submissions and sends emails. See [backend/README.md](./backend/README.md) for detailed setup instructions.
+
+```bash
+# Navigate to backend directory
+cd backend
+
+# Install dependencies
+npm install
+
+# Copy environment variables template
+cp .env.example .env
+
+# Edit .env with your SMTP credentials
+
+# Start development server
+npm run dev
+
+# Build for production
+npm run build
+npm start
+```
+
+**Note:** The frontend expects the backend to be running on `http://localhost:3001` by default. You can configure this using the `VITE_API_BASE_URL` environment variable.
+
 ## 📦 Tech Stack
 
+### Frontend
 - **React 18.2+** - UI library
 - **TypeScript 5.2+** - Type safety
 - **Vite 5.0+** - Build tool and dev server
 - **Tailwind CSS 3.3+** - Utility-first CSS framework
 - **TanStack Query 5.17+** - Data fetching and caching
 - **Zustand 4.4+** - Lightweight state management
+
+### Backend
+- **Node.js 18+** - Runtime environment
+- **Express.js** - Web framework
+- **TypeScript** - Type safety
+- **Nodemailer** - Email service
+- **CORS** - Cross-origin resource sharing
 
 ## 🎨 Design System
 
@@ -126,6 +162,13 @@ clickdee-main/
 │   │   ├── Avatar/
 │   │   ├── HoveringPopup/
 │   │   └── index.ts
+│   ├── modules/            # Feature modules
+│   │   ├── affiliates/     # Affiliate program
+│   │   ├── contact/        # Contact form
+│   │   ├── services/       # Services pages
+│   │   └── ...
+│   ├── utils/              # Utility functions
+│   │   └── api.ts          # API client functions
 │   ├── design-system/      # Design tokens and types
 │   │   ├── tokens.ts
 │   │   └── types.ts
@@ -134,6 +177,16 @@ clickdee-main/
 │   ├── App.tsx             # Main app component
 │   ├── main.tsx            # Entry point
 │   └── index.css           # Global styles
+├── backend/                # Backend email service
+│   ├── src/
+│   │   ├── services/
+│   │   │   └── emailService.ts  # Reusable email service
+│   │   ├── routes/
+│   │   │   └── formRoutes.ts    # API routes
+│   │   └── index.ts             # Express server
+│   ├── package.json
+│   ├── tsconfig.json
+│   └── README.md
 ├── icons/                  # SVG icons
 ├── DESIGN_SYSTEM_SPEC.md   # Complete design system specification
 ├── package.json

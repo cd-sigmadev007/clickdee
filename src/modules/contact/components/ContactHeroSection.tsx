@@ -6,15 +6,33 @@ import { ContactForm } from './ContactForm';
 import callIcon from '@/assets/icons/marketeq_call.svg';
 import tickWithGola from '@/assets/images/tick-with-gola.svg';
 import { Button } from '@/components/Button';
+import { submitContactForm } from '@/utils/api';
 
 export const ContactHeroSection: React.FC = () => {
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitError, setSubmitError] = useState<string | null>(null);
 
-  const handleSubmit = (formData: Record<string, any>) => {
-    // Handle form submission
-    console.log('Form submitted:', formData);
-    setIsSubmitted(true);
-    // In production, this would send data to an API
+  const handleSubmit = async (formData: Record<string, any>) => {
+    setIsSubmitting(true);
+    setSubmitError(null);
+
+    try {
+      const result = await submitContactForm(formData);
+      
+      if (result.success) {
+        console.log('Contact form submitted successfully');
+        setIsSubmitted(true);
+      } else {
+        setSubmitError(result.error || 'Failed to submit form');
+        console.error('Form submission error:', result.error);
+      }
+    } catch (error) {
+      setSubmitError('An unexpected error occurred. Please try again.');
+      console.error('Unexpected error:', error);
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   // Animation variants for form view
@@ -105,7 +123,14 @@ export const ContactHeroSection: React.FC = () => {
             </div>
 
             <div className="w-full lg:flex-shrink-0 relative z-10 lg:max-w-[50%]">
-              <ContactForm onSubmit={handleSubmit} />
+              {submitError && (
+                <div className="mb-4 p-4 bg-error-50 border border-error-200 rounded-[10px]">
+                  <Typography variant="s" weight="medium" className="text-error-500">
+                    {submitError}
+                  </Typography>
+                </div>
+              )}
+              <ContactForm onSubmit={handleSubmit} disabled={isSubmitting} />
             </div>
           </motion.div>
         ) : (
@@ -157,12 +182,14 @@ export const ContactHeroSection: React.FC = () => {
               initial="initial"
               animate="animate"
             >
-              <Button variant="primary" className="flex items-center gap-[10px] px-6 py-[14px]">
-                <img src={callIcon} alt="" className="w-6 h-6" />
-                <Typography variant="p" weight="bold" className="text-white whitespace-nowrap">
-                  (855) 387-7272
-                </Typography>
-              </Button>
+              <a href="tel:+18553877272">
+                <Button variant="primary" className="flex items-center gap-[10px] px-6 py-[14px]">
+                  <img src={callIcon} alt="" className="w-6 h-6" />
+                  <Typography variant="p" weight="bold" className="text-white whitespace-nowrap">
+                    (855) 387-7272
+                  </Typography>
+                </Button>
+              </a>
             </motion.div>
           </motion.div>
         )}

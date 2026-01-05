@@ -103,11 +103,13 @@ const trafficSourceOptions = [
 export interface AffiliateFormProps {
   onSubmit: (formData: Record<string, any>) => void;
   className?: string;
+  disabled?: boolean;
 }
 
 export const AffiliateForm: React.FC<AffiliateFormProps> = ({
   onSubmit,
   className = '',
+  disabled = false,
 }) => {
   const [formData, setFormData] = useState<Record<string, any>>({});
   const selectedState = formData.state || '';
@@ -287,6 +289,7 @@ export const AffiliateForm: React.FC<AffiliateFormProps> = ({
       onFormDataChange={handleFormDataChange}
       className={className}
       fieldHeight={52}
+      disabled={disabled}
     />
   );
 };

@@ -19,20 +19,22 @@ export const CTASection: React.FC = () => {
           
           {/* Button */}
           <div className="w-full md:w-auto">
-            <Button 
-              variant="secondary" 
-              className="w-full md:w-auto !text-neutral-900 bg-white border-white hover:bg-neutral-50"
-              icon={
-                <img 
-                  src={chevronLeftIcon} 
-                  alt="" 
-                  className="w-4 h-4 rotate-180 brightness-0" 
-                />
-              }
-              iconPosition="right"
-            >
-              (855) 387-7272
-            </Button>
+            <a href="tel:+18553877272">
+              <Button 
+                variant="secondary" 
+                className="w-full md:w-auto !text-neutral-900 bg-white border-white hover:bg-neutral-50"
+                icon={
+                  <img 
+                    src={chevronLeftIcon} 
+                    alt="" 
+                    className="w-4 h-4 rotate-180 brightness-0" 
+                  />
+                }
+                iconPosition="right"
+              >
+                (855) 387-7272
+              </Button>
+            </a>
           </div>
         </div>
       </div>

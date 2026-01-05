@@ -75,11 +75,13 @@ const citiesByState: Record<string, string[]> = {
 export interface ContactFormProps {
   onSubmit: (formData: Record<string, any>) => void;
   className?: string;
+  disabled?: boolean;
 }
 
 export const ContactForm: React.FC<ContactFormProps> = ({
   onSubmit,
   className = '',
+  disabled = false,
 }) => {
   const [formData, setFormData] = useState<Record<string, any>>({});
   const selectedState = formData.state || '';
@@ -255,6 +257,7 @@ export const ContactForm: React.FC<ContactFormProps> = ({
       onSubmit={onSubmit}
       onFormDataChange={handleFormDataChange}
       className={clsx('-mx-[24px] lg:mx-0 md:-mx-0', className)}
+      disabled={disabled}
     />
   );
 };
