@@ -4739,7 +4739,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@handlewithcare/react-prosemirror@npm:^2.2.1":
+"@handlewithcare/react-prosemirror@npm:2.2.1":
   version: 2.2.1
   resolution: "@handlewithcare/react-prosemirror@npm:2.2.1"
   dependencies:
@@ -16885,7 +16885,7 @@ __metadata:
     "@emotion/react": "npm:^11.10.5"
     "@emotion/server": "npm:^11.10.0"
     "@emotion/styled": "npm:^11.10.5"
-    "@handlewithcare/react-prosemirror": "npm:^2.2.1"
+    "@handlewithcare/react-prosemirror": "npm:2.2.1"
     "@internationalized/date": "npm:^3.8.0"
     "@mui/icons-material": "npm:^5.15.15"
     "@mui/lab": "npm:^5.0.0-alpha.170"
